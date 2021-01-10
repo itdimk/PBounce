@@ -11,15 +11,16 @@ public class InventoryItemDisplay : MonoBehaviour
     public Button Button;
 
     [HideInInspector] public UnityEvent<InventoryItem> Clicked;
-    [HideInInspector]  public UnityEvent<InventoryItem> LongPress;
+    [HideInInspector] public UnityEvent<InventoryItem> LongPress;
 
     private InventoryItem _item;
 
     // Start is called before the first frame update
     void OnEnable()
     {
+        if (Button == null) return;
         Button.onClick.RemoveAllListeners();
-        
+
         Button.onClick.AddListener(() => Clicked?.Invoke(_item));
         Button.gameObject.AddComponent<LongPressTrigger>()
             .OnLongPress.AddListener(() => LongPress?.Invoke(_item));

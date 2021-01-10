@@ -12,7 +12,7 @@ public class GridLayout : MonoBehaviour
 
     private Vector2 GetPoint(int row, int col)
     {
-        return transform.position + transform.right * ColumnGap * col - transform.up * RowGap * row;
+        return  transform.right * ColumnGap * col - transform.up * RowGap * row;
     }
 
     private void OnTransformChildrenChanged()
@@ -31,7 +31,7 @@ public class GridLayout : MonoBehaviour
             int c = i - r * Columns;
 
             var child = transform.GetChild(i);
-            child.position = GetPoint(r, c);
+            child.localPosition = GetPoint(r, c);
         }
     }
 }

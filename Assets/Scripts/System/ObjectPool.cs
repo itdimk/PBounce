@@ -33,8 +33,8 @@ public static class ObjectPool
         if (stack.Count > 0)
         {
             result = stack.Pop();
-            result.transform.parent = parent;
             result.transform.SetPositionAndRotation(position, rotation);
+            result.transform.parent = parent;
         }
         else
         {

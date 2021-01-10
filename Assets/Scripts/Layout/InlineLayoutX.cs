@@ -36,5 +36,7 @@ public class InlineLayoutX : MonoBehaviour
             var child = transform.GetChild(i);
             child.position = GetPoint(i);
         }
+        
+        Debug.Log(childCount);
     }
 }

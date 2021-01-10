@@ -24,9 +24,19 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(InventoryItem item)
     {
-        Items.Add(item);
-        item.transform.parent = transform;
-        item.gameObject.SetActive(false);
+        var existedItem = Items.FirstOrDefault(o => o.ID == item.ID && o != item);
+
+        if (existedItem == null)
+        {
+            Items.Add(item);
+            item.transform.parent = transform;
+            item.gameObject.SetActive(false);
+        }
+        else
+        {
+            existedItem.Count++;
+            Destroy(item.gameObject);
+        }
 
         foreach (var o in Output)
             o.SetInventory(this);

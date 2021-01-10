@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6513424360774772118}
   - component: {fileID: 6513424360774772114}
   - component: {fileID: 3669228539354242874}
+  - component: {fileID: 1457159729}
   m_Layer: 0
   m_Name: Main
   m_TagString: Player
@@ -89,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stick: {fileID: 0}
-  JumpForce: 1000
+  JumpForce: 750
   JumpCooldown: 0.25
   Speed: 10
   Acceleration: 0.275
@@ -112,7 +113,7 @@ MonoBehaviour:
   GroundDetectionDistance: 50
   GroundDetectionTolerance: 0.4
   CeilingDetectionDistance: 0
-  IsGroundedThreshold: 0.57
+  IsGroundedThreshold: 0.48
   IsCrawlingThreshold: 2
   MaxCharacterTintToGrabLedge: 30
   GrabLedgeGroundDistance: 0
@@ -155,15 +156,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e79a695289a0e4c8567237999fa1d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 50
+  Hp: 100
   MaxHp: 100
   Armor: 0
   MaxArmor: 100
   ArmorAbsorption: 0.9
   Invincible: 0
   IgnoreDamageFrom: []
-  HpOutput: {fileID: 0}
-  ArmorOutput: {fileID: 0}
+  HpOutput:
+  - {fileID: 0}
+  - {fileID: 0}
+  ArmorOutput: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -176,6 +179,22 @@ MonoBehaviour:
   OnAddArmor:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1457159729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513424360774772116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e8fdaa1105f987479a9285a63901d32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Items: []
+  ArmSlots: []
+  Output:
+  - {fileID: 0}
 --- !u!1 &6513424361140076536
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +220,7 @@ Transform:
   m_GameObject: {fileID: 6513424361140076536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.0207105, y: -0.5366472, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 6513424361456376238}
   - {fileID: 6513424360774772119}
