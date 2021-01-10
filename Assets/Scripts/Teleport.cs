@@ -47,6 +47,11 @@ public class Teleport : MonoBehaviour
         if (_teleporting && Time.time - _teleportTick >= Delay)
         {
             _objectToTeleport.transform.position = Destination.GetTarget().position;
+            if (_objectToTeleport.TryGetComponent(out Rigidbody2D physics))
+            {
+                physics.velocity = Vector2.zero;
+            }
+            
             _teleporting = false;
             AfterTeleport?.Invoke();
           

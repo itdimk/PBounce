@@ -143,7 +143,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.04838121}
   serializedVersion: 2
-  m_Radius: 0.6451434
+  m_Radius: 0.61968863
 --- !u!114 &3669228539354242874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +326,7 @@ MonoBehaviour:
   Target: {fileID: 6513424361456376232}
   Smoothness: 0.01
   MaxSpeed: 100
+  InstantMoving: 0
 --- !u!114 &6513424361456376232
 MonoBehaviour:
   m_ObjectHideFlags: 0
