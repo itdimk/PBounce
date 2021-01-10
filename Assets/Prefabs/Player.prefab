@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6513424360774772114}
   - component: {fileID: 3669228539354242874}
   - component: {fileID: 1457159729}
+  - component: {fileID: 284532436}
+  - component: {fileID: 284532444}
   m_Layer: 0
   m_Name: Main
   m_TagString: Player
@@ -31,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6513424360774772116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.5, y: -2.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6513424361140076539}
@@ -49,7 +51,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1.5
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 3
@@ -113,7 +115,7 @@ MonoBehaviour:
   GroundDetectionDistance: 50
   GroundDetectionTolerance: 0.4
   CeilingDetectionDistance: 0
-  IsGroundedThreshold: 0.48
+  IsGroundedThreshold: 0.5
   IsCrawlingThreshold: 2
   MaxCharacterTintToGrabLedge: 30
   GrabLedgeGroundDistance: 0
@@ -169,7 +171,31 @@ MonoBehaviour:
   ArmorOutput: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 284532444}
+        m_TargetAssemblyTypeName: SelfDestroyX, Assembly-CSharp
+        m_MethodName: Destruct
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnHit:
     m_PersistentCalls:
       m_Calls: []
@@ -195,6 +221,49 @@ MonoBehaviour:
   ArmSlots: []
   Output:
   - {fileID: 0}
+--- !u!114 &284532436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513424360774772116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e2d8e261790ec4c8d0ac20d4a211a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 6513424360774772119}
+--- !u!114 &284532444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513424360774772116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0825a995092adf84d83dc6ddeda5169e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyOnDelay: 999999
+  DestroyEffect: {fileID: 0}
+  UseObjectPool: 0
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6513424361456376239}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6513424361140076536
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +289,7 @@ Transform:
   m_GameObject: {fileID: 6513424361140076536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.0207105, y: -0.5366472, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6513424361456376238}
   - {fileID: 6513424360774772119}
@@ -254,7 +323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6513424361456376239}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.5, y: -1.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6513424361140076539}
@@ -324,9 +393,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 6513424361456376232}
-  Smoothness: 0.01
+  Smoothness: 1
   MaxSpeed: 100
-  InstantMoving: 0
+  InstantMoving: 1
 --- !u!114 &6513424361456376232
 MonoBehaviour:
   m_ObjectHideFlags: 0
