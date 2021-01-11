@@ -23,12 +23,14 @@ public class PlayerMovementX : MonoBehaviour
 
     [Space] public float JumpForce = 1000f;
     public float JumpCooldown = 0.25f;
+    public float MaxFallingSpeedToJump = 1f;
 
 
     [Space] public float Speed = 10f;
-    [Range(0.0f, 1.0f)] public float Acceleration = 0.2f;
+    [Range(0.0f, 1.0f)] public float Smoothness = 0.2f;
     public float AirControl = 0.5f;
 
+    public bool DisableFlip = false;
 
     protected virtual void Start()
     {
@@ -49,7 +51,9 @@ public class PlayerMovementX : MonoBehaviour
         Move();
 
         if (IsJumpRequired())
+        {
             ((Action) Jump).InvokeWithCooldown(JumpCooldown);
+        }
     }
 
     protected virtual void Move()
@@ -57,24 +61,22 @@ public class PlayerMovementX : MonoBehaviour
         Vector2 currVelocity = Physics.velocity;
 
         float speedX = Mathf.Abs(InputX) * (MovementStats.IsGrounded ? Speed : Speed * AirControl);
-        Vector2 targetVelocity = transform.right * speedX;
+
+        var right = (!DisableFlip ? 1 : Mathf.Sign(InputX)) * transform.right;
+
+        Vector2 targetVelocity = right * speedX;
 
         targetVelocity.y = currVelocity.y;
 
-        // var force = Vector2.ClampMagnitude(targetVelocity - currVelocity, Speed) 
-        //             * (Vector2.Distance(targetVelocity, currVelocity) * Acceleration);
-        //
-        // Physics.AddForce(force);
-        //
         Physics.velocity = Vector2.SmoothDamp(currVelocity,
-            targetVelocity, ref _currVelocityRef, Acceleration);
+            targetVelocity, ref _currVelocityRef, Smoothness);
 
         FlipIfRequired();
     }
 
     protected virtual bool IsJumpRequired()
     {
-        return InputY > 0.75f && MovementStats.IsGrounded;
+        return InputY > 0.75f && MovementStats.IsGrounded && Physics.velocity.y >= -MaxFallingSpeedToJump;
     }
 
     protected virtual void Jump()
@@ -84,6 +86,8 @@ public class PlayerMovementX : MonoBehaviour
 
     private void FlipIfRequired()
     {
+        if (DisableFlip) return;
+
         if (InputX > 0 && !IsFacingRight || InputX < 0 && IsFacingRight)
         {
             transform.Rotate(0, 180f, 0);

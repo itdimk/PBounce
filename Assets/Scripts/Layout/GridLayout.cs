@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GridLayout : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class GridLayout : MonoBehaviour
 
     private bool _initialized;
 
+
+    private void Start()
+    {
+        OnTransformChildrenChanged();
+    }
 
     private Vector2 GetPoint(int row, int col)
     {

@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 8300161352409014391}
   - component: {fileID: 8300161352409014392}
   m_Layer: 5
-  m_Name: InventoryItemDisplay 1
+  m_Name: InventoryItemDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8300161352409014393
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -551, y: 25}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 89.324585, y: 93.59479}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8300161352409014391
 CanvasRenderer:
@@ -105,8 +105,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -21.367, y: 0}
+  m_SizeDelta: {x: 38.67224, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8300161352748866601
 CanvasRenderer:
@@ -195,7 +195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 42.6, y: 0.8}
+  m_AnchoredPosition: {x: 24.7, y: 0.000012219}
   m_SizeDelta: {x: 104.33334, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8300161353749158881
@@ -228,11 +228,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 48
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 48
+    m_MaxSize: 60
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1

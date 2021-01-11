@@ -13,7 +13,7 @@ public class FollowX : MonoBehaviour
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         transform.position = InstantMoving
             ? Target.GetTarget().position

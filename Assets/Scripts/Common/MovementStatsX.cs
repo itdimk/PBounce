@@ -5,7 +5,7 @@ public class MovementStatsX : MonoBehaviour
 {
     public LayerMask WhatIsGround;
     public float GroundDetectionDistance = 10f;
-    public float GroundDetectionTolerance = 2f;
+    public float GroundDetectionWidth = 2f;
     public float CeilingDetectionDistance = 10f;
 
     public float IsGroundedThreshold = 2f;
@@ -71,8 +71,8 @@ public class MovementStatsX : MonoBehaviour
     void SetValuesByGroundRaycast()
     {
         var tfm = transform;
-        var origin1 = _physics.position + (Vector2)tfm.right * GroundDetectionTolerance;
-        var origin2 =  _physics.position - (Vector2)tfm.right * GroundDetectionTolerance;
+        var origin1 = _physics.position + (Vector2)tfm.right * GroundDetectionWidth;
+        var origin2 =  _physics.position - (Vector2)tfm.right * GroundDetectionWidth;
         
         var hit1 = Physics2D.Raycast(origin1, -tfm.up, GroundDetectionDistance, WhatIsGround);
         var hit2 = Physics2D.Raycast(origin2, -tfm.up, GroundDetectionDistance, WhatIsGround);
@@ -134,11 +134,11 @@ public class MovementStatsX : MonoBehaviour
         // Draw ground raycast
 
         var tfm = transform;
-        var origin1 = transform.position + tfm.right * GroundDetectionTolerance;
-        var origin2 =  transform.position - tfm.right * GroundDetectionTolerance;
+        var origin1 = transform.position + tfm.right * GroundDetectionWidth;
+        var origin2 =  transform.position - tfm.right * GroundDetectionWidth;
         
-        var hit1 = Physics2D.Raycast(origin1, -tfm.up, GroundDetectionDistance, WhatIsGround);
-        var hit2 = Physics2D.Raycast(origin2, -tfm.up, GroundDetectionDistance, WhatIsGround);
+        var hit1 = Physics2D.Raycast(origin1, -tfm.up, IsGroundedThreshold, WhatIsGround);
+        var hit2 = Physics2D.Raycast(origin2, -tfm.up, IsGroundedThreshold, WhatIsGround);
         
         Gizmos.color = hit1 != default ? Color.red : Color.cyan;
         Gizmos.DrawLine(origin1, origin1 - transform.up * IsGroundedThreshold);

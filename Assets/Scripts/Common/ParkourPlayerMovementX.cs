@@ -51,7 +51,7 @@ public class ParkourPlayerMovementX : PlayerMovementX
 
     protected override bool IsJumpRequired()
     {
-        bool jump = InputY > 0.75f && DoubleJump && !_doubleJumpUsed;
+        bool jump =  DoubleJump && !_doubleJumpUsed;
 
         return base.IsJumpRequired() || jump;
     }

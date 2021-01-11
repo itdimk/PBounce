@@ -8,7 +8,7 @@ public class InlineLayoutX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        OnTransformChildrenChanged();
     }
 
     private Vector2 GetPoint(int index)

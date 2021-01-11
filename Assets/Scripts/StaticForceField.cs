@@ -5,6 +5,7 @@ public class StaticForceField : MonoBehaviour
 {
     public Vector2 Force = Vector2.up * 5;
     public bool DependsOnMass = false;
+    public bool DependsOnDensity = false;
     public string[] IgnoredTags = { };
 
 
@@ -17,18 +18,17 @@ public class StaticForceField : MonoBehaviour
     {
         if (!IgnoredTags.Contains(other.tag))
         {
-            AddStaticForce(other.gameObject);
+            AddStaticForce(other);
         }
     }
 
-    private void AddStaticForce(GameObject obj)
+    private void AddStaticForce(Collider2D other)
     {
-        if (obj.TryGetComponent(out Rigidbody2D physics))
+        if (other.TryGetComponent(out Rigidbody2D physics))
         {
-            if (DependsOnMass)
-                physics.AddForce(Vector2.up * physics.mass * Force);
-            else
-                physics.AddForce(Vector2.up * Force);
+            physics.AddForce(Vector2.up * Force *
+                             (DependsOnMass ? physics.mass : 1) *
+                             (DependsOnDensity ? (1.0F / other.density) : 1));
         }
     }
 }

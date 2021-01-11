@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1457159729}
   - component: {fileID: 284532436}
   - component: {fileID: 284532444}
+  - component: {fileID: 1498717898893640661}
   m_Layer: 0
   m_Name: Main
   m_TagString: Player
@@ -35,9 +36,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.5, y: -2.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6513424361456376238}
   m_Father: {fileID: 6513424361140076539}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6513424360774772115
 Rigidbody2D:
@@ -94,9 +96,11 @@ MonoBehaviour:
   Stick: {fileID: 0}
   JumpForce: 750
   JumpCooldown: 0.25
+  MaxFallingSpeedToJump: 1
   Speed: 10
-  Acceleration: 0.275
+  Smoothness: 0.2
   AirControl: 0.8
+  DisableFlip: 0
 --- !u!114 &6513424360774772118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +117,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   GroundDetectionDistance: 50
-  GroundDetectionTolerance: 0.4
+  GroundDetectionWidth: 2
   CeilingDetectionDistance: 0
   IsGroundedThreshold: 0.5
   IsCrawlingThreshold: 2
@@ -264,6 +268,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1498717898893640661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513424360774772116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e2d8e261790ec4c8d0ac20d4a211a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 6513424360774772119}
 --- !u!1 &6513424361140076536
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +308,6 @@ Transform:
   m_LocalPosition: {x: -4.0207105, y: -0.5366472, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6513424361456376238}
   - {fileID: 6513424360774772119}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -306,8 +322,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6513424361456376238}
   - component: {fileID: 6513424361456376233}
-  - component: {fileID: 6513424361456376235}
-  - component: {fileID: 6513424361456376232}
   m_Layer: 0
   m_Name: Bounce
   m_TagString: Untagged
@@ -322,11 +336,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6513424361456376239}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5, y: -1.59, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.8000003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6513424361140076539}
+  m_Father: {fileID: 6513424360774772119}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6513424361456376233
@@ -380,32 +394,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6513424361456376235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6513424361456376239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a01236886d8c673488b111bf5be7bb0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 6513424361456376232}
-  Smoothness: 1
-  MaxSpeed: 100
-  InstantMoving: 1
---- !u!114 &6513424361456376232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6513424361456376239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4e2d8e261790ec4c8d0ac20d4a211a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 6513424360774772119}
