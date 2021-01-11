@@ -11,6 +11,7 @@ public class StringDisplay : MonoBehaviour
 
     private bool _initialized;
 
+    public StringDisplay Next;
 
     public void SetString(string value)
     {
@@ -18,6 +19,9 @@ public class StringDisplay : MonoBehaviour
             Initialize();
         
         _setPropertyValue(value);
+        
+        if(Next != null)
+            Next.SetString(value);
     }
 
     private void Initialize()

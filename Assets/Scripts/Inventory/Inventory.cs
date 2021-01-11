@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private ArmSlot[] ArmSlots = new ArmSlot[0];
 
     public IReadOnlyList<InventoryItem> AllItems => Items;
-    public BaseInventoryDisplay[] Output = { };
+    public BaseInventoryDisplay Output;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +38,7 @@ public class Inventory : MonoBehaviour
             Destroy(item.gameObject);
         }
 
-        foreach (var o in Output)
-            o.SetInventory(this);
+        Output.SetInventory(this);
     }
 
     public void TakeItem(InventoryItem item)

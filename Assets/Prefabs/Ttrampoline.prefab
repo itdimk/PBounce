@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5337307025057736808}
   - component: {fileID: 5337307025057736809}
   - component: {fileID: 5337307025057736810}
+  - component: {fileID: 1929318547}
   m_Layer: 8
   m_Name: Ttrampoline
   m_TagString: Untagged
@@ -97,8 +98,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0017681004, y: -0.09993233}
-  m_Size: {x: 4.6999803, y: 1.0353305}
+  m_Offset: {x: 0.007993948, y: 0.08232319}
+  m_Size: {x: 2.8818927, y: 0.2243924}
   m_Direction: 1
 --- !u!50 &5337307025057736810
 Rigidbody2D:
@@ -121,3 +122,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &1929318547
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5337307025057736811}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.003131628, y: -0.15444851}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.0006278, y: 0.77212805}
+    newSize: {x: 4.78, y: 1.23}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.844256, y: 0.4289379}
+  m_EdgeRadius: 0

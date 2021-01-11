@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class HealthControllerX : MonoBehaviour
 {
@@ -13,22 +10,27 @@ public class HealthControllerX : MonoBehaviour
     public float Armor = 0f;
     public float MaxArmor = 100.0f;
     public float ArmorAbsorption = 0.9f;
+    public int Lives = 1;
+    public int MaxLives = 3;
     public bool Invincible = false;
     public List<string> IgnoreDamageFrom = new List<string>();
 
-    [Space] public NumberDisplay[] HpOutput = {};
-    public NumberDisplay[] ArmorOutput = {};
+    [Space] public NumberDisplay HpOutput;
+    public NumberDisplay ArmorOutput;
+    public NumberDisplay LivesOutput;
 
-    public UnityEvent OnDeath;
     public UnityEvent OnHit;
     public UnityEvent OnHeal;
     public UnityEvent OnAddArmor;
-
+    public UnityEvent OnAddLife;
+    public UnityEvent OnLifeWasted;
+    public UnityEvent OnDeath;
 
     private void Start()
     {
         SetHp(Hp);
         SetArmor(Armor);
+        SetLives(Lives);
     }
 
     public void DealDamage(float amount, GameObject source)
@@ -60,12 +62,19 @@ public class HealthControllerX : MonoBehaviour
         OnAddArmor?.Invoke();
     }
 
+    public void AddLives(int count)
+    {
+        SetLives(Math.Min(MaxLives, Lives + count));
+
+        OnAddLife?.Invoke();
+    }
+
     private void SetArmor(float value)
     {
         Armor = value;
 
         if (ArmorOutput != null)
-            Array.ForEach(ArmorOutput, e => e.SetNumber(value));
+            ArmorOutput.SetNumber(value);
     }
 
     private void SetHp(float value)
@@ -73,12 +82,26 @@ public class HealthControllerX : MonoBehaviour
         Hp = value;
 
         if (HpOutput != null)
-            Array.ForEach(HpOutput, e => e.SetNumber(value));
+            HpOutput.SetNumber(value);
+    }
+
+    private void SetLives(int value)
+    {
+        Lives = value;
+
+        if (LivesOutput != null)
+            LivesOutput.SetNumber(value);
     }
 
     public void Die()
     {
         SetHp(0.0f);
-        OnDeath?.Invoke();
+
+        OnLifeWasted?.Invoke();
+
+        if (Lives == 0)
+            OnDeath?.Invoke();
+
+        SetLives(Math.Max(0, Lives - 1));
     }
 }

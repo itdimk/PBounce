@@ -10,6 +10,8 @@ public class NumberDisplay : MonoBehaviour
     public float Offset = 0f;
     public bool Round;
 
+    public NumberDisplay Next;
+    
     private bool _initialized;
     private Action<float> _setPropertyValue;
     
@@ -29,14 +31,16 @@ public class NumberDisplay : MonoBehaviour
     {
         if(!_initialized)
             Initialize();
-        
-        number *= Multiplier;
-        number += Offset;
+
+        float num = number * Multiplier + Offset;
 
         if (Round)
-            number = Mathf.Round(number);
+            num = Mathf.Round(num);
 
-        _setPropertyValue(number);
+        _setPropertyValue(num);
+        
+        if(Next != null)
+            Next.SetNumber(number);
     }
 
     private Action<float> CreateSetPropertyValueMethod(PropertyInfo propety)
