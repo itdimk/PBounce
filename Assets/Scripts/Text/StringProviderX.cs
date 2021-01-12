@@ -18,11 +18,13 @@ public class StringProviderX : MonoBehaviour
 
     public GameManagerX Manager;
     public List<StringEntry> StringList;
-
+    public StringDisplay Output;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(Output != null)
+            Output.SetItemToDisplay(GetString());
     }
 
     // Update is called once per frame

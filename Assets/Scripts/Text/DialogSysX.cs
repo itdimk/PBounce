@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class DialogSysX : MonoBehaviour
 {
     public StringListProviderX Provider;
-    public StringPropertyDisplay Output;
+    public StringDisplay Output;
     public int CharsPerSecond = 5;
 
     private int _currString = 0;

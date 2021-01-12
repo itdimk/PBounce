@@ -91,4 +91,22 @@ public class GameManagerX : MonoBehaviour
             LevelsCompleted = currLevel;
         OnCompleteLevel?.Invoke();
     }
+
+    public void RestartLevel()
+    {
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void LoadLastAvailableLevel()
+    {
+        int sceneIndex = Math.Min(Levels.LastLevelSceneIndex, Levels.FirstLevelSceneIndex + LevelsCompleted);
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void LoadLevel(int level)
+    {
+        int sceneIndex = Levels.FirstLevelSceneIndex + (level - 1);
+        SceneManager.LoadScene(sceneIndex);
+    }
 }

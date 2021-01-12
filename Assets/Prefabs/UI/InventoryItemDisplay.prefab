@@ -59,6 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e6e9ae9451b0a45aa8ff2d7d86057d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Next: {fileID: 0}
   Icon: {fileID: 8300161352748866603}
   ItemName: {fileID: 0}
   ItemDescription: {fileID: 0}
@@ -158,9 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d01534c2ba10e45aee9857e17204d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Next: {fileID: 0}
   Output: {fileID: 8300161352748866602}
   OutputPropertyName: sprite
-  Next: {fileID: 0}
 --- !u!1 &8300161353749158885
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +229,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 2b9467de4669b694da26ccf5bf05ca9c, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -253,9 +254,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc22dc46fe12b34ba281bdf87c149a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Next: {fileID: 0}
   Output: {fileID: 8300161353749158882}
   OutputPropertyName: text
   Multiplier: 1
   Offset: 0
   Round: 1
-  Next: {fileID: 0}

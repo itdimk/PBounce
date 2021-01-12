@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public class InventoryItemDisplay : Display<InventoryItem>
 {
     public SpritePropertyDisplay Icon;
-    public StringPropertyDisplay ItemName;
-    public StringPropertyDisplay ItemDescription;
+    public StringDisplay ItemName;
+    public StringDisplay ItemDescription;
     public NumberDisplay ItemCount;
     public Button Button;
 

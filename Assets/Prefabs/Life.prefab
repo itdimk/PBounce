@@ -5077,8 +5077,8 @@ MonoBehaviour:
   Disabled:
     m_PersistentCalls:
       m_Calls: []
-  SwitchIfRequiredOnly: 1
   IsEnabled: 0
+  SwitchIfRequiredOnly: 1
   TargetTriggerTags:
   - Player
   EnableOn: 1

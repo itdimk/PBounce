@@ -156,7 +156,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 11
+  m_SortingOrder: 15
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -252,16 +252,28 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 4688920268118912680}
     m_ColliderPaths:
+    - - X: -130000000
+        Y: 0
+      - X: -180000000
+        Y: 0
+      - X: -180000000
+        Y: -30000000
+      - X: -130000000
+        Y: -30000000
     - - X: 10000000
+        Y: -100000000
+      - X: -50000000
+        Y: -100000000
+      - X: -50000000
         Y: -130000000
       - X: 10000000
-        Y: -100000000
-      - X: -50000000
-        Y: -100000000
-      - X: -50000000
         Y: -130000000
   m_CompositePaths:
     m_Paths:
+    - - {x: -13, y: 0}
+      - {x: -18, y: 0}
+      - {x: -18, y: -3}
+      - {x: -13, y: -3}
     - - {x: 1, y: -10}
       - {x: -5, y: -10}
       - {x: -5, y: -13}
