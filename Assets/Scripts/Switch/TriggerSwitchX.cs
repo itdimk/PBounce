@@ -13,7 +13,7 @@ public class TriggerSwitchX : SwitchX
 
     public string[] TargetTriggerTags = {"Player"};
 
-    public HooksD EnableOn;
+    public HooksD EnableOn = HooksD.TriggerEnter;
     public HooksD DisableOn;
 
     private int insideTriggerCount;

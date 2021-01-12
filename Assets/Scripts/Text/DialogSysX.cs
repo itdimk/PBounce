@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class DialogSysX : MonoBehaviour
 {
     public StringListProviderX Provider;
-    public StringDisplay Output;
+    public StringPropertyDisplay Output;
     public int CharsPerSecond = 5;
 
     private int _currString = 0;
@@ -39,7 +39,7 @@ public class DialogSysX : MonoBehaviour
 
         if (Time.time > _startTypigTick + _currChar * 1.0f / CharsPerSecond)
         {
-            Output.SetString(_strings[_currString].Substring(0, _currChar));
+            Output.SetItemToDisplay(_strings[_currString].Substring(0, _currChar));
             OnType?.Invoke();
             ++_currChar;
         }

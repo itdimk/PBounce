@@ -3,9 +3,9 @@
     public NumberDisplay AmmoInClip;
     public NumberDisplay TotalAmmo;
 
-    public void SetItem(WeaponInventoryItem item)
+    public void SetItemToDisplay(WeaponInventoryItem item)
     {
-        base.SetItem(item);
+        base.SetItemToDisplay(item);
 
         if (item != null)
         {
@@ -22,12 +22,12 @@
     private void SetAmmoInClip(int count)
     {
         if (AmmoInClip != null)
-            AmmoInClip.SetNumber(count);
+            AmmoInClip.SetItemToDisplay(count);
     }
 
     private void SetTotalAmmo(int count)
     {
         if (TotalAmmo != null)
-            TotalAmmo.SetNumber(count);
+            TotalAmmo.SetItemToDisplay(count);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class FullInventoryDisplay : BaseInventoryDisplay
+public class FullInventoryDisplay : Display<Inventory>
 {
     public InventoryItemDisplay ItemDisplay;
     public WeaponInventoryItemDisplay WeaponItemDisplay;
@@ -16,7 +16,7 @@ public class FullInventoryDisplay : BaseInventoryDisplay
         ItemSelected.AddListener(OnItemSelected);
     }
 
-    public override void SetInventory(Inventory inventory)
+    public override void SetItemToDisplay(Inventory inventory)
     {
         var items = inventory.AllItems;
 
@@ -33,8 +33,8 @@ public class FullInventoryDisplay : BaseInventoryDisplay
 
                 component.Clicked.RemoveAllListeners();
                 component.Clicked.AddListener(item => ItemSelected?.Invoke(item));
-                weaponItem.OnShot.AddListener(() => component.SetItem(weaponItem));
-                component.SetItem(weaponItem);
+                weaponItem.OnShot.AddListener(() => component.SetItemToDisplay(weaponItem));
+                component.SetItemToDisplay(weaponItem);
             }
             else
             {
@@ -43,12 +43,13 @@ public class FullInventoryDisplay : BaseInventoryDisplay
                 
                 component.Clicked.RemoveAllListeners();
                 component.Clicked.AddListener(item => ItemSelected?.Invoke(item));
-                component.SetItem(items[i]);
+                component.SetItemToDisplay(items[i]);
               
             }
         }
 
         _inventory = inventory;
+        base.SetItemToDisplay(inventory);
     }
 
 

@@ -32,7 +32,7 @@ public class StringProviderX : MonoBehaviour
 
     string GetString()
     {
-        string language = Manager.GetLanguage();
+        string language = Manager.Language;
         var entry = StringList.FirstOrDefault(s => s.Language == language);
 
         if (entry != null)

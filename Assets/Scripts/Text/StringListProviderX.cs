@@ -33,7 +33,7 @@ public class StringListProviderX : MonoBehaviour
 
     public IReadOnlyList<string> GetTranslatedStringList()
     {
-        string language = Manager.GetLanguage();
+        string language = Manager.Language;
         var entry = StringLists.FirstOrDefault(s => s.Language == language);
 
         if (entry != null)

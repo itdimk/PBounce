@@ -13,9 +13,9 @@ public class WeaponInventoryItemDisplay : InventoryItemDisplay
     }
 
 
-    public void SetItem(WeaponInventoryItem item)
+    public void SetItemToDisplay(WeaponInventoryItem item)
     {
-        SetItem((InventoryItem)item);
+        base.SetItemToDisplay(item);
 
         if (item != null)
         {
@@ -32,12 +32,12 @@ public class WeaponInventoryItemDisplay : InventoryItemDisplay
     private void SetTotalAmmo(int count)
     {
         if (TotalAmmo != null)
-            TotalAmmo.SetNumber(count);
+            TotalAmmo.SetItemToDisplay(count);
     }
 
     private void SetAmmoInClip(int count)
     {
         if (AmmoInClip != null)
-            AmmoInClip.SetNumber(count);
+            AmmoInClip.SetItemToDisplay(count);
     }
 }

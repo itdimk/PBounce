@@ -1,22 +1,47 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 
 public class GameManagerX : MonoBehaviour
 {
-    public const string LanguagePrefKey = "language";
-    public const string DifficultyPrefKey = "difficulty";
-    
+    [Serializable]
+    public class LevelsInfo
+    {
+        public int FirstLevelSceneIndex = 0;
+        public int LastLevelSceneIndex = 0;
+    }
+
+    public const string LanguageKey = "language";
+    public const string DifficultyKey = "difficulty";
+    public const string LevelsCompletedKey = "levels-completed";
+
     public UnityEvent OnPause;
     public UnityEvent OnResume;
     public UnityEvent OnQuit;
-    
+    public UnityEvent OnCompleteLevel;
+
     public string PauseButton = "Cancel";
+    public LevelsInfo Levels;
     [HideInInspector] public bool IsPaused;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    public string Language
     {
-        
+        get => PlayerPrefs.GetString(LanguageKey);
+        set => PlayerPrefs.SetString(LanguageKey, value);
+    }
+
+    public int Difficulty
+    {
+        get => PlayerPrefs.GetInt(DifficultyKey);
+        set => PlayerPrefs.SetInt(DifficultyKey, value);
+    }
+
+    public int LevelsCompleted
+    {
+        get => PlayerPrefs.GetInt(LevelsCompletedKey);
+        set => PlayerPrefs.SetInt(LevelsCompletedKey, value);
     }
 
     // Update is called once per frame
@@ -29,9 +54,8 @@ public class GameManagerX : MonoBehaviour
             else
                 Pause();
         }
-        
     }
-    
+
     public void Pause()
     {
         IsPaused = true;
@@ -45,13 +69,13 @@ public class GameManagerX : MonoBehaviour
         Time.timeScale = 1f;
         OnResume.Invoke();
     }
-    
+
     public void Quit()
     {
         Resume();
         OnQuit.Invoke();
     }
-    
+
     public void Exit()
     {
         Resume();
@@ -59,24 +83,12 @@ public class GameManagerX : MonoBehaviour
         Debug.Log("Application exit");
     }
 
-    public void SetLanguage(string value)
+    public void CompleteLevel()
     {
-        PlayerPrefs.SetString(LanguagePrefKey, value);
+        int currLevel = SceneManager.GetActiveScene().buildIndex - Levels.FirstLevelSceneIndex + 1;
+
+        if (LevelsCompleted < currLevel)
+            LevelsCompleted = currLevel;
+        OnCompleteLevel?.Invoke();
     }
-    
-    public void SetDifficulty(int value)
-    {
-        PlayerPrefs.SetInt(DifficultyPrefKey, value);
-    }
-    
-    public string GetLanguage()
-    {
-        return PlayerPrefs.GetString(LanguagePrefKey);; 
-    }
-    
-    public int GetDifficulty()
-    {
-        return PlayerPrefs.GetInt(DifficultyPrefKey);; 
-    }
-    
 }

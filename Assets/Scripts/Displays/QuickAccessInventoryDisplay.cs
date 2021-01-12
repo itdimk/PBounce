@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine.Events;
 
-public class QuickAccessBaseInventoryDisplay : BaseInventoryDisplay
+public class QuickAccessInventoryDisplay : Display<Inventory>
 {
     public FullInventoryDisplay FullInventoryDisplay;
     public InventoryItemDisplay[] ItemsDisplay;
@@ -13,7 +13,7 @@ public class QuickAccessBaseInventoryDisplay : BaseInventoryDisplay
             item.LongPress.AddListener(_ => SetupSlot(item));
     }
 
-    public override void SetInventory(Inventory inventory)
+    public override void SetItemToDisplay(Inventory inventory)
     {
         var items = inventory.AllItems.Where(item => item.QuickAccess).Take(ItemsDisplay.Length).ToArray();
 
@@ -23,8 +23,10 @@ public class QuickAccessBaseInventoryDisplay : BaseInventoryDisplay
             itemDisplay.Clicked.RemoveAllListeners();
             itemDisplay.Clicked.AddListener(inventory.TakeItem);
 
-            itemDisplay.SetItem(items[i]);
+            itemDisplay.SetItemToDisplay(items[i]);
         }
+        
+        base.SetItemToDisplay(inventory);
     }
 
     private void SetupSlot(InventoryItemDisplay slot)
@@ -36,7 +38,7 @@ public class QuickAccessBaseInventoryDisplay : BaseInventoryDisplay
 
         listener = item =>
         {
-            slot.SetItem(item);
+            slot.SetItemToDisplay(item);
          
             FullInventoryDisplay.gameObject.SetActive(false);
             FullInventoryDisplay.ItemSelected.RemoveListener(listener);

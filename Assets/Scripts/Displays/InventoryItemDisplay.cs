@@ -2,11 +2,11 @@
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class InventoryItemDisplay : MonoBehaviour
+public class InventoryItemDisplay : Display<InventoryItem>
 {
-    public SpriteDisplay Icon;
-    public StringDisplay ItemName;
-    public StringDisplay ItemDescription;
+    public SpritePropertyDisplay Icon;
+    public StringPropertyDisplay ItemName;
+    public StringPropertyDisplay ItemDescription;
     public NumberDisplay ItemCount;
     public Button Button;
 
@@ -26,8 +26,10 @@ public class InventoryItemDisplay : MonoBehaviour
             .OnLongPress.AddListener(() => LongPress?.Invoke(_item));
     }
 
-    public void SetItem(InventoryItem item)
+    public override void SetItemToDisplay(InventoryItem item)
     {
+        base.SetItemToDisplay(item);
+
         if (item != null)
         {
             SetItemIcon(item.Icon);
@@ -49,24 +51,24 @@ public class InventoryItemDisplay : MonoBehaviour
     private void SetItemName(string value)
     {
         if (ItemName != null)
-            ItemName.SetString(!string.IsNullOrEmpty(value) ? value : "No item");
+            ItemName.SetItemToDisplay(!string.IsNullOrEmpty(value) ? value : "No item");
     }
 
     private void SetItemDescription(string value)
     {
         if (ItemDescription != null)
-            ItemDescription.SetString(!string.IsNullOrEmpty(name) ? value : "No description");
+            ItemDescription.SetItemToDisplay(!string.IsNullOrEmpty(name) ? value : "No description");
     }
 
     private void SetItemCount(int count)
     {
         if (ItemCount != null)
-            ItemCount.SetNumber(count);
+            ItemCount.SetItemToDisplay(count);
     }
 
     private void SetItemIcon(Sprite icon)
     {
         if (Icon != null)
-            Icon.SetSprite(icon);
+            Icon.SetItemToDisplay(icon);
     }
 }

@@ -160,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Output: {fileID: 8300161352748866602}
   OutputPropertyName: sprite
+  Next: {fileID: 0}
 --- !u!1 &8300161353749158885
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,3 +258,4 @@ MonoBehaviour:
   Multiplier: 1
   Offset: 0
   Round: 1
+  Next: {fileID: 0}

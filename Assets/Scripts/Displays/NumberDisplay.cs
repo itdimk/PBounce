@@ -2,67 +2,45 @@
 using System.Reflection;
 using UnityEngine;
 
-public class NumberDisplay : MonoBehaviour
+public class NumberDisplay : PropertyDisplay<float>
 {
-    public Component Output;
-    public string OutputPropertyName;
     public float Multiplier = 1.0f;
     public float Offset = 0f;
     public bool Round;
 
-    public NumberDisplay Next;
-    
-    private bool _initialized;
-    private Action<float> _setPropertyValue;
-    
-    private void Initialize()
+
+    public override void SetItemToDisplay(float number)
     {
-        _initialized = true;
-        var property = Output.GetType().GetProperty(OutputPropertyName);
-
-        if (property != null)
-            _setPropertyValue = CreateSetPropertyValueMethod(property);
-        else
-            throw new ArgumentException($"Property {OutputPropertyName} doesn't exist");
-    }
-
-
-    public void SetNumber(float number)
-    {
-        if(!_initialized)
-            Initialize();
+        base.SetItemToDisplay(number);
 
         float num = number * Multiplier + Offset;
 
         if (Round)
             num = Mathf.Round(num);
 
-        _setPropertyValue(num);
-        
-        if(Next != null)
-            Next.SetNumber(number);
+        SetPropertyValue(num);
     }
 
-    private Action<float> CreateSetPropertyValueMethod(PropertyInfo propety)
+    protected override Action<float> CreateSetPropertyValueMethod(PropertyInfo property)
     {
-        if (propety.PropertyType == typeof(string))
+        if (property.PropertyType == typeof(string))
         {
-            var setValue = (Action<string>) propety.SetMethod.CreateDelegate(typeof(Action<string>), Output);
+            var setValue = (Action<string>) property.SetMethod.CreateDelegate(typeof(Action<string>), Output);
             return value => setValue(value.ToString());
         }
 
-        if (propety.PropertyType == typeof(float))
+        if (property.PropertyType == typeof(float))
         {
-            var setValue = (Action<float>) propety.SetMethod.CreateDelegate(typeof(Action<float>), Output);
+            var setValue = (Action<float>) property.SetMethod.CreateDelegate(typeof(Action<float>), Output);
             return setValue;
         }
 
-        if (propety.PropertyType == typeof(int))
+        if (property.PropertyType == typeof(int))
         {
-            var setValue = (Action<int>) propety.SetMethod.CreateDelegate(typeof(Action<int>), Output);
+            var setValue = (Action<int>) property.SetMethod.CreateDelegate(typeof(Action<int>), Output);
             return value => setValue((int) value);
         }
 
-        throw new ArgumentException($"Property type {propety.PropertyType} is not supported");
+        throw new ArgumentException($"Property type {property.PropertyType} is not supported");
     }
 }

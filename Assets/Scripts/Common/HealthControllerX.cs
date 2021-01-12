@@ -35,7 +35,7 @@ public class HealthControllerX : MonoBehaviour
 
     public void DealDamage(float amount, GameObject source)
     {
-        if (Invincible || IgnoreDamageFrom.Contains(source.tag)) return;
+        if (Invincible || Hp == 0 || IgnoreDamageFrom.Contains(source.tag)) return;
 
         float absorbed = Math.Min(amount * ArmorAbsorption, Armor * ArmorAbsorption);
 
@@ -74,7 +74,7 @@ public class HealthControllerX : MonoBehaviour
         Armor = value;
 
         if (ArmorOutput != null)
-            ArmorOutput.SetNumber(value);
+            ArmorOutput.SetItemToDisplay(value);
     }
 
     private void SetHp(float value)
@@ -82,7 +82,7 @@ public class HealthControllerX : MonoBehaviour
         Hp = value;
 
         if (HpOutput != null)
-            HpOutput.SetNumber(value);
+            HpOutput.SetItemToDisplay(value);
     }
 
     private void SetLives(int value)
@@ -90,7 +90,7 @@ public class HealthControllerX : MonoBehaviour
         Lives = value;
 
         if (LivesOutput != null)
-            LivesOutput.SetNumber(value);
+            LivesOutput.SetItemToDisplay(value);
     }
 
     public void Die()
