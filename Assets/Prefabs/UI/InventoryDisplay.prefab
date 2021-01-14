@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4275219229676587142}
-  - component: {fileID: 4275219229676587141}
   - component: {fileID: 4275219229676587140}
+  - component: {fileID: 1030778355}
+  - component: {fileID: 1030778356}
   m_Layer: 5
   m_Name: InventoryDisplay
   m_TagString: Untagged
@@ -35,26 +36,8 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -581.3, y: 234.4}
-  m_SizeDelta: {x: 57.429253, y: 57.429253}
+  m_SizeDelta: {x: 57.42926, y: 57.42926}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4275219229676587141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4275219229676587143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c48cb59d2b9589428d2011f6061ef8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemDisplay: {fileID: 8300161352409014392, guid: a34d1a5ef1de3ba439848d9b604d4e60, type: 3}
-  WeaponItemDisplay: {fileID: 0}
-  ItemSelected:
-    m_PersistentCalls:
-      m_Calls: []
-  TakeItemOnClick: 1
 --- !u!114 &4275219229676587140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,3 +54,44 @@ MonoBehaviour:
   ColumnGap: 0
   RowGap: 70
   DependOnScreenSize: 0
+--- !u!114 &1030778355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4275219229676587143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindingID: inventory
+  Type: 1
+  TargetComponent: {fileID: 1030778356}
+  TargetProperty: TargetInventory
+  Pipe: {fileID: 0}
+  ValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1030778356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4275219229676587143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ba39ac90730844f9c97d6a9b0b162a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetInventory: {fileID: 0}
+  ItemDisplay: {fileID: 8300161352409014392, guid: a34d1a5ef1de3ba439848d9b604d4e60, type: 3}
+  WeaponItemDisplay: {fileID: 0}
+  ItemSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  ItemLongPress:
+    m_PersistentCalls:
+      m_Calls: []

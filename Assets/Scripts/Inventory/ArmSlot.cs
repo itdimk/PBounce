@@ -31,6 +31,8 @@ public class ArmSlot : MonoBehaviour
 
     public void Clear()
     {
+        _item.gameObject.SetActive(false);
+        _item.transform.parent = null;
         _item = null;
     }
 }

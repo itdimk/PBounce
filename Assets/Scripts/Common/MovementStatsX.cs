@@ -17,7 +17,7 @@ public class MovementStatsX : MonoBehaviour
     public Vector2 GrabLedgeAirCheckOffset = new Vector2(-0.5f, 4f);
     public Vector2 GrabLedgeGroundCheckOffset = new Vector2(-0.5f, 1f);
     public bool SetAnimatorParameters;
-    
+
     [HideInInspector] public bool CanGrabLedge;
     [HideInInspector] public bool IsGrounded;
     [HideInInspector] public bool IsCrawling;
@@ -33,10 +33,9 @@ public class MovementStatsX : MonoBehaviour
         AnimSpeedX = Animator.StringToHash("SpeedX"),
         AnimSpeedY = Animator.StringToHash("SpeedY"),
         AnimGrounded = Animator.StringToHash("IsGrounded");
-    
+
     private Rigidbody2D _physics;
     private Animator _animator;
-    private string _animatorState;
 
     void Start()
     {
@@ -71,14 +70,14 @@ public class MovementStatsX : MonoBehaviour
     void SetValuesByGroundRaycast()
     {
         var tfm = transform;
-        var origin1 = _physics.position + (Vector2)tfm.right * GroundDetectionWidth;
-        var origin2 =  _physics.position - (Vector2)tfm.right * GroundDetectionWidth;
-        
+        var origin1 = _physics.position + (Vector2) tfm.right * GroundDetectionWidth;
+        var origin2 = _physics.position - (Vector2) tfm.right * GroundDetectionWidth;
+
         var hit1 = Physics2D.Raycast(origin1, -tfm.up, GroundDetectionDistance, WhatIsGround);
         var hit2 = Physics2D.Raycast(origin2, -tfm.up, GroundDetectionDistance, WhatIsGround);
-        
+
         var hit = hit1 != default ? hit1 : hit2;
-        
+
         if (hit != default)
         {
             DistanceToGround = hit.distance;
@@ -116,11 +115,14 @@ public class MovementStatsX : MonoBehaviour
 
         CanGrabLedge = groundHit != default && airHit == default;
 
-        DistanceToLedge = groundHit != default ? Vector2.Distance(groundHit.point, _physics.position) : float.PositiveInfinity;
+        DistanceToLedge = groundHit != default
+            ? Vector2.Distance(groundHit.point, _physics.position)
+            : float.PositiveInfinity;
     }
 
     void SetAnimatorParams()
     {
+        if (!SetAnimatorParameters) return;
 
         _animator.SetFloat(AnimSpeedX, _physics.velocity.x);
         _animator.SetFloat(AnimSpeedY, _physics.velocity.y);
@@ -135,14 +137,14 @@ public class MovementStatsX : MonoBehaviour
 
         var tfm = transform;
         var origin1 = transform.position + tfm.right * GroundDetectionWidth;
-        var origin2 =  transform.position - tfm.right * GroundDetectionWidth;
-        
+        var origin2 = transform.position - tfm.right * GroundDetectionWidth;
+
         var hit1 = Physics2D.Raycast(origin1, -tfm.up, IsGroundedThreshold, WhatIsGround);
         var hit2 = Physics2D.Raycast(origin2, -tfm.up, IsGroundedThreshold, WhatIsGround);
-        
+
         Gizmos.color = hit1 != default ? Color.red : Color.cyan;
         Gizmos.DrawLine(origin1, origin1 - transform.up * IsGroundedThreshold);
-        
+
         Gizmos.color = hit2 != default ? Color.red : Color.cyan;
         Gizmos.DrawLine(origin2, origin2 - transform.up * IsGroundedThreshold);
 

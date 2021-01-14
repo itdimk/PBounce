@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 1325475949}
   - component: {fileID: 1824455664700462761}
   - component: {fileID: 419840467}
-  - component: {fileID: 419840477}
   - component: {fileID: 419840466}
   m_Layer: 0
   m_Name: Main
@@ -366,23 +365,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e8fdaa1105f987479a9285a63901d32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Items: []
+  DefaultItems: []
   ArmSlots: []
   ItemsChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 419840477}
-        m_TargetAssemblyTypeName: BindingParameter, Assembly-CSharp
-        m_MethodName: OnValueChanged
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &419840467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,26 +386,6 @@ MonoBehaviour:
   Type: 0
   TargetComponent: {fileID: 3669228539354242874}
   TargetProperty: Hp
-  Pipe: {fileID: 0}
-  ValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &419840477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6513424360774772116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BindingID: inventory
-  Type: 0
-  TargetComponent: {fileID: 1824455664700462761}
-  TargetProperty: This
   Pipe: {fileID: 0}
   ValueChanged:
     m_PersistentCalls:

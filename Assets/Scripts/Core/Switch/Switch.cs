@@ -5,8 +5,8 @@ public class Switch : MonoBehaviour
 {
     public UnityEvent Enabled = new UnityEvent();
     public UnityEvent Disabled = new UnityEvent();
-    
-    public bool IsEnabled;
+
+    [HideInInspector] public bool IsEnabled;
     public bool SwitchIfRequiredOnly = true;
 
     public void EnableSwitch()
