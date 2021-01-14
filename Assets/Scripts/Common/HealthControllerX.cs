@@ -14,11 +14,7 @@ public class HealthControllerX : MonoBehaviour
     public int MaxLives = 3;
     public bool Invincible = false;
     public List<string> IgnoreDamageFrom = new List<string>();
-
-    [Space] public NumberDisplay HpOutput;
-    public NumberDisplay ArmorOutput;
-    public NumberDisplay LivesOutput;
-
+    
     public UnityEvent OnHit;
     public UnityEvent OnHeal;
     public UnityEvent OnAddArmor;
@@ -72,36 +68,26 @@ public class HealthControllerX : MonoBehaviour
     private void SetArmor(float value)
     {
         Armor = value;
-
-        if (ArmorOutput != null)
-            ArmorOutput.SetItemToDisplay(value);
     }
 
     private void SetHp(float value)
     {
         Hp = value;
-
-        if (HpOutput != null)
-            HpOutput.SetItemToDisplay(value);
     }
 
     private void SetLives(int value)
     {
         Lives = value;
-
-        if (LivesOutput != null)
-            LivesOutput.SetItemToDisplay(value);
     }
 
     public void Die()
     {
         SetHp(0.0f);
-
+        SetLives(Math.Max(0, Lives - 1));
+        
         OnLifeWasted?.Invoke();
 
         if (Lives == 0)
             OnDeath?.Invoke();
-
-        SetLives(Math.Max(0, Lives - 1));
     }
 }

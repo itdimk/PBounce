@@ -19,6 +19,9 @@ GameObject:
   - component: {fileID: 5622545184370684941}
   - component: {fileID: 1325475949}
   - component: {fileID: 1824455664700462761}
+  - component: {fileID: 419840467}
+  - component: {fileID: 419840477}
+  - component: {fileID: 419840466}
   m_Layer: 0
   m_Name: Main
   m_TagString: Player
@@ -166,25 +169,58 @@ MonoBehaviour:
   Armor: 0
   MaxArmor: 100
   ArmorAbsorption: 0.9
-  Lives: 1
-  MaxLives: 3
+  Lives: 2
+  MaxLives: 5
   Invincible: 0
   IgnoreDamageFrom: []
-  HpOutput: {fileID: 0}
-  ArmorOutput: {fileID: 0}
-  LivesOutput: {fileID: 0}
   OnHit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 419840467}
+        m_TargetAssemblyTypeName: BindingParameter, Assembly-CSharp
+        m_MethodName: OnValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnHeal:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 419840467}
+        m_TargetAssemblyTypeName: BindingParameter, Assembly-CSharp
+        m_MethodName: OnValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnAddArmor:
     m_PersistentCalls:
       m_Calls: []
   OnAddLife:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 419840466}
+        m_TargetAssemblyTypeName: BindingParameter, Assembly-CSharp
+        m_MethodName: OnValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnLifeWasted:
     m_PersistentCalls:
       m_Calls:
@@ -198,6 +234,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: BounceDeath
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 419840466}
+        m_TargetAssemblyTypeName: BindingParameter, Assembly-CSharp
+        m_MethodName: OnValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   OnDeath:
@@ -320,7 +368,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Items: []
   ArmSlots: []
-  Output: {fileID: 0}
+  ItemsChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 419840477}
+        m_TargetAssemblyTypeName: BindingParameter, Assembly-CSharp
+        m_MethodName: OnValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &419840467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513424360774772116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindingID: hp
+  Type: 0
+  TargetComponent: {fileID: 3669228539354242874}
+  TargetProperty: Hp
+  Pipe: {fileID: 0}
+  ValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &419840477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513424360774772116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindingID: inventory
+  Type: 0
+  TargetComponent: {fileID: 1824455664700462761}
+  TargetProperty: This
+  Pipe: {fileID: 0}
+  ValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &419840466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513424360774772116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindingID: lives
+  Type: 0
+  TargetComponent: {fileID: 3669228539354242874}
+  TargetProperty: Lives
+  Pipe: {fileID: 0}
+  ValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6513424361140076536
 GameObject:
   m_ObjectHideFlags: 0

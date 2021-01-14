@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6582828552796013665}
   - component: {fileID: 6582828552796013679}
   - component: {fileID: 6582828552796013678}
-  - component: {fileID: 6582828552796013676}
+  - component: {fileID: 4263965100610888371}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Text: '0
 
 '
---- !u!114 &6582828552796013676
+--- !u!114 &4263965100610888371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,15 +91,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6582828552796013664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc22dc46fe12b34ba281bdf87c149a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Output: {fileID: 6582828552796013678}
-  OutputPropertyName: text
-  Multiplier: 1
-  Offset: 0
-  Round: 1
-  Next: {fileID: 0}
+  BindingID: lives
+  Type: 1
+  TargetComponent: {fileID: 6582828552796013678}
+  TargetProperty: text
+  Pipe: {fileID: 0}
+  ValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6582828553826950207
 GameObject:
   m_ObjectHideFlags: 0

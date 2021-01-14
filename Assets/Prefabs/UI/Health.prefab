@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7278569869314135315}
   - component: {fileID: 7278569869314135317}
   - component: {fileID: 7278569869314135314}
-  - component: {fileID: 7278569869314135316}
+  - component: {fileID: 1053790549}
+  - component: {fileID: 1053790550}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -72,12 +73,12 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.59999996
   m_FillClockwise: 0
   m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7278569869314135316
+--- !u!114 &1053790549
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,15 +87,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 7278569869314135312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc22dc46fe12b34ba281bdf87c149a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 901beb75462e3dd49ad22490d3af9d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Output: {fileID: 7278569869314135314}
-  OutputPropertyName: fillAmount
-  Multiplier: 0.01
-  Offset: 0
-  Round: 0
-  Next: {fileID: 1123460932078096014}
+  Next: {fileID: 0}
+  Scale: 0.01
+--- !u!114 &1053790550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278569869314135312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindingID: hp
+  Type: 1
+  TargetComponent: {fileID: 7278569869314135314}
+  TargetProperty: fillAmount
+  Pipe: {fileID: 1053790549}
+  ValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7278569870428949839
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +123,7 @@ GameObject:
   - component: {fileID: 7278569870428949838}
   - component: {fileID: 7278569870428949824}
   - component: {fileID: 7278569870428949825}
-  - component: {fileID: 1123460932078096014}
+  - component: {fileID: 946549937}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -174,10 +191,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '0
-
-'
---- !u!114 &1123460932078096014
+  m_Text: 0.6
+--- !u!114 &946549937
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,12 +201,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7278569870428949839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fc22dc46fe12b34ba281bdf87c149a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Output: {fileID: 7278569870428949825}
-  OutputPropertyName: text
-  Multiplier: 1
-  Offset: 0
-  Round: 0
-  Next: {fileID: 0}
+  BindingID: hp
+  Type: 1
+  TargetComponent: {fileID: 7278569870428949825}
+  TargetProperty: text
+  Pipe: {fileID: 0}
+  ValueChanged:
+    m_PersistentCalls:
+      m_Calls: []

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {
@@ -9,8 +10,11 @@ public class Inventory : MonoBehaviour
     [SerializeField] private ArmSlot[] ArmSlots = new ArmSlot[0];
 
     public IReadOnlyList<InventoryItem> AllItems => Items;
-    public Display<Inventory> Output;
 
+    public Inventory This => this;
+
+    public UnityEvent ItemsChanged;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,21 +28,16 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(InventoryItem item)
     {
-        var existedItem = Items.FirstOrDefault(o => o.ID == item.ID && o != item);
+        var existed = AllItems.FirstOrDefault(i => i.ID == item.ID);
 
-        if (existedItem == null)
-        {
-            Items.Add(item);
-            item.transform.parent = transform;
-            item.gameObject.SetActive(false);
-        }
+        if (existed != null)
+            existed.Count += item.Count;
         else
-        {
-            existedItem.Count++;
-            Destroy(item.gameObject);
-        }
-
-        Output.SetItemToDisplay(this);
+            Items.Add(item);
+            
+        item.transform.parent = transform;
+        item.gameObject.SetActive(false);
+        ItemsChanged?.Invoke();
     }
 
     public void TakeItem(InventoryItem item)
