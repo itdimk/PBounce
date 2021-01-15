@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2471969620041494001}
   - component: {fileID: 2471969620041494000}
   - component: {fileID: 2471969620041494004}
-  - component: {fileID: 2471969620041494007}
+  - component: {fileID: 445786715}
   m_Layer: 0
   m_Name: Fan
   m_TagString: Untagged
@@ -117,11 +117,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cae5030d76968e458727b2642e682e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Force: 300
-  Fading: 2
+  GravityForce: 1400
+  Fading: 1.2
   IgnoredTags: []
---- !u!61 &2471969620041494007
-BoxCollider2D:
+--- !u!60 &445786715
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -130,10 +130,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010423899, y: 5.451928}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -143,9 +143,12 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.366137, y: 9.91507}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 3.242822, y: 11.476763}
+      - {x: -3.1716442, y: 11.438643}
+      - {x: -2.5063019, y: 0.22667187}
+      - {x: 2.4671357, y: 0.16691148}
 --- !u!1 &2471969620510065343
 GameObject:
   m_ObjectHideFlags: 0

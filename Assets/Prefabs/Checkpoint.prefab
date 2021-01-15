@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac0a5cae07de234282700026d510b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enabled:
+  On:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4447784325877264205}
@@ -102,8 +102,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4447784325133237737}
         m_TargetAssemblyTypeName: Checkpoint, Assembly-CSharp
-        m_MethodName: set_IsChecked
-        m_Mode: 6
+        m_MethodName: Activate
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -112,15 +112,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  Disabled:
+  Off:
     m_PersistentCalls:
       m_Calls: []
   IsEnabled: 0
-  SwitchIfRequiredOnly: 1
+  DoNotEnableTwice: 1
+  OnAt: 1
+  OffAt: 0
   TargetTriggerTags:
   - Player
-  EnableOn: 1
-  DisableOn: 0
 --- !u!114 &4447784325133237737
 MonoBehaviour:
   m_ObjectHideFlags: 0

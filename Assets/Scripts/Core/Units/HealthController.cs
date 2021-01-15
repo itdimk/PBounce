@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HealthControllerX : MonoBehaviour
+public class HealthController : MonoBehaviour
 {
     public float Hp = 100.0F;
     public float MaxHp = 100.0F;
@@ -13,8 +13,8 @@ public class HealthControllerX : MonoBehaviour
     public int Lives = 1;
     public int MaxLives = 3;
     public bool Invincible = false;
-    public List<string> IgnoreDamageFrom = new List<string>();
-    
+    public List<string> IgnoreDamageFromTags = new List<string>();
+
     public UnityEvent OnHit;
     public UnityEvent OnHeal;
     public UnityEvent OnAddArmor;
@@ -31,7 +31,7 @@ public class HealthControllerX : MonoBehaviour
 
     public void DealDamage(float amount, GameObject source)
     {
-        if (Invincible || Hp == 0 || IgnoreDamageFrom.Contains(source.tag)) return;
+        if (Invincible || Hp == 0 || IgnoreDamageFromTags.Contains(source.tag)) return;
 
         float absorbed = Math.Min(amount * ArmorAbsorption, Armor * ArmorAbsorption);
 
@@ -47,44 +47,34 @@ public class HealthControllerX : MonoBehaviour
     public void Heal(float amount)
     {
         SetHp(Math.Min(MaxHp, Hp + amount));
-
         OnHeal?.Invoke();
     }
 
     public void AddArmor(float amount)
     {
         SetArmor(Math.Min(MaxArmor, Armor + amount));
-
         OnAddArmor?.Invoke();
     }
 
     public void AddLives(int count)
     {
         SetLives(Math.Min(MaxLives, Lives + count));
-
         OnAddLife?.Invoke();
     }
 
-    private void SetArmor(float value)
-    {
-        Armor = value;
-    }
+    private void SetArmor(float value) => Armor = value;
 
-    private void SetHp(float value)
-    {
-        Hp = value;
-    }
+    private void SetHp(float value) => Hp = value;
 
-    private void SetLives(int value)
-    {
-        Lives = value;
-    }
+    private void SetLives(int value) => Lives = value;
 
     public void Die()
     {
+        if (Invincible) return;
+
         SetHp(0.0f);
         SetLives(Math.Max(0, Lives - 1));
-        
+
         OnLifeWasted?.Invoke();
 
         if (Lives == 0)

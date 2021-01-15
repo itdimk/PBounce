@@ -1,33 +1,28 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-public class TriggerSwitch : Switch
+public class TriggerOnOff : OnOff
 {
-    public enum HooksD
+    public enum Hooks
     {
         None,
         TriggerEnter,
         TriggerExit,
         TriggerExitExact,
     }
-
+    
+    public Hooks OnAt = Hooks.TriggerEnter;
+    public Hooks OffAt;
     public string[] TargetTriggerTags = {"Player"};
-
-    public HooksD EnableOn = HooksD.TriggerEnter;
-    public HooksD DisableOn;
-
+    
     private int insideTriggerCount;
-
-    private void Start()
-    {
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (TargetTriggerTags.Contains(other.gameObject.tag))
         {
             insideTriggerCount++;
-            SetAllByHook(HooksD.TriggerEnter);
+            SetAllByHook(Hooks.TriggerEnter);
         }
     }
 
@@ -36,19 +31,19 @@ public class TriggerSwitch : Switch
         if (TargetTriggerTags.Contains(other.gameObject.tag))
         {
             insideTriggerCount--;
-            SetAllByHook(HooksD.TriggerExitExact);
+            SetAllByHook(Hooks.TriggerExitExact);
         }
 
         if (insideTriggerCount == 0)
-            SetAllByHook(HooksD.TriggerExit);
+            SetAllByHook(Hooks.TriggerExit);
     }
 
 
-    private void SetAllByHook(HooksD hook)
+    private void SetAllByHook(Hooks hook)
     {
-        if (EnableOn == hook)
-            EnableSwitch();
-        else if (DisableOn == hook)
-            DisableSwitch();
+        if (OnAt == hook)
+            TurnOn();
+        else if (OffAt == hook)
+            TurnOff();
     }
 }

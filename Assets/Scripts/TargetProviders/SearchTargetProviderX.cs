@@ -41,7 +41,7 @@ public class SearchTargetProviderX : TargetProviderBaseX
         Vector2 targetDirection = target.transform.position - transform.position;
         float targetAngle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
 
-        return ObserverX.GetAngleDelta(myAngle, targetAngle);
+        return Observer.GetAngleDelta(myAngle, targetAngle);
     }
 
     private float GetDistanceTo(GameObject target)

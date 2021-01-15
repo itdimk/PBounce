@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6513424360774772118}
   - component: {fileID: 6513424360774772114}
   - component: {fileID: 3669228539354242874}
-  - component: {fileID: 1498717898893640661}
   - component: {fileID: 5622545184370684941}
   - component: {fileID: 1325475949}
   - component: {fileID: 1824455664700462761}
@@ -36,7 +35,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6513424360774772116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.47, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6513424361140076539}
@@ -274,19 +273,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1498717898893640661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6513424360774772116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4e2d8e261790ec4c8d0ac20d4a211a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 6513424360774772119}
 --- !u!212 &5622545184370684941
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -350,9 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e08082161575604dbb5ff78271b5df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Checkpoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  Checkpoints: []
+  AutoFind: 1
 --- !u!114 &1824455664700462761
 MonoBehaviour:
   m_ObjectHideFlags: 0

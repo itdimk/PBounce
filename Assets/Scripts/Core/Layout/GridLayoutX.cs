@@ -1,15 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-public class GridLayout : MonoBehaviour
+public class GridLayoutX : MonoBehaviour
 {
-    public int Columns;
-    public float ColumnGap;
-    public float RowGap;
-    public bool DependOnScreenSize;
-
-    private bool _initialized;
-
+    public int Columns = 3;
+    public float ColumnGap = 1;
+    public float RowGap = 1;
 
     private void Start()
     {
@@ -18,18 +14,11 @@ public class GridLayout : MonoBehaviour
 
     private Vector2 GetPoint(int row, int col)
     {
-        return  transform.right * ColumnGap * col - transform.up * RowGap * row;
+        return transform.right * ColumnGap * col - transform.up * RowGap * row;
     }
 
     private void OnTransformChildrenChanged()
     {
-        if (!_initialized && DependOnScreenSize)
-        {
-            ColumnGap = ColumnGap * Screen.width / 100f;
-            RowGap = RowGap * Screen.height / 100f;
-            _initialized = true;
-        }
-
         int childCount = transform.childCount;
         for (int i = 0; i < childCount; ++i)
         {

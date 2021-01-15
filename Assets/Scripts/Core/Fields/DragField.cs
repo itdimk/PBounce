@@ -5,17 +5,11 @@ using System.Linq;
 
 public class DragField : MonoBehaviour
 {
-    public float Density = 10;
+    public float DragValue = 10;
     public string[] IgnoredTags = { };
-    
-    
-    private Dictionary<int, float> DefaultDrag = new Dictionary<int, float>();
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
+    private Dictionary<int, float> _defaultDrag = new Dictionary<int, float>();
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!IgnoredTags.Contains(other.tag))
@@ -27,25 +21,21 @@ public class DragField : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         if (!IgnoredTags.Contains(other.tag))
-        {
             RestoreDrag(other.gameObject);
-        }
     }
 
     private void SetDrag(GameObject obj)
     {
         if (obj.TryGetComponent(out Rigidbody2D physics))
         {
-            DefaultDrag[obj.GetInstanceID()] = physics.drag;
-            physics.drag = Density;
+            _defaultDrag[obj.GetInstanceID()] = physics.drag;
+            physics.drag = DragValue;
         }
     }
 
     private void RestoreDrag(GameObject obj)
     {
         if (obj.TryGetComponent(out Rigidbody2D physics))
-        {
-            physics.drag = DefaultDrag[obj.GetInstanceID()];
-        }
+            physics.drag = _defaultDrag[obj.GetInstanceID()];
     }
 }

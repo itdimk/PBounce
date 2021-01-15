@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-public class SpawnerX : MonoBehaviour
+public class Spawner : MonoBehaviour
 {
     public GameObject Target;
 
@@ -27,7 +26,7 @@ public class SpawnerX : MonoBehaviour
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    void LateUpdate()
     {
         if (IsSpawnRequired())
             ((Action)Spawn).InvokeWithCooldown(_spawnInterval);

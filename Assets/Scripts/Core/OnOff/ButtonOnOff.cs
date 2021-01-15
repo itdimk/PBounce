@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonSwitch : Switch
+public class ButtonOnOff : OnOff
 {
     public string[] Buttons = new string[0];
 
@@ -17,10 +17,10 @@ public class ButtonSwitch : Switch
         foreach (var b in Buttons)
         {
             if (Input.GetButtonDown(b))
-                base.EnableSwitch();
+                base.TurnOn();
 
             if (Input.GetButtonUp(b))
-                DisableSwitch();
+                TurnOff();
         }
     }
 }

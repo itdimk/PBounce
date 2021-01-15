@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class DamagerX : MonoBehaviour
+public class Damager : MonoBehaviour
 {
     public float Amount = 1.0F;
     public bool OnePunch = false;
@@ -15,7 +14,7 @@ public class DamagerX : MonoBehaviour
     public bool DamageOnExit;
 
     [Space] public float PushPower = 1000.0F;
-    [Space] public List<string> Targets = new List<string> {"Player"};
+    [Space] public List<string> TargetTags = new List<string> {"Player"};
 
     public float Cooldown = 0.2f;
 
@@ -61,17 +60,17 @@ public class DamagerX : MonoBehaviour
 
     private void DealDamageIfRequired(GameObject target, Vector2 contact)
     {
-        if (Targets.Contains(target.tag))
+        if (TargetTags.Contains(target.tag))
             Extensions.InvokeWithCooldown(DealDamage, (target, contact), Cooldown);
     }
 
     private void DealDamage((GameObject, Vector2 ) args)
     {
-        var healthCtr = args.Item1.GetComponent<HealthControllerX>();
+        var healthCtr = args.Item1.GetComponent<HealthController>();
 
         if (healthCtr == null) return;
 
-        if (OnePunch)
+        if (OnePunch && healthCtr.Hp > 0)
             healthCtr.Die();
         else
         {

@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Amount: 5
-  OnePunch: 0
+  OnePunch: 1
   DamageOnTrigger: 1
   DamageOnCollision: 0
   DamageOnStay: 1

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObserverX : MonoBehaviour
+public class Observer : MonoBehaviour
 {
     public TargetProviderBaseX Target;
 
