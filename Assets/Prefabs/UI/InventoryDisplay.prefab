@@ -53,7 +53,6 @@ MonoBehaviour:
   Columns: 1
   ColumnGap: 0
   RowGap: 70
-  DependOnScreenSize: 0
 --- !u!114 &1030778355
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f07856b83a1f64db88f4fc13248f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: 5
+  Amount: 10
   OnePunch: 1
   DamageOnTrigger: 1
   DamageOnCollision: 0
@@ -237,7 +237,7 @@ MonoBehaviour:
   DamageOnEnter: 0
   DamageOnExit: 0
   PushPower: 0
-  Targets:
+  TargetTags:
   - Player
   Cooldown: 0.1
 --- !u!61 &6379733940951241331

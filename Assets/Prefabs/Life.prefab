@@ -4856,9 +4856,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0825a995092adf84d83dc6ddeda5169e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DestroyOnDelay: 99999
-  DestroyEffect: {fileID: 0}
   UseObjectPool: 0
+  DestroyEffect: {fileID: 0}
   OnDestroy:
     m_PersistentCalls:
       m_Calls: []
@@ -5047,23 +5046,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac0a5cae07de234282700026d510b45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enabled:
+  On:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: HealthControllerX, Assembly-CSharp
-        m_MethodName: AddLives
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1922050927}
-        m_TargetAssemblyTypeName: SelfDestroyX, Assembly-CSharp
+        m_TargetAssemblyTypeName: SelfDestroy, Assembly-CSharp
         m_MethodName: Destruct
         m_Mode: 1
         m_Arguments:
@@ -5074,12 +5061,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  Disabled:
+  Off:
     m_PersistentCalls:
       m_Calls: []
   IsEnabled: 0
-  SwitchIfRequiredOnly: 1
+  DoNotEnableTwice: 1
+  OnAt: 1
+  OffAt: 0
   TargetTriggerTags:
   - Player
-  EnableOn: 1
-  DisableOn: 0

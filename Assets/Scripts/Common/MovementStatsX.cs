@@ -5,11 +5,8 @@ public class MovementStatsX : MonoBehaviour
 {
     public LayerMask WhatIsGround;
     public float GroundDetectionDistance = 10f;
-    public float GroundDetectionWidth = 2f;
-    public float CeilingDetectionDistance = 10f;
+    public Rect GroundCheck = new Rect(-0.5f, -1f, 1, 1);
 
-    public float IsGroundedThreshold = 2f;
-    public float IsCrawlingThreshold = 2f;
 
     public float MaxCharacterTintToGrabLedge = 30f;
     public float GrabLedgeGroundDistance = 2f;
@@ -17,14 +14,13 @@ public class MovementStatsX : MonoBehaviour
     public Vector2 GrabLedgeAirCheckOffset = new Vector2(-0.5f, 4f);
     public Vector2 GrabLedgeGroundCheckOffset = new Vector2(-0.5f, 1f);
     public bool SetAnimatorParameters;
-
+    public bool UseAbsoluteDirection;
+    
     [HideInInspector] public bool CanGrabLedge;
     [HideInInspector] public bool IsGrounded;
-    [HideInInspector] public bool IsCrawling;
 
     [HideInInspector] public float DistanceToLedge;
     [HideInInspector] public float DistanceToGround;
-    [HideInInspector] public float DistanceToCeiling;
     [HideInInspector] public float AngleOfSurface;
 
     private static readonly int
@@ -46,48 +42,36 @@ public class MovementStatsX : MonoBehaviour
     void FixedUpdate()
     {
         SetValuesByGroundRaycast();
-        SetValuesByCeilingRaycast();
         SetValuesByLedgeRaycasts();
         SetAnimatorParams();
+        RefreshIsGrounded();
     }
 
-    void SetValuesByCeilingRaycast()
+
+    private void RefreshIsGrounded()
     {
-        var hit = Physics2D.Raycast(_physics.position, transform.up, GroundDetectionDistance, WhatIsGround);
+        var groundCheck = GroundCheck;
+        groundCheck.position += (Vector2) transform.position;
 
-        if (hit != default)
-        {
-            DistanceToCeiling = hit.distance;
-            IsCrawling = DistanceToCeiling <= IsCrawlingThreshold;
-        }
-        else
-        {
-            DistanceToCeiling = float.PositiveInfinity;
-            IsCrawling = false;
-        }
+        var col = Physics2D.OverlapArea(groundCheck.min, groundCheck.max, WhatIsGround);
+        IsGrounded = col != default;
     }
-
     void SetValuesByGroundRaycast()
     {
         var tfm = transform;
-        var origin1 = _physics.position + (Vector2) tfm.right * GroundDetectionWidth;
-        var origin2 = _physics.position - (Vector2) tfm.right * GroundDetectionWidth;
-
-        var hit1 = Physics2D.Raycast(origin1, -tfm.up, GroundDetectionDistance, WhatIsGround);
-        var hit2 = Physics2D.Raycast(origin2, -tfm.up, GroundDetectionDistance, WhatIsGround);
-
-        var hit = hit1 != default ? hit1 : hit2;
-
+        var origin = _physics.position;
+        
+        var down = !UseAbsoluteDirection ? -tfm.up : -Vector3.up;
+        var hit = Physics2D.Raycast(origin, down, GroundDetectionDistance, WhatIsGround);
+        
         if (hit != default)
         {
             DistanceToGround = hit.distance;
-            IsGrounded = DistanceToGround <= IsGroundedThreshold;
             AngleOfSurface = Mathf.Atan2(hit.normal.y, hit.normal.x) * Mathf.Rad2Deg;
         }
         else
         {
             DistanceToGround = float.PositiveInfinity;
-            IsGrounded = false;
             AngleOfSurface = 90;
         }
     }
@@ -124,6 +108,7 @@ public class MovementStatsX : MonoBehaviour
     {
         if (!SetAnimatorParameters) return;
 
+        
         _animator.SetFloat(AnimSpeedX, _physics.velocity.x);
         _animator.SetFloat(AnimSpeedY, _physics.velocity.y);
         _animator.SetBool(AnimGrounded, IsGrounded);
@@ -133,20 +118,7 @@ public class MovementStatsX : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Draw ground raycast
-
-        var tfm = transform;
-        var origin1 = transform.position + tfm.right * GroundDetectionWidth;
-        var origin2 = transform.position - tfm.right * GroundDetectionWidth;
-
-        var hit1 = Physics2D.Raycast(origin1, -tfm.up, IsGroundedThreshold, WhatIsGround);
-        var hit2 = Physics2D.Raycast(origin2, -tfm.up, IsGroundedThreshold, WhatIsGround);
-
-        Gizmos.color = hit1 != default ? Color.red : Color.cyan;
-        Gizmos.DrawLine(origin1, origin1 - transform.up * IsGroundedThreshold);
-
-        Gizmos.color = hit2 != default ? Color.red : Color.cyan;
-        Gizmos.DrawLine(origin2, origin2 - transform.up * IsGroundedThreshold);
+        DrawIsGroundCheck(Color.white);
 
         // Graw grab ledge raycasts
 
@@ -171,5 +143,17 @@ public class MovementStatsX : MonoBehaviour
             Gizmos.color = airHit == default ? Color.red : Color.cyan;
             Gizmos.DrawLine(airRayOrigin, airRayOrigin + right * GrabLedgeAirDistance);
         }
+    }
+    
+    private void DrawIsGroundCheck(Color color)
+    {
+        Gizmos.color = color;
+        var check = GroundCheck;
+        check.position += (Vector2) transform.position;
+        
+        Gizmos.DrawLine(check.min, new Vector2(check.xMin, check.yMax));
+        Gizmos.DrawLine(check.min, new Vector2(check.xMax, check.yMin));
+        Gizmos.DrawLine(check.max, new Vector2(check.xMax, check.yMin));
+        Gizmos.DrawLine(check.max, new Vector2(check.xMin, check.yMax));
     }
 }

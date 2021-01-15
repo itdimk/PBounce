@@ -89,7 +89,7 @@ public class ParkourPlayerMovementX : PlayerMovementX
 
         float angle;
 
-        if (MovementStats.DistanceToGround > MovementStats.IsGroundedThreshold)
+        if (!MovementStats.IsGrounded)
             angle = 0;
         else
             angle = Mathf.Clamp(MovementStats.AngleOfSurface - 90, -MaxTint, MaxTint);

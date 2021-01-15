@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 6513424360774772119}
   - component: {fileID: 6513424360774772115}
   - component: {fileID: 6513424360774772112}
-  - component: {fileID: 6513424360774772113}
-  - component: {fileID: 6513424360774772118}
   - component: {fileID: 6513424360774772114}
   - component: {fileID: 3669228539354242874}
   - component: {fileID: 5622545184370684941}
@@ -20,7 +18,9 @@ GameObject:
   - component: {fileID: 1824455664700462761}
   - component: {fileID: 419840467}
   - component: {fileID: 419840466}
-  m_Layer: 0
+  - component: {fileID: 4185118874778243455}
+  - component: {fileID: 5963475588928863915}
+  m_Layer: 9
   m_Name: Main
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6513424360774772116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 12.4, y: -18.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6513424361140076539}
@@ -55,13 +55,13 @@ Rigidbody2D:
   m_UseAutoMass: 1
   m_Mass: 0.4343096
   m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 6
   m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!95 &6513424360774772112
 Animator:
   serializedVersion: 3
@@ -81,59 +81,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6513424360774772113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6513424360774772116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7f317595ee898f4db7ecaf70beab489, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Stick: {fileID: 0}
-  JumpForce: 360
-  JumpCooldown: 0.4
-  MaxFallingSpeedToJump: 3
-  Speed: 10
-  Smoothness: 0.2
-  AirControl: 0.8
-  DisableFlip: 1
---- !u!114 &6513424360774772118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6513424360774772116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 648bae8e98bd2aa4db82cef05506b844, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  GroundDetectionDistance: 50
-  GroundDetectionWidth: 0.2
-  CeilingDetectionDistance: 0
-  IsGroundedThreshold: 0.5
-  IsCrawlingThreshold: 2
-  MaxCharacterTintToGrabLedge: 30
-  GrabLedgeGroundDistance: 0
-  GrabLedgeAirDistance: 0
-  GrabLedgeAirCheckOffset: {x: -0.5, y: 4}
-  GrabLedgeGroundCheckOffset: {x: -0.5, y: 1}
-  SetAnimatorParameters: 0
-  CanGrabLedge: 0
-  IsGrounded: 0
-  IsCrawling: 0
-  DistanceToLedge: 0
-  DistanceToGround: 0
-  DistanceToCeiling: 0
-  AngleOfSurface: 0
 --- !u!58 &6513424360774772114
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,7 +117,7 @@ MonoBehaviour:
   Lives: 2
   MaxLives: 5
   Invincible: 0
-  IgnoreDamageFrom: []
+  IgnoreDamageFromTags: []
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -395,6 +342,61 @@ MonoBehaviour:
   ValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4185118874778243455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513424360774772116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 648bae8e98bd2aa4db82cef05506b844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
+  GroundDetectionDistance: 10
+  GroundCheck:
+    serializedVersion: 2
+    x: -0.35
+    y: -0.5
+    width: 0.7
+    height: 0.35
+  MaxCharacterTintToGrabLedge: 30
+  GrabLedgeGroundDistance: 2
+  GrabLedgeAirDistance: 5
+  GrabLedgeAirCheckOffset: {x: -0.5, y: 4}
+  GrabLedgeGroundCheckOffset: {x: -0.5, y: 1}
+  SetAnimatorParameters: 0
+  UseAbsoluteDirection: 1
+  CanGrabLedge: 0
+  IsGrounded: 0
+  DistanceToLedge: 0
+  DistanceToGround: 0
+  AngleOfSurface: 0
+--- !u!114 &5963475588928863915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6513424360774772116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f317595ee898f4db7ecaf70beab489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Stick: {fileID: 0}
+  JumpForce: 370
+  JumpCooldown: 0.25
+  MaxFallingSpeedToJump: 8
+  Speed: 8
+  Smoothness: 0.2
+  AirControl: 0.9
+  UseFlip: 0
+  UseAbsoluteDirection: 1
 --- !u!1 &6513424361140076536
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6513424361140076539}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

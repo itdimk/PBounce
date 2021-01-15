@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -22,6 +23,11 @@ public class WaypointMovement : MonoBehaviour
     {
         if (!TryGetComponent(out _physics))
             Debug.LogError($"Can't get {nameof(Rigidbody2D)} component of {gameObject}");
+    }
+
+    private void OnDisable()
+    {
+        _physics.velocity = Vector2.zero;
     }
 
     private void FixedUpdate()

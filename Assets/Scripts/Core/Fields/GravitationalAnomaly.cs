@@ -14,7 +14,7 @@ public class GravitationalAnomaly : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (!IgnoredTags.Contains(other.tag) && other.TryGetComponent(out Rigidbody2D physics))
+        if (enabled && !IgnoredTags.Contains(other.tag) && other.TryGetComponent(out Rigidbody2D physics))
         {
             var direction = other.transform.position - transform.position;
             var distance = direction.magnitude;

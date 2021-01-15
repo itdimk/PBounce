@@ -30,7 +30,8 @@ public class PlayerMovementX : MonoBehaviour
     [Range(0.0f, 1.0f)] public float Smoothness = 0.2f;
     public float AirControl = 0.5f;
 
-    public bool DisableFlip = false;
+    public bool UseFlip = false;
+    public bool UseAbsoluteDirection;
 
     protected virtual void Start()
     {
@@ -62,7 +63,7 @@ public class PlayerMovementX : MonoBehaviour
 
         float speedX = Mathf.Abs(InputX) * (MovementStats.IsGrounded ? Speed : Speed * AirControl);
 
-        var right = (!DisableFlip ? 1 : Mathf.Sign(InputX)) * transform.right;
+        var right = (UseFlip ? 1 : Mathf.Sign(InputX)) * (!UseAbsoluteDirection ? transform.right : Vector3.right);
 
         Vector2 targetVelocity = right * speedX;
 
@@ -86,7 +87,7 @@ public class PlayerMovementX : MonoBehaviour
 
     private void FlipIfRequired()
     {
-        if (DisableFlip) return;
+        if (!UseFlip) return;
 
         if (InputX > 0 && !IsFacingRight || InputX < 0 && IsFacingRight)
         {
