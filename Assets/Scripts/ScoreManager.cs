@@ -44,7 +44,7 @@ public class ScoreManager : MonoBehaviour
     private void RefreshInventoryScore()
     {
         _inventoryScore = TargetInventory.Items.Sum(i
-            => ScoreByItem.FirstOrDefault(o => o.ItemID == i.ID)?.Score ?? 0);
+            => ScoreByItem.FirstOrDefault(o => o.ItemID == i.ID)?.Score * i?.Count ?? 0);
     }
 
     private void RefreshTimeBonusScore()
