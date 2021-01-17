@@ -5,7 +5,7 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] Sounds;
 
-    private void Start()
+    private void Awake()
     {
         foreach (Sound sound in Sounds)
             sound.Apply(gameObject.AddComponent<AudioSource>());

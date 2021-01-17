@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8300161352409014393}
   - component: {fileID: 8300161352409014391}
   - component: {fileID: 8300161352409014392}
+  - component: {fileID: 501586356268130331}
   m_Layer: 5
   m_Name: InventoryItemDisplay
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e6e9ae9451b0a45aa8ff2d7d86057d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Next: {fileID: 0}
+  TargetInventory: {fileID: 0}
   Icon: {fileID: 8300161352748866603}
   ItemName: {fileID: 0}
   ItemDescription: {fileID: 0}
@@ -71,6 +72,21 @@ MonoBehaviour:
   LongPress:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &501586356268130331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8300161352409014394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28c36baa1e48fd4094953d2468fc092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InjectionID: player
+  TargetComponent: {fileID: 8300161352409014392}
+  TargetProperty: TargetInventory
 --- !u!1 &8300161352748866605
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27d01534c2ba10e45aee9857e17204d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Next: {fileID: 0}
   Output: {fileID: 8300161352748866602}
   OutputPropertyName: sprite
 --- !u!1 &8300161353749158885
@@ -254,7 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc22dc46fe12b34ba281bdf87c149a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Next: {fileID: 0}
   Output: {fileID: 8300161353749158882}
   OutputPropertyName: text
   Multiplier: 1

@@ -11,6 +11,7 @@ public class BindingManager : MonoBehaviour
     {
         var parameters = GetBindingParameters();
         RaiseOneWayBindings(parameters);
+        RaiseTwoWayBindings(parameters);
     }
 
     private void RaiseOneWayBindings(BindingParameter[] bindings)
@@ -29,7 +30,8 @@ public class BindingManager : MonoBehaviour
                     Source = current, Destination = dest
                 };
 
-                current.ValueChanged.AddListener(binding.RefreshBinding);
+                current.RefreshBindingRequired.AddListener(binding.RefreshBinding);
+                dest.RefreshBindingRequired.AddListener(binding.RefreshBinding);
                 binding.RefreshBinding();
             }
         }
@@ -51,8 +53,8 @@ public class BindingManager : MonoBehaviour
                     Source = current, Destination = dest
                 };
 
-                current.ValueChanged.AddListener(binding.RefreshBinding);
-                dest.ValueChanged.AddListener(binding.RefreshBinding);
+                current.RefreshBindingRequired.AddListener(binding.RefreshBinding);
+                dest.RefreshBindingRequired.AddListener(binding.RefreshBinding);
                 binding.RefreshBinding();
             }
         }

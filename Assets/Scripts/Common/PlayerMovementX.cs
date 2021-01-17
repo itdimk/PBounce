@@ -49,7 +49,8 @@ public class PlayerMovementX : MonoBehaviour
 
         if (IsJumpRequired())
         {
-            ((Action) Jump).InvokeWithCooldown(JumpCooldown);
+            if (ActionEx.CheckCooldown((Action)Jump, JumpCooldown))
+                Jump();
         }
     }
     

@@ -6,20 +6,16 @@ using UnityEngine.SocialPlatforms;
 
 public class GameManagerX : MonoBehaviour
 {
-    [Serializable]
-    public class LevelsInfo
-    {
-        public int FirstLevelSceneIndex = 0;
-        public int LastLevelSceneIndex = 0;
-    }
-
     private const string LanguageKey = "language";
     private const string LevelsCompletedKey = "levels-completed";
 
+    public int MainMenuSceneIndex;
+    public int FirstLevelSceneIndex = 1;
+    public int LastLevelSceneIndex = 0;
     public string PauseButton = "Cancel";
-    public LevelsInfo Levels;
 
-    [HideInInspector] public bool IsPaused;
+    public bool IsPaused { get; private set; }
+    public float TimeFromStart => Time.time;
 
     public UnityEvent OnPause;
     public UnityEvent OnResume;
@@ -84,7 +80,7 @@ public class GameManagerX : MonoBehaviour
 
     public void CompleteLevel()
     {
-        int currLevel = SceneManager.GetActiveScene().buildIndex - Levels.FirstLevelSceneIndex + 1;
+        int currLevel = SceneManager.GetActiveScene().buildIndex - FirstLevelSceneIndex + 1;
 
         if (LevelsCompleted < currLevel)
             LevelsCompleted = currLevel;
@@ -93,19 +89,38 @@ public class GameManagerX : MonoBehaviour
 
     public void RestartLevel()
     {
+        Resume();
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(sceneIndex);
     }
 
     public void LoadLastAvailableLevel()
     {
-        int sceneIndex = Math.Min(Levels.LastLevelSceneIndex, Levels.FirstLevelSceneIndex + LevelsCompleted);
+        Resume();
+        int sceneIndex = Math.Min(LastLevelSceneIndex, FirstLevelSceneIndex + LevelsCompleted);
         SceneManager.LoadScene(sceneIndex);
     }
 
     public void LoadLevel(int level)
     {
-        int sceneIndex = Levels.FirstLevelSceneIndex + (level - 1);
+        Resume();
+        int sceneIndex = FirstLevelSceneIndex + (level - 1);
         SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void LoadNextLevel()
+    {
+        Resume();
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        
+        if(sceneIndex > LastLevelSceneIndex)
+            Debug.Log($"Scene {sceneIndex} is out of specified level's range");
+        SceneManager.LoadScene(sceneIndex);
+    }
+
+    public void GoMainMenu()
+    {
+        Resume();
+        SceneManager.LoadScene(MainMenuSceneIndex);
     }
 }

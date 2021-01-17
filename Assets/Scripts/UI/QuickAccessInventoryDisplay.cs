@@ -27,7 +27,7 @@ public class QuickAccessInventoryDisplay : MonoBehaviour
         items = items.Where(item => item.QuickAccess).Take(ItemDisplays.Length).ToArray();
 
         for (int i = 0; i < items.Count; ++i)
-            ItemDisplays[i].SetItem(items[i]);
+            ItemDisplays[i].SetItemID(items[i].ID);
     }
 
     private void SetupSlot(InventoryItemDisplay slot)
@@ -36,7 +36,7 @@ public class QuickAccessInventoryDisplay : MonoBehaviour
 
         void Listener(InventoryItem item)
         {
-            slot.SetItem(item);
+            slot.SetItemID(item.ID);
 
             FullInventoryDisplay.gameObject.SetActive(false);
             FullInventoryDisplay.ItemSelected.RemoveListener(Listener);

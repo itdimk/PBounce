@@ -51,15 +51,15 @@ public class ParkourPlayerMovementX : PlayerMovementX
 
     protected override bool IsJumpRequired()
     {
-        bool jump =  DoubleJump && !_doubleJumpUsed;
+        bool jump = DoubleJump && !_doubleJumpUsed;
 
         return base.IsJumpRequired() || jump;
     }
 
     protected override void Jump()
     {
-        if (IsJumpRequired())
-            ((Action)base.Jump).InvokeWithCooldown(JumpCooldown);
+        if (IsJumpRequired() && ActionEx.CheckCooldown(base.Jump, JumpCooldown))
+            base.Jump();
 
         if (!MovementStats.IsGrounded)
             _doubleJumpUsed = true;

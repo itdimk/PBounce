@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class PlayerCheckpoints : MonoBehaviour
+public class CheckpointManager : MonoBehaviour
 {
     public Checkpoint[] Checkpoints = { };
     public bool AutoFind = true;
@@ -27,6 +27,9 @@ public class PlayerCheckpoints : MonoBehaviour
         var checkpoint = Checkpoints.Where(c => c.IsActivated)
             .OrderByDescending(c => c.ActivatedAt).FirstOrDefault();
 
+        if (TryGetComponent(out Rigidbody2D physics))
+            physics.velocity = Vector2.zero;
+        
         if (checkpoint != null)
         {
             transform.position = checkpoint.transform.position;

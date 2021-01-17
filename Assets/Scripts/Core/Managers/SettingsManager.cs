@@ -51,7 +51,7 @@ public class SettingsManager : MonoBehaviour
                 sound.Volume = MusicVolume;
             
             foreach (var sound in Audio.Sounds.Where(s => s.Category == Sound.SoundCategory.Effects))
-                sound.Volume = MusicVolume;
+                sound.Volume = EffectsVolume;
         }
     }
 }

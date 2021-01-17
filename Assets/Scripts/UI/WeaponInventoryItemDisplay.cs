@@ -15,7 +15,7 @@ public class WeaponInventoryItemDisplay : InventoryItemDisplay
 
     public void SetItem(WeaponInventoryItem item)
     {
-        SetItem((InventoryItem)item);
+        SetItemID(item.ID);
 
         if (item != null)
         {

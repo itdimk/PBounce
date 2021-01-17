@@ -257,7 +257,7 @@ MonoBehaviour:
   BeforeTeleport:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2702211806969275129, guid: 2e8a2f675c278294ba0ab35335ad56b9, type: 3}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -272,7 +272,7 @@ MonoBehaviour:
   AfterTeleport:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2702211806969275129, guid: 2e8a2f675c278294ba0ab35335ad56b9, type: 3}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6

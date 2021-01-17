@@ -30,9 +30,9 @@ public class WeaponInventoryItem : InventoryItem
 
     private void Update()
     {
-        if (_isShooting && !_isReloading)
+        if (_isShooting && !_isReloading && ActionEx.CheckCooldown(Shoot, 1 / ShotsPerSecond))
         {
-            ((Action) Shoot).InvokeWithCooldown(1 / ShotsPerSecond);
+            Shoot();
         }
 
         UpdateIsReloadingState();
@@ -52,7 +52,7 @@ public class WeaponInventoryItem : InventoryItem
     {
         _isReloading = true;
         reloadingStart = Time.time;
-        
+
         AmmoInClip = Mathf.Min(TotalAmmo, ClipCapacity);
         OnReload?.Invoke();
     }

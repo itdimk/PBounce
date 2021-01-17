@@ -8,6 +8,7 @@ public class NumberDisplay : MonoBehaviour
     public string OutputPropertyName;
     public float Multiplier = 1.0f;
     public float Offset = 0f;
+    public string Prefix = "";
     public bool Round;
 
     private bool _initialized;
@@ -44,7 +45,7 @@ public class NumberDisplay : MonoBehaviour
         if (propety.PropertyType == typeof(string))
         {
             var setValue = (Action<string>) propety.SetMethod.CreateDelegate(typeof(Action<string>), Output);
-            return value => setValue(value.ToString());
+            return value => setValue(Prefix + value);
         }
 
         if (propety.PropertyType == typeof(float))

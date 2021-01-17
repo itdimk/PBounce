@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Damager : MonoBehaviour
@@ -60,13 +61,13 @@ public class Damager : MonoBehaviour
 
     private void DealDamageIfRequired(GameObject target, Vector2 contact)
     {
-        if (TargetTags.Contains(target.tag))
-            Extensions.InvokeWithCooldown(DealDamage, (target, contact), Cooldown);
+        if (TargetTags.Contains(target.tag) && ((Action<GameObject, Vector2>) DealDamage).CheckCooldown(Cooldown))
+            DealDamage(target, contact);
     }
 
-    private void DealDamage((GameObject, Vector2 ) args)
+    private void DealDamage(GameObject target, Vector2 hitPoint)
     {
-        var healthCtr = args.Item1.GetComponent<HealthController>();
+        var healthCtr = target.GetComponent<HealthController>();
 
         if (healthCtr == null) return;
 
@@ -76,8 +77,8 @@ public class Damager : MonoBehaviour
         {
             healthCtr.DealDamage(Amount, gameObject);
 
-            if (args.Item2 != default)
-                Push(args.Item1, args.Item2);
+            if (hitPoint != default)
+                Push(target, hitPoint);
         }
     }
 

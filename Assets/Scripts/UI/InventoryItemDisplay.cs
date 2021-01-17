@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class InventoryItemDisplay : MonoBehaviour
 {
+    public Inventory TargetInventory;
     public SpriteDisplay Icon;
     public StringDisplay ItemName;
     public StringDisplay ItemDescription;
@@ -26,8 +28,16 @@ public class InventoryItemDisplay : MonoBehaviour
             .OnLongPress.AddListener(() => LongPress?.Invoke(_item));
     }
 
-    public void SetItem(InventoryItem item)
+    public void SetItemID(string itemID)
     {
+        if (TargetInventory == null)
+        {
+            Debug.LogWarning($"{nameof(TargetInventory)} is not specified");
+            return;
+        }
+        
+        var item = TargetInventory.Items.FirstOrDefault(i => i.ID == itemID);
+        
         if (item != null)
         {
             SetItemIcon(item.Icon);

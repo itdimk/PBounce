@@ -1,6 +1,8 @@
 using System;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ComponentInjectionTarget : MonoBehaviour
 {
@@ -11,13 +13,25 @@ public class ComponentInjectionTarget : MonoBehaviour
     private Type _propertyType;
     private Action<object> _setValue;
     private bool _initialized;
-    
-    public void Inject(GameObject value)
+
+    private void Awake()
     {
-        if(!_initialized)
+        var sources = GetSources();
+
+        foreach (var s in sources)
+            Inject(s.gameObject);
+    }
+
+
+    private void Inject(GameObject value)
+    {
+        if (!_initialized)
             Initialize();
 
-        _setValue(value.GetComponent(_propertyType));
+        if (_propertyType.IsInstanceOfType(value))
+            _setValue(value);
+        else
+            _setValue(value.GetComponent(_propertyType));
     }
 
     private void Initialize()
@@ -40,5 +54,13 @@ public class ComponentInjectionTarget : MonoBehaviour
         }
         else
             Debug.LogError($"Field or Property \"{TargetProperty}\" doesn't exist in {TargetComponent}");
+    }
+
+    private ComponentInjectionSource[] GetSources()
+    {
+        return Resources.FindObjectsOfTypeAll<ComponentInjectionSource>()
+            .Where(o => o.gameObject.scene == SceneManager.GetActiveScene())
+            .Where(o => o.InjectionID == InjectionID)
+            .ToArray();
     }
 }

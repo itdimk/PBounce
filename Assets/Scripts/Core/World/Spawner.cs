@@ -22,14 +22,13 @@ public class Spawner : MonoBehaviour
     private float _spawnInterval;
     public UnityEvent BeforeSpawn = new UnityEvent();
     public UnityEvent AfterSpawn = new UnityEvent();
-    
 
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (IsSpawnRequired())
-            ((Action)Spawn).InvokeWithCooldown(_spawnInterval);
+        if (IsSpawnRequired() && ActionEx.CheckCooldown(Spawn, _spawnInterval))
+            Spawn();
     }
 
     bool IsSpawnRequired()
@@ -45,7 +44,7 @@ public class Spawner : MonoBehaviour
     public void Spawn()
     {
         BeforeSpawn?.Invoke();
-        
+
         var obj = Target.GetCloneFromPool(null, GetSpawnPoint(), transform.rotation);
         obj.SetActive(true);
 
@@ -54,7 +53,7 @@ public class Spawner : MonoBehaviour
 
         TotalCount--;
         _spawnInterval = Random.Range(SpawnInterval - RandomizeInterval, SpawnInterval + RandomizeInterval);
-        
+
         AfterSpawn?.Invoke();
     }
 

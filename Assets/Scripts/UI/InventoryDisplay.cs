@@ -40,7 +40,7 @@ public class InventoryDisplay : MonoBehaviour
                 var display = displayObject.GetComponent<InventoryItemDisplay>();
 
                 SetListenersToItemDisplay(display);
-                display.SetItem(item);
+                display.SetItemID(item.ID);
             }
     }
 
