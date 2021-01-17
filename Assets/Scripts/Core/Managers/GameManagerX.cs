@@ -112,10 +112,14 @@ public class GameManagerX : MonoBehaviour
     {
         Resume();
         int sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        
+       
         if(sceneIndex > LastLevelSceneIndex)
-            Debug.Log($"Scene {sceneIndex} is out of specified level's range");
-        SceneManager.LoadScene(sceneIndex);
+            Debug.LogWarning($"Scene {sceneIndex} is out of specified level's range");
+        
+        if(sceneIndex <  SceneManager.sceneCountInBuildSettings)
+            SceneManager.LoadScene(sceneIndex);
+        else
+            GoMainMenu();
     }
 
     public void GoMainMenu()

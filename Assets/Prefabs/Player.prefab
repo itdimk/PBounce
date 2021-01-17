@@ -394,7 +394,7 @@ MonoBehaviour:
   Stick: {fileID: 0}
   JumpForce: 355
   JumpCooldown: 0.2
-  MaxFallingSpeedToJump: 1
+  MaxFallingSpeedToJump: 8
   Speed: 8
   Smoothness: 0.2
   AirControl: 0.95
