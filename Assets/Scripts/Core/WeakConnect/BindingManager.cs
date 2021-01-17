@@ -9,8 +9,8 @@ public class BindingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RaiseOneWayBindings(Resources.FindObjectsOfTypeAll<BindingParameter>()
-            .Where(o => o.gameObject.scene == SceneManager.GetActiveScene()).ToArray());
+        var parameters = GetBindingParameters();
+        RaiseOneWayBindings(parameters);
     }
 
     private void RaiseOneWayBindings(BindingParameter[] bindings)
@@ -56,5 +56,12 @@ public class BindingManager : MonoBehaviour
                 binding.RefreshBinding();
             }
         }
+    }
+
+    private BindingParameter[] GetBindingParameters()
+    {
+        return Resources.FindObjectsOfTypeAll<BindingParameter>()
+            .Where(o => o.gameObject.scene == SceneManager.GetActiveScene())
+            .ToArray();
     }
 }

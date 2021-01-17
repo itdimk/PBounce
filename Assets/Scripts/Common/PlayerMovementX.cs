@@ -1,5 +1,4 @@
 ﻿using System;
-using TreeEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -45,10 +44,7 @@ public class PlayerMovementX : MonoBehaviour
     {
         SetInputX();
         SetInputY();
-    }
-
-    protected virtual void FixedUpdate()
-    {
+        
         Move();
 
         if (IsJumpRequired())
@@ -56,6 +52,7 @@ public class PlayerMovementX : MonoBehaviour
             ((Action) Jump).InvokeWithCooldown(JumpCooldown);
         }
     }
+    
 
     protected virtual void Move()
     {
@@ -77,12 +74,12 @@ public class PlayerMovementX : MonoBehaviour
 
     protected virtual bool IsJumpRequired()
     {
-        return InputY > 0.75f && MovementStats.IsGrounded && Physics.velocity.y >= -MaxFallingSpeedToJump;
+        return MovementStats.IsGrounded && Physics.velocity.y >= -MaxFallingSpeedToJump;
     }
 
     protected virtual void Jump()
     {
-        Physics.AddForce(Vector2.up * JumpForce);
+        Physics.AddForce(Vector2.up * JumpForce * InputY);
     }
 
     private void FlipIfRequired()
@@ -99,17 +96,15 @@ public class PlayerMovementX : MonoBehaviour
     protected virtual void SetInputX()
     {
         InputX = !UseJoystick
-            ? Input.GetAxisRaw("Horizontal")
+            ? Input.GetAxis("Horizontal")
             : Mathf.Clamp(Input.GetAxisRaw("Horizontal") + Stick.Horizontal, -1f, 1f);
     }
 
     protected virtual void SetInputY()
     {
-        InputY = !UseJoystick
-            ? Input.GetAxisRaw("Vertical")
-            : Mathf.Clamp(Input.GetAxisRaw("Vertical") + Stick.Vertical, -1f, 1f);
-
-        if (Input.GetButton("Jump"))
-            InputY = 1f;
+        InputY = JumpInput.GetJumpInput(0.7f);
+        // InputY = !UseJoystick
+        //     ? Input.GetAxis("Vertical")
+        //     : Mathf.Clamp(Input.GetAxisRaw("Vertical") + Stick.Vertical, -1f, 1f);
     }
 }

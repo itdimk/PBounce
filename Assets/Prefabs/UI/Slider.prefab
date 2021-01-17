@@ -164,7 +164,6 @@ GameObject:
   - component: {fileID: 1758169413221675129}
   - component: {fileID: 1758169413221675128}
   - component: {fileID: 1758169413221675110}
-  - component: {fileID: 1758169413221675111}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -251,31 +250,6 @@ MonoBehaviour:
     String: "\u041C\u0443\u0437\u044B\u043A\u0430"
   - Language: en
     String: Music
---- !u!114 &1758169413221675111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758169413221675130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f66b3cfbdd70704bb1ba95a87e46630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Source:
-    TargetComponent: {fileID: 1758169413221675110}
-    ParameterType: 0
-    ParameterName: ResultString
-  Destination:
-    TargetComponent: {fileID: 1758169413221675128}
-    ParameterType: 0
-    ParameterName: text
-  RefreshInterval: -1
-  Pipe: {fileID: 0}
-  OnRefresh:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1758169413303534641
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +335,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1758169413371588803}
   - component: {fileID: 1758169413371588800}
-  - component: {fileID: 1200965270}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -440,7 +413,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1200965270}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TwoWayBinding, Assembly-CSharp
         m_MethodName: RefreshBinding
         m_Mode: 1
@@ -452,27 +425,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1200965270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758169413371588802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79a4bf673ebf23045abd0cabefe845e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Source:
-    TargetComponent: {fileID: 0}
-    ParameterType: 0
-    ParameterName: MusicVolume
-  Destination:
-    TargetComponent: {fileID: 1758169413371588800}
-    ParameterType: 0
-    ParameterName: value
-  RefreshInterval: -1
 --- !u!1 &1758169414063777986
 GameObject:
   m_ObjectHideFlags: 0

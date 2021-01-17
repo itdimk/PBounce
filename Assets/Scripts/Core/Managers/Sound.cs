@@ -25,7 +25,7 @@ public class Sound
 
     public float Volume
     {
-        get => -volume;
+        get => volume;
         set
         {
             volume = value;

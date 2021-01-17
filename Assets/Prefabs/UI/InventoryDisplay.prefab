@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4275219229676587140}
   - component: {fileID: 1030778355}
   - component: {fileID: 1030778356}
+  - component: {fileID: 1969205799}
   m_Layer: 5
   m_Name: InventoryDisplay
   m_TagString: Untagged
@@ -94,3 +95,18 @@ MonoBehaviour:
   ItemLongPress:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1969205799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4275219229676587143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28c36baa1e48fd4094953d2468fc092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InjectionID: player
+  TargetComponent: {fileID: 1030778356}
+  TargetProperty: TargetInventory

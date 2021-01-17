@@ -35,9 +35,9 @@ public class ParkourPlayerMovementX : PlayerMovementX
         _constraints = Physics.constraints;
     }
 
-    protected override void FixedUpdate()
+    protected override void Update()
     {
-        base.FixedUpdate();
+        base.Update();
 
         if (MovementStats.IsGrounded)
             _doubleJumpUsed = false;

@@ -35,13 +35,13 @@ public class BindingParameter : MonoBehaviour
 
         if (prop != null)
         {
-            _setValue = CreateSetMethod(prop);
-            _getValue = CreateGetMethod(prop);
+            _setValue = ReflectionEx.CreateSetMethod(prop, TargetComponent);
+            _getValue = ReflectionEx.CreateGetMethod(prop, TargetComponent);
         }
         else if (field != null)
         {
-            _setValue = CreateSetMethod(field);
-            _getValue = CreateGetMethod(field);
+            _setValue = ReflectionEx.CreateSetMethod(field, TargetComponent);
+            _getValue = ReflectionEx.CreateGetMethod(field, TargetComponent);
         }
         else
             Debug.LogError($"Field or Property \"{TargetProperty}\" doesn't exist in {TargetComponent}");
@@ -62,39 +62,7 @@ public class BindingParameter : MonoBehaviour
 
         return _getValue();
     }
-
-    private Func<object> CreateGetMethod(FieldInfo field)
-    {
-        return () => field.GetValue(TargetComponent);
-    }
-
-    private Action<object> CreateSetMethod(FieldInfo field)
-    {
-        return (arg) => field.SetValue(TargetComponent, Convert.ChangeType(arg, field.FieldType));
-    }
-
-    private Func<object> CreateGetMethod(PropertyInfo property)
-    {
-        // var target = Expression.Constant(TargetComponent);
-        // var body = Expression.Call(target, property.GetGetMethod());
-        //
-        // return (Func<object>) Expression.Lambda(body).Compile();
-
-        return () => property.GetValue(TargetComponent);
-    }
-
-    Action<object> CreateSetMethod(PropertyInfo property)
-    {
-        // var target = Expression.Constant(TargetComponent);
-        // var param = Expression.Parameter(typeof(object));
-        // var convertedParam = Expression.Convert(param, property.PropertyType);
-        //
-        // var body = Expression.Call(target, property.GetSetMethod(), convertedParam);
-        //
-        // return (Action<object>) Expression.Lambda(body, param).Compile();
-
-        return (arg) => property.SetValue(TargetComponent, Convert.ChangeType(arg, property.PropertyType));
-    }
+    
 
     public void OnValueChanged()
     {

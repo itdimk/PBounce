@@ -13,7 +13,6 @@ public class WaypointMovement : MonoBehaviour
     public bool UseSmoothness = true;
     public bool Cycled = true;
 
-    private bool _isReached = false;
     private int _currWaypointIndex;
     private Vector3 _currVelocity;
 

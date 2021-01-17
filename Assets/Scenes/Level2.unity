@@ -16258,6 +16258,10 @@ PrefabInstance:
       propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2075600252}
+    - target: {fileID: 6513424360774772114, guid: 2e8a2f675c278294ba0ab35335ad56b9, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 56f570395c7859643aa8f21c552c0789, type: 2}
     - target: {fileID: 6513424361140076536, guid: 2e8a2f675c278294ba0ab35335ad56b9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -16719,6 +16723,7 @@ MonoBehaviour:
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
+  m_UTess2D: 0
 --- !u!1971053207 &1868473400
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
@@ -17388,6 +17393,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &2036895544
 Canvas:
   m_ObjectHideFlags: 0
@@ -17691,6 +17697,7 @@ MonoBehaviour:
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
+  m_UTess2D: 0
 --- !u!1971053207 &2069350199
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
