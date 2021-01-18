@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour
         public override string ToString() => ItemID;
     }
 
+    public GameManagerX Manager;
     public Inventory TargetInventory;
 
     public ItemScore[] ScoreByItem;
@@ -27,9 +28,9 @@ public class ScoreManager : MonoBehaviour
 
     private int _inventoryScore;
     private int _timeBonusScore;
-    
+
     public int Score => _inventoryScore + _timeBonusScore;
-    
+
     private void Start()
     {
         TargetInventory.ItemsChanged.AddListener(RefreshInventoryScore);
@@ -39,7 +40,7 @@ public class ScoreManager : MonoBehaviour
     {
         RefreshTimeBonusScore();
     }
-    
+
 
     private void RefreshInventoryScore()
     {
@@ -49,7 +50,7 @@ public class ScoreManager : MonoBehaviour
 
     private void RefreshTimeBonusScore()
     {
-        var delta = TimeBonusThreshold - Time.time;
+        var delta = TimeBonusThreshold - Manager.TimeFromStart;
 
         if (delta > 0)
             _timeBonusScore = (int) (delta * TimeBonusPerSecond);

@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms;
 
 public class GameManagerX : MonoBehaviour
 {
+    private float _startTick;
     private const string LanguageKey = "language";
     private const string LevelsCompletedKey = "levels-completed";
 
@@ -13,9 +13,9 @@ public class GameManagerX : MonoBehaviour
     public int FirstLevelSceneIndex = 1;
     public int LastLevelSceneIndex = 0;
     public string PauseButton = "Cancel";
-
+    
     public bool IsPaused { get; private set; }
-    public float TimeFromStart => Time.time;
+    public float TimeFromStart => Time.time - _startTick;
 
     public UnityEvent OnPause;
     public UnityEvent OnResume;
@@ -49,6 +49,11 @@ public class GameManagerX : MonoBehaviour
             else
                 Pause();
         }
+    }
+
+    private void Start()
+    {
+        _startTick = Time.time;
     }
 
     public void Pause()

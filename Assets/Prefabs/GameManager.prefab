@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e683d96ae4b0ab47be00da3ca5077fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Manager: {fileID: 5024310307082961815}
   TargetInventory: {fileID: 0}
   ScoreByItem:
   - ItemID: red-ruby

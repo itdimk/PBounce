@@ -7,7 +7,8 @@ public class TimeToStringPipe : BindingPipe
 {
     public override object Apply(object value)
     {
-        var timeSpan = new TimeSpan(0, 0, 0, 0, (int) (Time.time * 1000));
+        float fvalue = (float)Convert.ChangeType(value, typeof(float));
+        var timeSpan = new TimeSpan(0, 0, 0, 0, (int) (fvalue * 1000));
         return base.Apply($"{timeSpan.Minutes} : {timeSpan.Seconds}");
     }
 }
