@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class PeriodOnOff : OnOff
 {
-    public float OnEverySecond = -1;
-    public float OffEverySecond = -1;
+    public float FlipEverySecond = 1;
     
     // Update is called once per frame
     void Update()
     {
-        if (ActionEx.CheckCooldown(TurnOn, OnEverySecond))
-            TurnOn();
-        
-        if (ActionEx.CheckCooldown(TurnOff, OffEverySecond))
-            TurnOff();
+        if (ActionEx.CheckCooldown(Flip, FlipEverySecond))
+            Flip();
     }
 }

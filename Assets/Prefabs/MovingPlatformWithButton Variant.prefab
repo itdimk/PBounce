@@ -142,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1119776479310290496, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
       propertyPath: m_Name
-      value: MovingPlatformWithButton
+      value: MovingPlatformWithButton Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1119776479310290503, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
       propertyPath: m_RootOrder
@@ -188,8 +188,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2823799555697209691, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2934685020829790821, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2934685020829790825, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
+    - {fileID: 2934685020829790821, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
 --- !u!4 &3313462665045441569 stripped
 Transform:

@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c79fd00d9dc4d145bbedbfb0cd134aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Force: {x: 0, y: 1650}
+  Force: {x: 0, y: 1400}
   ScaleByMass: 1
   IgnoredTags: []
 --- !u!50 &7926944710483571592
@@ -450,8 +450,32 @@ CompositeCollider2D:
   m_EdgeRadius: 0
   m_ColliderPaths:
   - m_Collider: {fileID: 4688920268118912680}
-    m_ColliderPaths: []
+    m_ColliderPaths:
+    - - X: 40000000
+        Y: 40000000
+      - X: 40000000
+        Y: 70000000
+      - X: 20000000
+        Y: 70000000
+      - X: 20000000
+        Y: 80000000
+      - X: 0
+        Y: 80000000
+      - X: 0
+        Y: 70000000
+      - X: -20000000
+        Y: 70000000
+      - X: -20000000
+        Y: 40000000
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 4, y: 7}
+      - {x: 2, y: 7}
+      - {x: 2, y: 8}
+      - {x: 0, y: 8}
+      - {x: 0, y: 7}
+      - {x: -2, y: 7}
+      - {x: -2, y: 4}
+      - {x: 4, y: 4}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0

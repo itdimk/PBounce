@@ -20,6 +20,12 @@ TextureImporter:
   - first:
       213: -4510661499138350185
     second: SomeTiles_5
+  - first:
+      213: -2881458842085050175
+    second: SomeTiles_6
+  - first:
+      213: 7907800862712828875
+    second: SomeTiles_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -73,6 +79,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -135,8 +143,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 200
-        width: 100.5
+        y: 300
+        width: 100
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -156,8 +164,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 100
-        y: 200
-        width: 100.5
+        y: 300
+        width: 100
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -177,8 +185,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
-        width: 100.5
+        y: 200
+        width: 100
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -198,8 +206,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 100
-        y: 100
-        width: 100.5
+        y: 200
+        width: 100
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -219,8 +227,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 100.5
+        y: 100
+        width: 100
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -240,8 +248,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 100
-        y: 0
-        width: 100.5
+        y: 100
+        width: 100
         height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -252,6 +260,48 @@ TextureImporter:
       bones: []
       spriteID: 793e3d9d349e661c0800000000000000
       internalID: -4510661499138350185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SomeTiles_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c8bc9223700308d0800000000000000
+      internalID: -2881458842085050175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SomeTiles_7
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc39680ccf62ebd60800000000000000
+      internalID: 7907800862712828875
       vertices: []
       indices: 
       edges: []

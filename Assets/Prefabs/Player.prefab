@@ -59,7 +59,7 @@ Rigidbody2D:
   m_Mass: 0.46728402
   m_LinearDrag: 0
   m_AngularDrag: 10
-  m_GravityScale: 3
+  m_GravityScale: 2.2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -364,9 +364,9 @@ MonoBehaviour:
   GroundCheck:
     serializedVersion: 2
     x: -0.3
-    y: -0.46
+    y: -0.55
     width: 0.6
-    height: 0.3
+    height: 0.39
   MaxCharacterTintToGrabLedge: 30
   GrabLedgeGroundDistance: 2
   GrabLedgeAirDistance: 5
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stick: {fileID: 0}
-  JumpForce: 355
+  JumpForce: 300
   JumpCooldown: 0.2
   MaxFallingSpeedToJump: 8
   Speed: 8
