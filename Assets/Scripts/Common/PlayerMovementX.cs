@@ -2,41 +2,37 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(MovementStatsX))]
 public class PlayerMovementX : MonoBehaviour
 {
+    private Vector2 _currVelocityRef;
+    private bool _isFacingRight;
+
     protected Rigidbody2D Physics;
     protected MovementStatsX MovementStats;
 
     protected float InputX;
     protected float InputY;
-    protected bool IsFacingRight = false;
     protected bool UseJoystick;
 
-    private Vector2 _currVelocityRef;
-
-
-    public Joystick Stick;
-
-
-    [Space] public float JumpForce = 1000f;
+    public float JumpForce = 1000f;
     public float JumpCooldown = 0.25f;
     public float MaxFallingSpeedToJump = 1f;
 
-
     [Space] public float Speed = 10f;
     [Range(0.0f, 1.0f)] public float Smoothness = 0.2f;
-    public float AirControl = 0.5f;
+    [Range(0.0f, 1.0f)] public float AirControl = 0.5f;
 
+    [Space] public bool UseAbsoluteDirection;
     public bool UseFlip = false;
-    public bool UseAbsoluteDirection;
+
+    [SerializeField] protected Joystick Stick;
 
     protected virtual void Start()
     {
-        IsFacingRight = transform.right.x > 0;
         UseJoystick = Stick != null;
-        Physics = GetComponent<Rigidbody2D>() ?? throw new NullReferenceException("No Rigidbody2D");
+        _isFacingRight = transform.right.x > 0;
+        Physics = GetComponent<Rigidbody2D>();
         MovementStats = GetComponent<MovementStatsX>();
     }
 
@@ -45,33 +41,27 @@ public class PlayerMovementX : MonoBehaviour
         SetInputX();
         SetInputY();
         
-        Move();
-
-        if (IsJumpRequired())
-        {
-            if (ActionEx.CheckCooldown((Action)Jump, JumpCooldown))
-                Jump();
-        }
+        if (IsJumpRequired() && ActionEx.CheckCooldown(Jump, JumpCooldown))
+            Jump();
     }
-    
+
+    protected void FixedUpdate()
+    {
+        Move();
+    }
 
     protected virtual void Move()
     {
         Vector2 currVelocity = Physics.velocity;
+        Vector2 targetVelocity = GetTargetVelocity();
 
-        float speedX = Mathf.Abs(InputX) * (MovementStats.IsGrounded ? Speed : Speed * AirControl);
-
-        var right = (UseFlip ? 1 : Mathf.Sign(InputX)) * (!UseAbsoluteDirection ? transform.right : Vector3.right);
-
-        Vector2 targetVelocity = right * speedX;
-
-        targetVelocity.y = currVelocity.y;
-
-        Physics.velocity = Vector2.SmoothDamp(currVelocity,
-            targetVelocity, ref _currVelocityRef, Smoothness);
+        Physics.velocity = Vector2.SmoothDamp(currVelocity, targetVelocity, ref _currVelocityRef, Smoothness);
 
         FlipIfRequired();
     }
+
+    protected Vector2 GetRight() => UseAbsoluteDirection ? Vector3.right : transform.right;
+
 
     protected virtual bool IsJumpRequired()
     {
@@ -80,17 +70,17 @@ public class PlayerMovementX : MonoBehaviour
 
     protected virtual void Jump()
     {
-        Physics.AddForce(Vector2.up * JumpForce * InputY);
+        Physics.AddForce(JumpForce * InputY * Vector2.up);
     }
 
     private void FlipIfRequired()
     {
         if (!UseFlip) return;
 
-        if (InputX > 0 && !IsFacingRight || InputX < 0 && IsFacingRight)
+        if (InputX > 0 && !_isFacingRight || InputX < 0 && _isFacingRight)
         {
             transform.Rotate(0, 180f, 0);
-            IsFacingRight = !IsFacingRight;
+            _isFacingRight = !_isFacingRight;
         }
     }
 
@@ -103,9 +93,18 @@ public class PlayerMovementX : MonoBehaviour
 
     protected virtual void SetInputY()
     {
-        InputY = JumpInput.GetJumpInput(0.7f);
-        // InputY = !UseJoystick
-        //     ? Input.GetAxis("Vertical")
-        //     : Mathf.Clamp(Input.GetAxisRaw("Vertical") + Stick.Vertical, -1f, 1f);
+        InputY = !UseJoystick
+            ? JumpInput.GetJumpInput(0.7f)
+            : Mathf.Clamp(JumpInput.GetJumpInput(0.7f) + Stick.Vertical, -1f, 1f);
+    }
+
+    private Vector2 GetTargetVelocity()
+    {
+        float speedX = Mathf.Abs(InputX) * (MovementStats.IsGrounded ? Speed : Speed * AirControl);
+
+        Vector2 targetVelocity = UseFlip ? speedX * GetRight() : Mathf.Sign(InputX) * speedX * GetRight();
+        targetVelocity.y = Physics.velocity.y;
+
+        return targetVelocity;
     }
 }

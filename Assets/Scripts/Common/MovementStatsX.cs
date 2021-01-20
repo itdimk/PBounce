@@ -13,7 +13,6 @@ public class MovementStatsX : MonoBehaviour
     public float GrabLedgeAirDistance = 5f;
     public Vector2 GrabLedgeAirCheckOffset = new Vector2(-0.5f, 4f);
     public Vector2 GrabLedgeGroundCheckOffset = new Vector2(-0.5f, 1f);
-    public bool SetAnimatorParameters;
     public bool UseAbsoluteDirection;
     
     [HideInInspector] public bool CanGrabLedge;
@@ -23,12 +22,6 @@ public class MovementStatsX : MonoBehaviour
     [HideInInspector] public float DistanceToGround;
     [HideInInspector] public float AngleOfSurface;
 
-    private static readonly int
-        AnimSpeedH = Animator.StringToHash("SpeedH"),
-        AnimSpeedV = Animator.StringToHash("SpeedV"),
-        AnimSpeedX = Animator.StringToHash("SpeedX"),
-        AnimSpeedY = Animator.StringToHash("SpeedY"),
-        AnimGrounded = Animator.StringToHash("IsGrounded");
 
     private Rigidbody2D _physics;
     private Animator _animator;
@@ -43,7 +36,6 @@ public class MovementStatsX : MonoBehaviour
     {
         SetValuesByGroundRaycast();
         SetValuesByLedgeRaycasts();
-        SetAnimatorParams();
         RefreshIsGrounded();
     }
 
@@ -102,18 +94,6 @@ public class MovementStatsX : MonoBehaviour
         DistanceToLedge = groundHit != default
             ? Vector2.Distance(groundHit.point, _physics.position)
             : float.PositiveInfinity;
-    }
-
-    void SetAnimatorParams()
-    {
-        if (!SetAnimatorParameters) return;
-
-        
-        _animator.SetFloat(AnimSpeedX, _physics.velocity.x);
-        _animator.SetFloat(AnimSpeedY, _physics.velocity.y);
-        _animator.SetBool(AnimGrounded, IsGrounded);
-        _animator.SetFloat(AnimSpeedH, Mathf.Abs(_physics.velocity.x));
-        _animator.SetFloat(AnimSpeedV, Mathf.Abs(_physics.velocity.y));
     }
 
     private void OnDrawGizmos()

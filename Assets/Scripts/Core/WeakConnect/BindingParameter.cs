@@ -28,6 +28,7 @@ public class BindingParameter : MonoBehaviour
 
     private void Initialize()
     {
+        _initialized = true;
         var componentType = TargetComponent.GetType();
 
         PropertyInfo prop = componentType.GetProperty(TargetProperty);
@@ -54,7 +55,8 @@ public class BindingParameter : MonoBehaviour
 
         _setValue(Pipe != null ? Pipe.Apply(value) : value);
     }
-
+    
+    
     public object GetValue()
     {
         if (!_initialized)

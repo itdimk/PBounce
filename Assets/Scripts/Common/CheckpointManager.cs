@@ -7,19 +7,18 @@ using UnityEngine.SceneManagement;
 
 public class CheckpointManager : MonoBehaviour
 {
-    public Checkpoint[] Checkpoints = { };
-    public bool AutoFind = true;
+    private Checkpoint[] Checkpoints;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (AutoFind)
-        {
-            var activeScene = SceneManager.GetActiveScene();
-            Checkpoints = Resources.FindObjectsOfTypeAll<Checkpoint>()
-                .Where(c => c.gameObject.scene == activeScene)
-                .ToArray();
-        }
+        var activeScene = SceneManager.GetActiveScene();
+        Checkpoints = Resources.FindObjectsOfTypeAll<Checkpoint>()
+            .Where(c => c.gameObject.scene == activeScene)
+            .ToArray();
+        
+        if(Checkpoints.Length == 0)
+            Debug.LogWarning("Can't find any checkpoints on the scene");
     }
 
     public void LoadLastCheckpoint()
@@ -29,7 +28,7 @@ public class CheckpointManager : MonoBehaviour
 
         if (TryGetComponent(out Rigidbody2D physics))
             physics.velocity = Vector2.zero;
-        
+
         if (checkpoint != null)
         {
             transform.position = checkpoint.transform.position;

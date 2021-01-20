@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour
 
     public IReadOnlyList<InventoryItem> Items => DefaultItems;
 
-    public UnityEvent ItemsChanged;
+    [HideInInspector] public UnityEvent ItemsChanged;
 
     // Start is called before the first frame update
     void Start()

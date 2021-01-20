@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28c36baa1e48fd4094953d2468fc092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InjectionID: player
+  SourceGameObjectName: Player
   TargetComponent: {fileID: 8300161352409014392}
   TargetProperty: TargetInventory
 --- !u!1 &8300161352748866605
@@ -273,4 +273,5 @@ MonoBehaviour:
   OutputPropertyName: text
   Multiplier: 1
   Offset: 0
+  Prefix: 
   Round: 1

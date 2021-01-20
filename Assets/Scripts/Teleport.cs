@@ -1,27 +1,20 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Teleport : MonoBehaviour
 {
-    public TargetProviderBaseX Destination;
+    public Transform Destination;
 
-    public UnityEvent BeforeTeleport;
-    public UnityEvent AfterTeleport;
-
-    public string[] TriggerTags = { "Player" };
-
+    public string[] TriggerTags = {"Player"};
     public float Delay;
 
     private float _teleportTick;
     private bool _teleporting;
     private GameObject _objectToTeleport;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -34,32 +27,33 @@ public class Teleport : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (TriggerTags.Contains(other.tag) && !_teleporting)
-        {
-            BeforeTeleport?.Invoke();
-            
-            _teleporting = true;
-            _teleportTick = Time.time;
-            _objectToTeleport = other.gameObject;
-            
-            if (_objectToTeleport.TryGetComponent(out Rigidbody2D physics))
-                physics.simulated = false;
-
-        }
+            BeginTeleport(other.gameObject);
     }
 
     private void TeleportIfRequired()
     {
         if (_teleporting && Time.time - _teleportTick >= Delay)
         {
-            _objectToTeleport.transform.position = Destination.GetTarget().position;
-           
-            
-            if (_objectToTeleport.TryGetComponent(out Rigidbody2D physics))
-                physics.simulated = true;
-            
-            _teleporting = false;
-            AfterTeleport?.Invoke();
-          
+            _objectToTeleport.transform.position = Destination.position;
+            EndTeleport();
         }
+    }
+
+    private void BeginTeleport(GameObject objectToTeleport)
+    {
+        _teleporting = true;
+        _teleportTick = Time.time;
+        _objectToTeleport = objectToTeleport;
+
+        if (objectToTeleport.TryGetComponent(out Rigidbody2D physics))
+            physics.simulated = false;
+    }
+
+    private void EndTeleport()
+    {
+        _teleporting = false;
+
+        if (_objectToTeleport.TryGetComponent(out Rigidbody2D physics))
+            physics.simulated = true;
     }
 }
