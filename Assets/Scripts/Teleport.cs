@@ -45,6 +45,7 @@ public class Teleport : MonoBehaviour
         _teleportTick = Time.time;
         _objectToTeleport = objectToTeleport;
 
+        _objectToTeleport.SetActive(false);
         if (objectToTeleport.TryGetComponent(out Rigidbody2D physics))
             physics.simulated = false;
     }
@@ -52,6 +53,8 @@ public class Teleport : MonoBehaviour
     private void EndTeleport()
     {
         _teleporting = false;
+        _objectToTeleport.SetActive(true);
+
 
         if (_objectToTeleport.TryGetComponent(out Rigidbody2D physics))
             physics.simulated = true;

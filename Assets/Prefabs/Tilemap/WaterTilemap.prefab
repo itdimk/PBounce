@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 292828be19610e64ab972bb03f3326b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DragValue: 4.1
+  DragValue: 4.2
   IgnoredTags: []
 --- !u!114 &803413420879494140
 MonoBehaviour:

@@ -13,7 +13,6 @@ public class PlayerMovementX : MonoBehaviour
 
     protected float InputX;
     protected float InputY;
-    protected bool UseJoystick;
 
     public float JumpForce = 1000f;
     public float JumpCooldown = 0.25f;
@@ -26,11 +25,9 @@ public class PlayerMovementX : MonoBehaviour
     [Space] public bool UseAbsoluteDirection;
     public bool UseFlip = false;
 
-    [SerializeField] protected Joystick Stick;
 
     protected virtual void Start()
     {
-        UseJoystick = Stick != null;
         _isFacingRight = transform.right.x > 0;
         Physics = GetComponent<Rigidbody2D>();
         MovementStats = GetComponent<MovementStatsX>();
@@ -40,7 +37,7 @@ public class PlayerMovementX : MonoBehaviour
     {
         SetInputX();
         SetInputY();
-        
+
         if (IsJumpRequired() && ActionEx.CheckCooldown(Jump, JumpCooldown))
             Jump();
     }
@@ -86,16 +83,12 @@ public class PlayerMovementX : MonoBehaviour
 
     protected virtual void SetInputX()
     {
-        InputX = !UseJoystick
-            ? Input.GetAxis("Horizontal")
-            : Mathf.Clamp(Input.GetAxisRaw("Horizontal") + Stick.Horizontal, -1f, 1f);
+        InputX = Input.GetAxis("Horizontal");
     }
 
     protected virtual void SetInputY()
     {
-        InputY = !UseJoystick
-            ? JumpInput.GetJumpInput(0.7f)
-            : Mathf.Clamp(JumpInput.GetJumpInput(0.7f) + Stick.Vertical, -1f, 1f);
+        InputY = JumpInput.GetJumpInput(0.7f);
     }
 
     private Vector2 GetTargetVelocity()

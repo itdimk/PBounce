@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 public class TriggerOnOff : OnOff
@@ -16,7 +17,13 @@ public class TriggerOnOff : OnOff
     public string[] TargetTriggerTags = {"Player"};
     
     private int insideTriggerCount;
-    
+
+
+    private void Start()
+    {
+        
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (TargetTriggerTags.Contains(other.gameObject.tag))
