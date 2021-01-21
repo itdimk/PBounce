@@ -59,7 +59,12 @@ public class WaypointMovement : MonoBehaviour
 
         if (IsReached(pos, nextWpPos))
         {
-            if (!Cycled && _currWaypointIndex >= waypoints.Count - 1) return;
+            if (_currWaypointIndex >= waypoints.Count - 1)
+            {
+                if (Cycled) waypoints.Reverse();
+                else return;
+            }
+
             _currWaypointIndex = (_currWaypointIndex + 1) % waypoints.Count;
         }
     }
