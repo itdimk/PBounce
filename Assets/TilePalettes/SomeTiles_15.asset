@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Metal_3
+  m_Name: SomeTiles_15
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 919693202005755323, guid: 15621eb712d77a4428fd34692c0e316c, type: 3}
+  m_Sprite: {fileID: 4241627091826654364, guid: 3df925385c3888343873d1df74788e9f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
