@@ -4965,8 +4965,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2471969620510065340}
   - component: {fileID: 2471969620510065341}
-  - component: {fileID: 8616825591565234933}
-  m_Layer: 0
+  - component: {fileID: 8143589444018894249}
+  m_Layer: 8
   m_Name: fan-blades
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5038,8 +5038,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8616825591565234933
-BoxCollider2D:
+--- !u!60 &8143589444018894249
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5051,7 +5051,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0073332787, y: -0.023192406}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5061,6 +5061,20 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.039172, y: 0.6087494}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.2372875, y: 0.24075127}
+      - {x: 1.716292, y: 0.2505808}
+      - {x: 1.167763, y: 0.15659666}
+      - {x: 0.4274931, y: -0.0657773}
+      - {x: -0.014639854, y: 0.000767231}
+      - {x: -0.36671114, y: -0.05974579}
+      - {x: -1.3637109, y: 0.20812845}
+      - {x: -1.798614, y: 0.2673216}
+      - {x: -2.3959637, y: 0.2116561}
+      - {x: -2.544223, y: 0.057985395}
+      - {x: -2.484735, y: -0.17093936}
+      - {x: -0.03849411, y: -0.3710637}
+      - {x: 1.7055129, y: -0.23372918}
+      - {x: 2.4845145, y: -0.114463806}
+      - {x: 2.5320768, y: 0.13348007}

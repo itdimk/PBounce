@@ -218,7 +218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.09, y: -3.39, z: -10}
+  m_LocalPosition: {x: -17.18, y: -5.0020256, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1360038889603079431}
@@ -557,6 +557,7 @@ GameObject:
   - component: {fileID: 7574020311851650030}
   - component: {fileID: 129004990225392698}
   - component: {fileID: 5983265377990151481}
+  - component: {fileID: 3257319927415283224}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -863,25 +864,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648bae8e98bd2aa4db82cef05506b844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GroundCheck:
+    serializedVersion: 2
+    x: -0.26
+    y: -0.5
+    width: 0.52
+    height: 0.3
+  GrabLedgeAirCheck:
+    serializedVersion: 2
+    x: 0
+    y: 2
+    width: 5
+    height: 0.5
+  GrabLedgeGroundCheck:
+    serializedVersion: 2
+    x: 0
+    y: 1
+    width: 2.5
+    height: 0.5
   WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  GroundDetectionDistance: 10
-  GroundCheck:
-    serializedVersion: 2
-    x: -0.3
-    y: -0.55
-    width: 0.6
-    height: 0.39
+  GroundDetectionDistance: 50
   MaxCharacterTintToGrabLedge: 30
-  GrabLedgeGroundDistance: 2
-  GrabLedgeAirDistance: 5
-  GrabLedgeAirCheckOffset: {x: -0.5, y: 4}
-  GrabLedgeGroundCheckOffset: {x: -0.5, y: 1}
   UseAbsoluteDirection: 1
-  CanGrabLedge: 0
   IsGrounded: 0
-  DistanceToLedge: 0
+  CanGrabLedge: 0
   DistanceToGround: 0
   AngleOfSurface: 0
 --- !u!114 &129004990225392698
@@ -896,15 +904,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f317595ee898f4db7ecaf70beab489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpForce: 300
-  JumpCooldown: 0.2
-  MaxFallingSpeedToJump: 8
   Speed: 8
-  Smoothness: 0.2
+  Smoothness: 0.25
   AirControl: 0.95
   UseAbsoluteDirection: 1
   UseFlip: 0
-  Stick: {fileID: 0}
 --- !u!114 &5983265377990151481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,6 +946,22 @@ MonoBehaviour:
   OffAt: 0
   TargetColliderTags:
   - Untagged
+--- !u!114 &3257319927415283224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679059323777285893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae006e5b8b89501499cb29134f0c4392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpForces: aa000000500000003c000000
+  JumpCooldown: 0.4
+  AddForceInterval: 0.05
+  MaxFallingSpeedToJump: 8
 --- !u!1 &2813486982369093555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,6 +1892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3237155236211850687}
   - component: {fileID: 3237155236211850686}
+  - component: {fileID: 4488775632898257728}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1987,6 +2008,26 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   OnLanguageChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4488775632898257728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237155236211850685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindingID: time
+  Type: 0
+  TargetComponent: {fileID: 3237155236211850686}
+  TargetProperty: TimeFromStart
+  Pipe: {fileID: 0}
+  RefreshBindingRequired:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &3237155236292800774
@@ -2344,6 +2385,7 @@ GameObject:
   - component: {fileID: 3237155236472088252}
   - component: {fileID: 3237155236472088254}
   - component: {fileID: 3237155236472088255}
+  - component: {fileID: 2542596614042462717}
   m_Layer: 5
   m_Name: WinScreen
   m_TagString: Untagged
@@ -2464,6 +2506,39 @@ MonoBehaviour:
       m_Calls: []
   IsEnabled: 0
   DoNotEnableTwice: 0
+  Cooldown: 0
+--- !u!114 &2542596614042462717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3237155236472088226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcbf9c244c0fdc48b718743b53cd91c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  On:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 679059323777285893}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Off:
+    m_PersistentCalls:
+      m_Calls: []
+  IsEnabled: 0
+  DoNotEnableTwice: 1
   Cooldown: 0
 --- !u!1 &3237155236590519962
 GameObject:
