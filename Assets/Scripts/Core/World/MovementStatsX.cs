@@ -56,7 +56,7 @@ public class MovementStatsX : MonoBehaviour
         var down = !UseAbsoluteDirection ? -transform.up : -Vector3.up;
         var hit = Physics2D.Raycast(_physics.position, down, GroundDetectionDistance, WhatIsGround);
 
-        if (hit != default)
+        if (hit)
         {
             DistanceToGround = hit.distance;
             AngleOfSurface = Mathf.Atan2(hit.normal.y, hit.normal.x) * Mathf.Rad2Deg;
@@ -71,7 +71,7 @@ public class MovementStatsX : MonoBehaviour
 
     private bool CheckOverlap(Rect area, LayerMask mask)
     {
-        return Physics2D.OverlapArea(area.min, area.max, WhatIsGround) != default;
+        return Physics2D.OverlapArea(area.min, area.max, mask);
     }
 
     private void OnDrawGizmos()

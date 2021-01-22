@@ -13,10 +13,10 @@ public class SmoothJump : MonoBehaviour
     private int _currJumpForceIndex;
 
     public int[] JumpForces = {150, 100, 75};
-    public float JumpCooldown = 0.4f;
     public float AddForceInterval = 0.04f;
-    public float MaxFallingSpeedToJump = 8;
-
+    public float JumpCooldown = 0.4f;
+    [Space] public float MaxFallingSpeedToJump = 6;
+    [Range(0, 1.0f)] public float FallingSpeedCompensation;
 
     private void Start()
     {
@@ -27,6 +27,7 @@ public class SmoothJump : MonoBehaviour
     private void FixedUpdate()
     {
         _inputY = Input.GetAxisRaw("Vertical");
+
         RefreshIsJumping();
         ResetForceIfRequired();
         JumpIfRequired();
@@ -38,7 +39,18 @@ public class SmoothJump : MonoBehaviour
         if (!_isJumping || _currJumpForceIndex >= JumpForces.Length) return;
 
         if (ActionEx.CheckCooldown(JumpIfRequired, AddForceInterval))
-            _physics.AddForce(new Vector2(0, JumpForces[_currJumpForceIndex++]));
+            _physics.AddForce(GetNextJumpForce());
+    }
+
+
+    private Vector2 GetNextJumpForce()
+    {
+        float amount = JumpForces[_currJumpForceIndex++];
+
+        if (_physics.velocity.y < 0)
+            amount *= 1 - _physics.velocity.y * FallingSpeedCompensation;
+
+        return new Vector2(0, amount);
     }
 
     private void ResetForceIfRequired()

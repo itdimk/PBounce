@@ -218,14 +218,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3257319927415283224, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
-      propertyPath: AddForceInterval
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 3257319927415283224, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
-      propertyPath: MaxFallingSpeedToJump
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 6575831413587272613, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
       propertyPath: m_Name
       value: Essentials

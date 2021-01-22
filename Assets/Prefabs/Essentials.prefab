@@ -867,7 +867,7 @@ MonoBehaviour:
   GroundCheck:
     serializedVersion: 2
     x: -0.26
-    y: -0.5
+    y: -0.55
     width: 0.52
     height: 0.3
   GrabLedgeAirCheck:
@@ -959,9 +959,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpForces: aa000000500000003c000000
-  JumpCooldown: 0.4
   AddForceInterval: 0.05
-  MaxFallingSpeedToJump: 8
+  JumpCooldown: 0.35
+  MaxFallingSpeedToJump: 5.5
+  FallingSpeedCompensation: 0
 --- !u!1 &2813486982369093555
 GameObject:
   m_ObjectHideFlags: 0
