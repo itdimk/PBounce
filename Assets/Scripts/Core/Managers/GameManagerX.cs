@@ -54,6 +54,7 @@ public class GameManagerX : MonoBehaviour
     private void Start()
     {
         _startTick = Time.time;
+        QualitySettings.vSyncCount = 1;
     }
 
     public void Pause()

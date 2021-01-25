@@ -20759,6 +20759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1191658958}
   - component: {fileID: 1191658959}
+  - component: {fileID: 1191658960}
   m_Layer: 0
   m_Name: sky-bg
   m_TagString: Untagged
@@ -20831,6 +20832,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1191658960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1191658957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5964f3328efbf0e4b9b98d520e51f8e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1296233706}
+  parallaxEffect: 0.7
 --- !u!1001 &1240822689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21106,6 +21121,11 @@ PrefabInstance:
 --- !u!20 &1296233705 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 519420031, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
+  m_PrefabInstance: {fileID: 1296233704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1296233706 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 519420028, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
   m_PrefabInstance: {fileID: 1296233704}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1343839671 stripped

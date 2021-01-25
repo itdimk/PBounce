@@ -1926,22 +1926,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1548565081}
     m_Modifications:
-    - target: {fileID: 7528813022982445636, guid: f48897e1272b20f40b0b4ac973e5258e, type: 3}
-      propertyPath: m_Size.x
-      value: 0.7445526
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528813022982445636, guid: f48897e1272b20f40b0b4ac973e5258e, type: 3}
-      propertyPath: m_Size.y
-      value: 0.30246305
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528813022982445636, guid: f48897e1272b20f40b0b4ac973e5258e, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.011216164
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528813022982445636, guid: f48897e1272b20f40b0b4ac973e5258e, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.86235785
-      objectReference: {fileID: 0}
     - target: {fileID: 7528813022982445637, guid: f48897e1272b20f40b0b4ac973e5258e, type: 3}
       propertyPath: On.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -2149,14 +2133,6 @@ PrefabInstance:
     - target: {fileID: 7528813022982445639, guid: f48897e1272b20f40b0b4ac973e5258e, type: 3}
       propertyPath: m_Name
       value: Button
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528813023364728660, guid: f48897e1272b20f40b0b4ac973e5258e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7528813023364728660, guid: f48897e1272b20f40b0b4ac973e5258e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f48897e1272b20f40b0b4ac973e5258e, type: 3}
@@ -7974,6 +7950,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7528813023604874662, guid: f48897e1272b20f40b0b4ac973e5258e, type: 3}
   m_PrefabInstance: {fileID: 429198367}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1330674556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 519420028, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
+  m_PrefabInstance: {fileID: 839161110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1356675399
 GameObject:
   m_ObjectHideFlags: 0
@@ -7984,8 +7965,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1356675401}
   - component: {fileID: 1356675400}
+  - component: {fileID: 1356675402}
   m_Layer: 0
-  m_Name: BackBackground
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8036,7 +8018,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 47.6424, y: 33.11317}
+  m_Size: {x: 43.733475, y: 26.998503}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -8050,12 +8032,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356675399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.08, y: -5.722, z: 0}
+  m_LocalPosition: {x: -14.7, y: -5.2, z: 0}
   m_LocalScale: {x: 1.0760947, y: 1.0760949, z: 1.0760947}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1356675402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356675399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5964f3328efbf0e4b9b98d520e51f8e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1330674556}
+  parallaxEffect: 0.75
 --- !u!95 &1417953369 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6260105175420363849, guid: 85929df1d20ab4d4eb18b21d438b94df, type: 3}
@@ -14989,10 +14985,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1820374988732659410, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
       propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1820374988869101984, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
-      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3601011709802804233, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}

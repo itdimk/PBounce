@@ -1,14 +1,19 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] Sounds;
+    [HideInInspector] public Sound[] Sounds;
+
 
     private void Awake()
     {
-        foreach (Sound sound in Sounds)
-            sound.Apply(gameObject.AddComponent<AudioSource>());
+        int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        Sounds = Resources.FindObjectsOfTypeAll<Sound>()
+            .Where(s => s.gameObject.scene.buildIndex == activeSceneIndex)
+            .ToArray();
     }
 
     public void Play(string name)
@@ -36,7 +41,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(Sounds, sound => sound.Name == name);
 
         if (s != null)
-            s.Source.PlayOneShot(s.Clip, s.Volume);
+            s.Source.PlayOneShot(s.Source.clip);
         else
             Debug.LogWarning($"Sound \"{name}\" doesn't exist");
     }

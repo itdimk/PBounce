@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [System.Serializable]
-public class Sound
+public class Sound : MonoBehaviour
 {
     public enum SoundCategory
     {
@@ -11,50 +12,29 @@ public class Sound
         Voice
     }
 
-    [SerializeField]
-    private float volume;
-    
-    [SerializeField]
-    private float pitch;
-
-    private AudioSource _source;
+    private bool _initialized;
+    private float _initVolume;
+    private float _volumeScale = 1;
 
     public string Name;
+    public AudioSource Source;
     public SoundCategory Category;
-    public AudioClip Clip;
 
-    public float Volume
+    public float VolumeScale
     {
-        get => volume;
+        get { return _volumeScale; }
         set
         {
-            volume = value;
-            if (Source != null)
-                Source.volume = value;
+            if (!_initialized)
+                Initialize();
+
+            Source.volume = _initVolume * (_volumeScale = value);
         }
     }
 
-    public float Pitch
+    private void Initialize()
     {
-        get => pitch;
-        set
-        {
-            pitch = value;
-            if (Source != null)
-                Source.pitch = value;
-        }
-    }
-    
-    public bool Loop;
-    
-    public AudioSource Source => _source;
-
-    public void Apply(AudioSource target)
-    {
-        target.clip = Clip;
-        target.volume = Volume;
-        target.pitch = Pitch;
-        target.loop = Loop;
-        _source = target;
+        _initVolume = Source.volume;
+        _initialized = true;
     }
 }

@@ -48,10 +48,10 @@ public class SettingsManager : MonoBehaviour
         if (Audio != null)
         {
             foreach (var sound in Audio.Sounds.Where(s => s.Category == Sound.SoundCategory.Music))
-                sound.Volume = MusicVolume;
+                sound.VolumeScale = MusicVolume;
             
             foreach (var sound in Audio.Sounds.Where(s => s.Category == Sound.SoundCategory.Effects))
-                sound.Volume = EffectsVolume;
+                sound.VolumeScale = EffectsVolume;
         }
     }
 }

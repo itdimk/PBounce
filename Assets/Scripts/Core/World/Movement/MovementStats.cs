@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementStats : MonoBehaviour
 {
+    private int _groundContacts;
+
     public LayerMask WhatIsGround;
 
     [Space] public Rect GroundCheck = new Rect(-0.5f, -1f, 1, 1);
@@ -29,15 +32,28 @@ public class MovementStats : MonoBehaviour
     {
         SetValuesByGroundRaycast();
         RefreshCanGrabLedge();
-        RefreshIsGrounded();
     }
 
-    private void RefreshIsGrounded()
+    private void RefreshIsGrounded(Collision2D collision)
     {
+        if (WhatIsGround != (WhatIsGround | (1 << collision.gameObject.layer))) return;
+        
         var groundCheck = GroundCheck;
         groundCheck.position += (Vector2) transform.position;
-        IsGrounded = CheckOverlap(groundCheck, WhatIsGround);
+
+        _groundContacts = 0;
+        foreach (var contact in collision.contacts)
+            if (groundCheck.Contains(contact.point))
+                _groundContacts++;
+        
+        IsGrounded = _groundContacts > 0;
     }
+
+    private void OnCollisionStay2D(Collision2D col) => RefreshIsGrounded(col);
+
+    private void OnCollisionEnter2D(Collision2D col) => RefreshIsGrounded(col);
+    
+    private void OnCollisionExit2D(Collision2D col) => RefreshIsGrounded(col);
 
     void RefreshCanGrabLedge()
     {
@@ -46,6 +62,7 @@ public class MovementStats : MonoBehaviour
             CanGrabLedge = false;
             return;
         }
+
         var airCheckRect = OffsetByTransform(GrabLedgeAirCheck);
         var groundCheckRect = OffsetByTransform(GrabLedgeGroundCheck);
 
