@@ -2,19 +2,18 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(MovementStatsX))]
-public class PlayerMovementX : MonoBehaviour
+[RequireComponent(typeof(MovementStats))]
+public class PlayerMovement : MonoBehaviour
 {
     private bool _isFacingRight;
     private Vector2 _currVelocityRef;
 
-    protected float InputX;
     protected Rigidbody2D Physics;
-    protected MovementStatsX MovementStats;
-    
+    protected MovementStats MovementStats;
     Vector2 Right => UseAbsoluteDirection ? Vector3.right : transform.right;
-    
-    [Space] public float Speed = 10f;
+
+    public MovementInput Input;
+    public float Speed = 10f;
     [Range(0.0f, 1.0f)] public float Smoothness = 0.2f;
     [Range(0.0f, 1.0f)] public float AirControl = 0.5f;
 
@@ -26,12 +25,11 @@ public class PlayerMovementX : MonoBehaviour
     {
         _isFacingRight = transform.right.x > 0;
         Physics = GetComponent<Rigidbody2D>();
-        MovementStats = GetComponent<MovementStatsX>();
+        MovementStats = GetComponent<MovementStats>();
     }
-    
+
     protected void FixedUpdate()
     {
-        SetInputX();
         Move();
     }
 
@@ -50,25 +48,20 @@ public class PlayerMovementX : MonoBehaviour
     {
         if (!UseFlip) return;
 
-        if (InputX > 0 && !_isFacingRight || InputX < 0 && _isFacingRight)
+        if (Input.X > 0 && !_isFacingRight || Input.X < 0 && _isFacingRight)
         {
             transform.Rotate(0, 180f, 0);
             _isFacingRight = !_isFacingRight;
         }
     }
-    
+
     private Vector2 GetTargetVelocity()
     {
-        float speedX = Mathf.Abs(InputX) * (MovementStats.IsGrounded ? Speed : Speed * AirControl);
+        float speedX = Mathf.Abs(Input.X) * (MovementStats.IsGrounded ? Speed : Speed * AirControl);
 
-        Vector2 targetVelocity = UseFlip ? speedX * Right : Mathf.Sign(InputX) * speedX * Right;
+        Vector2 targetVelocity = UseFlip ? speedX * Right : Mathf.Sign(Input.X) * speedX * Right;
         targetVelocity.y = Physics.velocity.y;
 
         return targetVelocity;
-    }
-    
-    protected virtual void SetInputX()
-    {
-        InputX = Input.GetAxis("Horizontal");
     }
 }

@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class MovementStatsX : MonoBehaviour
+public class MovementStats : MonoBehaviour
 {
-    public Rect GroundCheck = new Rect(-0.5f, -1f, 1, 1);
-    public Rect GrabLedgeAirCheck = new Rect(0, 2, 5, 0.5f);
-    public Rect GrabLedgeGroundCheck = new Rect(0, 1, 2.5f, 0.5f);
-
     public LayerMask WhatIsGround;
+
+    [Space] public Rect GroundCheck = new Rect(-0.5f, -1f, 1, 1);
+    [Space] public Rect GrabLedgeAirCheck = new Rect(0, 2, 5, 0.5f);
+    [Space] public Rect GrabLedgeGroundCheck = new Rect(0, 1, 2.5f, 0.5f);
+
     [Space] public float GroundDetectionDistance = 100f;
     public float MaxCharacterTintToGrabLedge = 30f;
     public bool UseAbsoluteDirection;
@@ -45,9 +46,11 @@ public class MovementStatsX : MonoBehaviour
             CanGrabLedge = false;
             return;
         }
+        var airCheckRect = OffsetByTransform(GrabLedgeAirCheck);
+        var groundCheckRect = OffsetByTransform(GrabLedgeGroundCheck);
 
-        bool airCheck = CheckOverlap(GrabLedgeAirCheck, WhatIsGround);
-        bool groundCheck = CheckOverlap(GrabLedgeGroundCheck, WhatIsGround);
+        bool airCheck = CheckOverlap(airCheckRect, WhatIsGround);
+        bool groundCheck = CheckOverlap(groundCheckRect, WhatIsGround);
         CanGrabLedge = !airCheck && groundCheck;
     }
 
@@ -84,24 +87,32 @@ public class MovementStatsX : MonoBehaviour
     {
         var groundCheck = GroundCheck;
         groundCheck.position += (Vector2) transform.position;
-        
+
         Gizmos.color = CheckOverlap(groundCheck, WhatIsGround) ? Color.magenta : Color.white;
         GizmosEx.DrawRect(groundCheck);
     }
 
     private void DrawGrabLedgeChecks()
     {
-        var airCheck = GrabLedgeAirCheck;
-        var groundCheck = GrabLedgeGroundCheck;
+        var airCheck = OffsetByTransform(GrabLedgeAirCheck);
+        var groundCheck = OffsetByTransform(GrabLedgeGroundCheck);
 
-        airCheck.position +=(Vector2) transform.position;
-        groundCheck.position += (Vector2) transform.position;
 
         Gizmos.color = !CheckOverlap(airCheck, WhatIsGround) ? Color.magenta : Color.white;
         GizmosEx.DrawRect(airCheck);
-        
+
         Gizmos.color = CheckOverlap(groundCheck, WhatIsGround) ? Color.magenta : Color.white;
         GizmosEx.DrawRect(groundCheck);
     }
-   
+
+    private Rect OffsetByTransform(Rect target)
+    {
+        var pos = transform.position;
+        var right = UseAbsoluteDirection ? 1 : Mathf.Sign(transform.right.x);
+
+        if (right > 0)
+            return new Rect(pos.x + target.x, pos.y + target.y, target.width, target.height);
+        else
+            return new Rect(pos.x - target.xMax, pos.y + target.y, target.width, target.height);
+    }
 }
