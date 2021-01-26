@@ -49,12 +49,14 @@ public class GameManagerX : MonoBehaviour
             else
                 Pause();
         }
+     
     }
 
     private void Start()
     {
         _startTick = Time.time;
-        QualitySettings.vSyncCount = 1;
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 1000;
     }
 
     public void Pause()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CrossPlatformMovementInput : MovementInput
+public class CustomMovementInput : MovementInput
 {
     public bool UseDefaultInput = true;
 
