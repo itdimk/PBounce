@@ -27,7 +27,6 @@ public class Sound : MonoBehaviour
         {
             if (!_initialized)
                 Initialize();
-
             Source.volume = _initVolume * (_volumeScale = value);
         }
     }
