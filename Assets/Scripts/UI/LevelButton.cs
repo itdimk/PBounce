@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LevelButton : MonoBehaviour
 {
-    public GameManagerX Manager;
+    public GameManager Manager;
     public NumberDisplay LevelNumberDisplay;
     public NumberDisplay HighScoreDisplay;
     public Button Button;

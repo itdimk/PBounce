@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MouseTargetProviderX : TargetProviderBaseX
+public class MouseTargetProvider : TargetProviderBase
 {
     private Camera _mainCamera;
     private GameObject _marker;

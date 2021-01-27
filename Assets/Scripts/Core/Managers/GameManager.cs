@@ -1,46 +1,35 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class GameManagerX : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     private float _startTick;
-    private const string LanguageKey = "language";
     private const string LevelsCompletedKey = "levels-completed";
+
+    public string PauseButton = "Cancel";
 
     public int MainMenuSceneIndex;
     public int FirstLevelSceneIndex = 1;
-    public int LastLevelSceneIndex = 0;
-    public string PauseButton = "Cancel";
-    
-    public bool IsPaused { get; private set; }
+    public int LastLevelSceneIndex = 1;
+
+    public bool IsPaused => Mathf.Abs(Time.timeScale) <= float.Epsilon;
     public float TimeFromStart => Time.time - _startTick;
 
-    public UnityEvent OnPause;
-    public UnityEvent OnResume;
-    public UnityEvent OnQuit;
-    public UnityEvent OnCompleteLevel;
-    public UnityEvent OnLanguageChanged;
-
-    public string Language
-    {
-        get => PlayerPrefs.GetString(LanguageKey);
-        set
-        {
-            PlayerPrefs.SetString(LanguageKey, value);
-            OnLanguageChanged?.Invoke();
-        }
-    }
-
+    public UnityEvent Paused;
+    public UnityEvent Resumed;
+    public UnityEvent LevelCompleted;
+    public UnityEvent LoadingLevel;
+    
     private int LevelsCompleted
     {
         get => PlayerPrefs.GetInt(LevelsCompletedKey);
         set => PlayerPrefs.SetInt(LevelsCompletedKey, value);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetButtonDown(PauseButton))
         {
@@ -49,7 +38,6 @@ public class GameManagerX : MonoBehaviour
             else
                 Pause();
         }
-     
     }
 
     private void Start()
@@ -61,71 +49,70 @@ public class GameManagerX : MonoBehaviour
 
     public void Pause()
     {
-        IsPaused = true;
         Time.timeScale = 0f;
-        OnPause.Invoke();
+        Paused?.Invoke();
     }
 
     public void Resume()
     {
-        IsPaused = false;
         Time.timeScale = 1f;
-        OnResume.Invoke();
-    }
-
-    public void Quit()
-    {
-        Resume();
-        OnQuit.Invoke();
+        Resumed?.Invoke();
     }
 
     public void Exit()
     {
         Resume();
         Application.Quit();
-        Debug.Log("Application exit");
+        Debug.Log("Application successfully exited");
     }
 
     public void CompleteLevel()
     {
+        Resume();
         int currLevel = SceneManager.GetActiveScene().buildIndex - FirstLevelSceneIndex + 1;
 
         if (LevelsCompleted < currLevel)
             LevelsCompleted = currLevel;
-        OnCompleteLevel?.Invoke();
+        LevelCompleted?.Invoke();
     }
 
     public void RestartLevel()
     {
         Resume();
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(sceneIndex);
+        LoadingLevel?.Invoke();
+        StartCoroutine(LoadSceneAsync(sceneIndex));
     }
 
     public void LoadLastAvailableLevel()
     {
         Resume();
         int sceneIndex = Math.Min(LastLevelSceneIndex, FirstLevelSceneIndex + LevelsCompleted);
-        SceneManager.LoadScene(sceneIndex);
+        LoadingLevel?.Invoke();
+        StartCoroutine(LoadSceneAsync(sceneIndex));
     }
 
     public void LoadLevel(int level)
     {
         Resume();
         int sceneIndex = FirstLevelSceneIndex + (level - 1);
-        SceneManager.LoadScene(sceneIndex);
+        LoadingLevel?.Invoke();
+        StartCoroutine(LoadSceneAsync(sceneIndex));
     }
 
     public void LoadNextLevel()
     {
         Resume();
         int sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-       
-        if(sceneIndex > LastLevelSceneIndex)
+
+        if (sceneIndex > LastLevelSceneIndex)
             Debug.LogWarning($"Scene {sceneIndex} is out of specified level's range");
-        
-        if(sceneIndex <  SceneManager.sceneCountInBuildSettings)
-            SceneManager.LoadScene(sceneIndex);
+
+        if (sceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            LoadingLevel?.Invoke();
+            StartCoroutine(LoadSceneAsync(sceneIndex));
+        }
         else
             GoMainMenu();
     }
@@ -133,6 +120,14 @@ public class GameManagerX : MonoBehaviour
     public void GoMainMenu()
     {
         Resume();
-        SceneManager.LoadScene(MainMenuSceneIndex);
+        StartCoroutine(LoadSceneAsync(MainMenuSceneIndex));
+    }
+
+    IEnumerator LoadSceneAsync(int index)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(index);
+
+        while (!asyncLoad.isDone)
+            yield return null;
     }
 }

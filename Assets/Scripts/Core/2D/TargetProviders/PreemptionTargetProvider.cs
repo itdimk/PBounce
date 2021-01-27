@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PreemptionTargetProviderX : TargetProviderBaseX
+public class PreemptionTargetProvider : TargetProviderBase
 {
-    public TargetProviderBaseX Target;
+    public TargetProviderBase Target;
     public float Scale = 0.04f;
     
     private GameObject PreemptionMarker;
@@ -12,12 +11,6 @@ public class PreemptionTargetProviderX : TargetProviderBaseX
     void Start()
     {
         PreemptionMarker = new GameObject("PreemptionMarker");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public override Transform GetTarget()

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class SearchTargetProviderX : TargetProviderBaseX
+public class SearchTargetProvider : TargetProviderBase
 {
     public enum PriorityD
     {
@@ -15,7 +14,7 @@ public class SearchTargetProviderX : TargetProviderBaseX
         Any
     }
 
-    public TargetsPoolX Searcher;
+    public TargetsPool Searcher;
 
     public string[] Tags;
     public float MaxDistance = 10.0f;

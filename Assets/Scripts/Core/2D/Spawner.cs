@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,8 +23,7 @@ public class Spawner : MonoBehaviour
     public UnityEvent AfterSpawn = new UnityEvent();
 
 
-    // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
         if (IsSpawnRequired() && ActionEx.CheckCooldown(Spawn, _spawnInterval))
             Spawn();

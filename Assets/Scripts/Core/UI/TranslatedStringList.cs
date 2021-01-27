@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TranslatedStringList : MonoBehaviour
 {
@@ -10,33 +9,31 @@ public class TranslatedStringList : MonoBehaviour
     public class StringListEntry
     {
         public string Language;
-        
-        [TextArea]
-        public List<string> Text;
-
+        [TextArea] public List<string> StringList;
         public override string ToString() => Language;
     }
 
-    public GameManagerX Manager;
+    private SettingsManager _manager;
     [SerializeField] private List<StringListEntry> StringLists;
 
-    public IReadOnlyList<string> ResultStringList { get; private set; }
-    
-    // Start is called before the first frame update
-    void Start()
+    public IReadOnlyList<string> ResultStringList => GetTranslatedStringList();
+
+    private void Start()
     {
-        ResultStringList = GetTranslatedStringList();
+        _manager = FindObjectOfType<SettingsManager>();
+
+        if (_manager == null)
+            Debug.LogError($"Can't find {nameof(SettingsManager)} on the scene");
     }
-    
-    public IReadOnlyList<string> GetTranslatedStringList()
+
+    private IReadOnlyList<string> GetTranslatedStringList()
     {
-        string language = Manager.Language;
+        string language = _manager.Language;
         var entry = StringLists.FirstOrDefault(s => s.Language == language);
 
-        if (entry != null)
-            return entry.Text;
+        if (entry != null) return entry.StringList;
 
         Debug.LogWarning($"String list isn't specified for the language \"{language}\"");
-        return new List<string>(0);
+        return new List<string>();
     }
 }

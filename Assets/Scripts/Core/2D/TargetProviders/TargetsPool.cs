@@ -1,28 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetsPoolX : MonoBehaviour
+public class TargetsPool : MonoBehaviour
 {
     public int ScanInterval = 4;
 
     private readonly Dictionary<string, List<GameObject>> _objects = new Dictionary<string, List<GameObject>>();
-    private float _startTick;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
+    
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        if (Time.time >= _startTick + ScanInterval)
-        {
-            _startTick = Time.time;
+        if (ActionEx.CheckCooldown(Update, ScanInterval))
             RefreshGameObjects();
-        }
     }
 
     void RefreshGameObjects()
@@ -37,10 +26,7 @@ public class TargetsPoolX : MonoBehaviour
     public List<GameObject> GetObjectsByTagNotNull(string targetTag)
     {
         if (!_objects.ContainsKey(targetTag))
-        {
             _objects.Add(targetTag, new List<GameObject>());
-            RefreshGameObjects();
-        }
         else
             _objects[targetTag].RemoveAll(o => o.gameObject == null);
 

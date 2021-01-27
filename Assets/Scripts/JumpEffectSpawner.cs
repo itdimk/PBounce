@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MovementStats))]
@@ -23,7 +20,10 @@ public class JumpEffectSpawner : MonoBehaviour
     {
         if (_lastSpawnedPoint != _spawnAt)
         {
-            Instantiate(TargetToSpawn, _spawnAt, Quaternion.identity);
+            var clone = ObjectPool.GetCloneFromPool(TargetToSpawn, null, _spawnAt, Quaternion.identity);
+            var particleSys = clone.GetComponent<ParticleSystem>();
+            particleSys.Play();
+            
             _lastSpawnedPoint = _spawnAt;
         }
     }

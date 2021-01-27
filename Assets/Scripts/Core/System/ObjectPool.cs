@@ -12,6 +12,8 @@ public static class ObjectPool
 
         if (_pool == null)
             _pool = new Dictionary<string, Stack<GameObject>>();
+        else
+            _pool.Clear();
     }
 
     public static GameObject GetCloneFromPool(this GameObject prefab, Transform parent)

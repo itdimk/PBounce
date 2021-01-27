@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     [HideInInspector] public Sound[] Sounds;
-
-
+    
     private void Awake()
     {
-        int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        Sounds = Resources.FindObjectsOfTypeAll<Sound>()
-            .Where(s => s.gameObject.scene.buildIndex == activeSceneIndex)
-            .ToArray();
+        Sounds = FindObjectsOfType<Sound>();
+        if (FindObjectOfType<AudioManager>() != this)
+            Debug.LogWarning($"Scene can contain only one {nameof(AudioManager)}");
     }
 
     public void Play(string name)

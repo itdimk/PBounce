@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class TargetProviderBaseX : MonoBehaviour
+public abstract class TargetProviderBase : MonoBehaviour
 {
     public abstract Transform GetTarget();
     

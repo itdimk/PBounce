@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Observer : MonoBehaviour
 {
-    public TargetProviderBaseX Target;
+    public TargetProviderBase Target;
 
     [Space] public Transform Origin;
     public Vector2 DirectionMarker = Vector2.right;

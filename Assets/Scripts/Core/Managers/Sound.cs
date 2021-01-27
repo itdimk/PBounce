@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class Sound : MonoBehaviour
 {
     public enum SoundCategory
@@ -22,7 +22,7 @@ public class Sound : MonoBehaviour
 
     public float VolumeScale
     {
-        get { return _volumeScale; }
+        get => _volumeScale;
         set
         {
             if (!_initialized)

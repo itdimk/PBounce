@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5126515687319067077}
   - component: {fileID: 5126515687319067076}
   - component: {fileID: 5126515687319067079}
+  - component: {fileID: 2459271472811407248}
+  - component: {fileID: 76353385085974484}
   m_Layer: 0
   m_Name: JumpEffect
   m_TagString: Untagged
@@ -42,7 +44,7 @@ ParticleSystem:
   serializedVersion: 7
   lengthInSec: 0.7
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4804,3 +4806,55 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2459271472811407248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126515687319067078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0825a995092adf84d83dc6ddeda5169e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseObjectPool: 1
+  DestroyEffect: {fileID: 0}
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &76353385085974484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5126515687319067078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a92f54ee468c0d344a0781eff8344b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  On:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2459271472811407248}
+        m_TargetAssemblyTypeName: SelfDestroy, Assembly-CSharp
+        m_MethodName: Destruct
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Off:
+    m_PersistentCalls:
+      m_Calls: []
+  IsEnabled: 0
+  DoNotEnableTwice: 0
+  Cooldown: 0
+  OnInSeconds: 0.7
+  OffInSeconds: -1

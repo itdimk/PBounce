@@ -53,18 +53,18 @@ public class BindingParameter : MonoBehaviour
         if (!_initialized)
             Initialize();
 
-        _setValue(Pipe != null ? Pipe.Apply(value) : value);
+        _setValue(Pipe ? Pipe.Apply(value) : value);
     }
-    
-    
+
+
     public object GetValue()
     {
         if (!_initialized)
             Initialize();
 
-        return _getValue();
+        return Pipe ? Pipe.Apply(_getValue()) : _getValue();
     }
-    
+
 
     public void RefreshBinding()
     {

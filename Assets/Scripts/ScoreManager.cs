@@ -14,7 +14,7 @@ public class ScoreManager : MonoBehaviour
         public override string ToString() => ItemID;
     }
 
-    public GameManagerX Manager;
+    public GameManager Manager;
     public Inventory TargetInventory;
 
     public ItemScore[] ScoreByItem;

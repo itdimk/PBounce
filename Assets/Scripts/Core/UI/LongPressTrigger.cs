@@ -25,17 +25,12 @@ public class LongPressTrigger : UIBehaviour, IPointerDownHandler, IPointerUpHand
     public void OnPointerDown(PointerEventData eventData)
     {
         timePressStarted = Time.time;
-        isPointerDown = true;
         longPressTriggered = false;
+        isPointerDown = true;
     }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        isPointerDown = false;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        isPointerDown = false;
-    }
+    public void OnPointerUp(PointerEventData eventData) => isPointerDown = false;
+    
+    public void OnPointerExit(PointerEventData eventData) => isPointerDown = false;
+    
 }

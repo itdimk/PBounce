@@ -1,7 +1,8 @@
 using System;
+using System.Linq.Expressions;
 using System.Reflection;
 
-public static class ReflectionEx 
+public static class ReflectionEx
 {
     public static Func<object> CreateGetMethod(FieldInfo field, object targetComponent)
     {
@@ -15,24 +16,29 @@ public static class ReflectionEx
 
     public static Func<object> CreateGetMethod(PropertyInfo property, object targetComponent)
     {
-        // var target = Expression.Constant(TargetComponent);
-        // var body = Expression.Call(target, property.GetGetMethod());
-        //
-        // return (Func<object>) Expression.Lambda(body).Compile();
-
-        return () => property.GetValue(targetComponent);
+        if (property.GetMethod == null) return null;
+        
+        var target = Expression.Constant(targetComponent);
+        var body = Expression.Call(target, property.GetMethod);
+        var convert = Expression.Convert(body, typeof(object));
+        return (Func<object>) Expression.Lambda(convert).Compile();
     }
 
     public static Action<object> CreateSetMethod(PropertyInfo property, object targetComponent)
     {
-        // var target = Expression.Constant(TargetComponent);
-        // var param = Expression.Parameter(typeof(object));
-        // var convertedParam = Expression.Convert(param, property.PropertyType);
-        //
-        // var body = Expression.Call(target, property.GetSetMethod(), convertedParam);
-        //
-        // return (Action<object>) Expression.Lambda(body, param).Compile();
-
-        return (arg) => property.SetValue(targetComponent, Convert.ChangeType(arg, property.PropertyType));
+        if (property.SetMethod == null) return null;
+        
+        var converter = new Func<object, Type, object>(Convert.ChangeType);
+        
+        var type = Expression.Constant(property.PropertyType);
+        var target = Expression.Constant(targetComponent);
+        var param = Expression.Parameter(typeof(object));
+        
+        var convert1 = Expression.Call( converter.Method, param, type);
+        var convert2 = Expression.Convert(convert1, property.PropertyType);
+        var body = Expression.Call(target, property.SetMethod, convert2);
+        
+        var result = (Action<object>) Expression.Lambda(body, param).Compile();
+        return result;
     }
 }

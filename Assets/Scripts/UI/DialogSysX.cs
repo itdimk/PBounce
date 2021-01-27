@@ -22,7 +22,7 @@ public class DialogSysX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _strings = Provider.GetTranslatedStringList();
+        _strings = Provider.ResultStringList;
     }
 
     // Update is called once per frame

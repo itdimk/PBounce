@@ -26,7 +26,8 @@ public class WaypointMovement : MonoBehaviour
 
     private void OnDisable()
     {
-        _physics.velocity = Vector2.zero;
+        if (_physics)
+            _physics.velocity = Vector2.zero;
     }
 
     private void FixedUpdate()

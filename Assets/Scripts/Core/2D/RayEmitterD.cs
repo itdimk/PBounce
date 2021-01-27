@@ -11,15 +11,13 @@ public class RayEmitterD : MonoBehaviour
     private float _scaleMultiplier = -1;
     private RaycastHit2D[] _hitsBuffer;
 
-    // Start is called before the first frame update
     void Start()
     {
         _hitsBuffer = new RaycastHit2D[MaxHits];
         _scaleMultiplier = CalcScaleMultiplier();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         var tr = transform;
         int hitsCount = Physics2D.RaycastNonAlloc(tr.position, tr.right, _hitsBuffer, MaxDistance, Obstacles);
