@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 public class CustomMovementInput : MovementInput
 {
     public bool UseDefaultInput = true;
+    
 
     protected override void FixedUpdate()
     {

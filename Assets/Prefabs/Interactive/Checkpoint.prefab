@@ -117,6 +117,7 @@ MonoBehaviour:
       m_Calls: []
   IsEnabled: 0
   DoNotEnableTwice: 1
+  Cooldown: 0
   OnAt: 1
   OffAt: 0
   TargetTriggerTags:
@@ -133,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdf72c3e5bfb7cc40b8b11694e56c855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _activated: 0
 --- !u!1 &4447784325739856719
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +145,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4447784325739856718}
   - component: {fileID: 4447784325739856717}
+  - component: {fileID: 4149944543763868864}
+  - component: {fileID: 1533715943457846349}
   m_Layer: 0
   m_Name: CheckedCheckpoint
   m_TagString: Untagged
@@ -215,6 +219,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4149944543763868864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447784325739856719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fcbf9c244c0fdc48b718743b53cd91c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  On:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1533715943457846349}
+        m_TargetAssemblyTypeName: AudioManagerProxy, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: checkpoint
+          m_BoolArgument: 0
+        m_CallState: 2
+  Off:
+    m_PersistentCalls:
+      m_Calls: []
+  IsEnabled: 0
+  DoNotEnableTwice: 1
+  Cooldown: 0
+--- !u!114 &1533715943457846349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447784325739856719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4456bfd4cdaf7064f908a57b7a8f5c6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4447784325877264205
 GameObject:
   m_ObjectHideFlags: 0

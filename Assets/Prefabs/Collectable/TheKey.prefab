@@ -4912,6 +4912,7 @@ GameObject:
   - component: {fileID: 6284112548501191190}
   - component: {fileID: 498739959328949112}
   - component: {fileID: 1043426153887294566}
+  - component: {fileID: 7819073554691470407}
   m_Layer: 0
   m_Name: RedRubyAnimated
   m_TagString: Untagged
@@ -5063,16 +5064,16 @@ MonoBehaviour:
   On:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 7819073554691470407}
+        m_TargetAssemblyTypeName: AudioManagerProxy, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: ruby
           m_BoolArgument: 1
         m_CallState: 2
   Off:
@@ -5085,3 +5086,15 @@ MonoBehaviour:
   OffAt: 0
   TargetTriggerTags:
   - Player
+--- !u!114 &7819073554691470407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6284112548501191191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4456bfd4cdaf7064f908a57b7a8f5c6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

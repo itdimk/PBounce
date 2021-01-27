@@ -40,6 +40,12 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
+        if (!PlayerPrefs.HasKey(EffectsVolumeKey))
+            EffectsVolume = 1;
+        
+        if (!PlayerPrefs.HasKey(MusicVolumeKey))
+            MusicVolume = 1;
+        
         ApplyToAudioManager();
     }
 
