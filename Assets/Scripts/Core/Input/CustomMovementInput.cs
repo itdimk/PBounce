@@ -8,6 +8,9 @@ public class CustomMovementInput : MovementInput
 
     protected override void FixedUpdate()
     {
+        // TODO: CRUTCH
+        if (Application.platform == RuntimePlatform.WindowsEditor) UseDefaultInput = true;
+        
         if (!UseDefaultInput) return;
 
         base.FixedUpdate();

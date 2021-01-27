@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -28,6 +29,15 @@ public class ScoreManager : MonoBehaviour
 
     public int Score => _inventoryScore + _timeBonusScore;
 
+    public int HiScore
+    {
+        get
+        {
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            return PlayerPrefs.GetInt($"score-{sceneIndex}");
+        }
+    }
+
     private void Start()
     {
         TargetInventory.ItemsChanged.AddListener(RefreshInventoryScore);
@@ -53,5 +63,21 @@ public class ScoreManager : MonoBehaviour
             _timeBonusScore = (int) (delta * TimeBonusPerSecond);
         else
             _timeBonusScore = 0;
+    }
+
+    public void SaveHiScore()
+    {
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        if (Score > HiScore)
+        {
+            PlayerPrefs.SetInt($"score-{sceneIndex}", Score);
+            PlayerPrefs.Save();
+        }
+    }
+
+    public static int LoadHighScoreOf(int sceneIndex)
+    {
+        return  PlayerPrefs.GetInt($"score-{sceneIndex}");
     }
 }
