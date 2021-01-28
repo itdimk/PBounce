@@ -26,6 +26,18 @@ TextureImporter:
   - first:
       213: 3176117248813992468
     second: BigWater_3
+  - first:
+      213: 6049605792901559095
+    second: Water_0
+  - first:
+      213: -5882170695943828418
+    second: Water_1
+  - first:
+      213: 7591774343886807129
+    second: Water_2
+  - first:
+      213: 8088830456793213489
+    second: Water_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -70,7 +82,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -79,6 +91,8 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
@@ -137,13 +151,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BigWater_0
+      name: Water_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 300
-        width: 300
-        height: 300
+        y: 200
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,20 +165,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61646df5c2b341170800000000000000
-      internalID: 8148202687592547862
+      spriteID: 733fa0d9a6484f350800000000000000
+      internalID: 6049605792901559095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigWater_1
+      name: Water_1
       rect:
         serializedVersion: 2
-        x: 300
-        y: 300
-        width: 300
-        height: 300
+        x: 200
+        y: 200
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,20 +186,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d91487c72ed1489f0800000000000000
-      internalID: -467215602751618659
+      spriteID: e3c4e08cae45e5ea0800000000000000
+      internalID: -5882170695943828418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigWater_2
+      name: Water_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
-        height: 300
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,20 +207,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fb4f3b108870d0f0800000000000000
-      internalID: -1094242217842750474
+      spriteID: 9502c46fa866b5960800000000000000
+      internalID: 7591774343886807129
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BigWater_3
+      name: Water_3
       rect:
         serializedVersion: 2
-        x: 300
+        x: 200
         y: 0
-        width: 300
-        height: 300
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,8 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41a8c8c5fc5d31c20800000000000000
-      internalID: 3176117248813992468
+      spriteID: 13a2589a17c414070800000000000000
+      internalID: 8088830456793213489
       vertices: []
       indices: 
       edges: []

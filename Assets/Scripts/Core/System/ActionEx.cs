@@ -25,13 +25,13 @@ public static class ActionEx
     /// <returns> True if cooldown is completed, otherwise False </returns>
     public static bool CheckCooldown(this Delegate key, float cooldown)
     {
-        if (!LastCallDict.ContainsKey(key))
+        if (!LastCallDict.TryGetValue(key, out float lastCall))
         {
             LastCallDict.Add(key, Time.time);
             return true;
         }
 
-        if (Time.time - LastCallDict[key] >= cooldown)
+        if (Time.time - lastCall >= cooldown)
         {
             LastCallDict[key] = Time.time;
             return true;

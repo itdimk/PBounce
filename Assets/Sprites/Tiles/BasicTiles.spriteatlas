@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Atlas
+  m_Name: BasicTiles
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -20,7 +20,19 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 0
       sRGB: 1
-    platformSettings: []
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -31,18 +43,19 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 102900000, guid: 3485476998568c7498124b88f112ae8d, type: 3}
-    totalSpriteSurfaceArea: 1153001
+    - {fileID: 2800000, guid: 3df925385c3888343873d1df74788e9f, type: 3}
+    - {fileID: 2800000, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
+    - {fileID: 2800000, guid: 02b0b92b8f91f3a40bf3b7c9b9809223, type: 3}
+    totalSpriteSurfaceArea: 840000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: -467215602751618659, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
-  - {fileID: 8148202687592547862, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
-  - {fileID: 3176117248813992468, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
-  - {fileID: -1094242217842750474, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
-  - {fileID: 21300000, guid: 604990d6df2985946a72d8a9df5ab0b1, type: 3}
+  - {fileID: -5882170695943828418, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
+  - {fileID: 6049605792901559095, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
+  - {fileID: 8088830456793213489, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
+  - {fileID: 7591774343886807129, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
   - {fileID: 1034225041661695762, guid: 3df925385c3888343873d1df74788e9f, type: 3}
   - {fileID: 3770776029316928645, guid: 3df925385c3888343873d1df74788e9f, type: 3}
   - {fileID: 7907800862712828875, guid: 3df925385c3888343873d1df74788e9f, type: 3}
@@ -59,17 +72,12 @@ SpriteAtlas:
   - {fileID: 4712400251587865284, guid: 3df925385c3888343873d1df74788e9f, type: 3}
   - {fileID: 7649766913700795000, guid: 3df925385c3888343873d1df74788e9f, type: 3}
   - {fileID: 4241627091826654364, guid: 3df925385c3888343873d1df74788e9f, type: 3}
-  - {fileID: 21300000, guid: 9acc583807d6a1a4f84293b34e16495b, type: 3}
-  - {fileID: 21300000, guid: e83c598826432854b8fdb22d452b2e8f, type: 3}
-  - {fileID: 21300000, guid: e03788d935dbf254789c656de697094a, type: 3}
   - {fileID: 21300000, guid: 02b0b92b8f91f3a40bf3b7c9b9809223, type: 3}
-  - {fileID: 21300000, guid: cebef4dbc9e5c3747953baddb1c491b3, type: 3}
   m_PackedSpriteNamesToIndex:
-  - BigWater_1
-  - BigWater_0
-  - BigWater_3
-  - BigWater_2
-  - Bricks
+  - Water_1
+  - Water_0
+  - Water_3
+  - Water_2
   - SomeTiles_9
   - SomeTiles_8
   - SomeTiles_7
@@ -86,11 +94,7 @@ SpriteAtlas:
   - SomeTiles_11
   - SomeTiles_14
   - SomeTiles_15
-  - broken-brick-1
-  - broken-brick-2
-  - broken-brick-3
   - WallSpike
-  - Bricks-big
   m_RenderDataMap: {}
-  m_Tag: Atlas
+  m_Tag: BasicTiles
   m_IsVariant: 0

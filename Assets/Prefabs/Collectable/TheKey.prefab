@@ -4895,6 +4895,7 @@ MonoBehaviour:
   Description: 
   Category: system
   Icon: {fileID: 21300000, guid: cddcc492e2d493e41bc54dc3fd5c461b, type: 3}
+  IconColor: {r: 1, g: 0.8627451, b: 0, a: 1}
   IsHidden: 0
   Count: 1
   QuickAccess: 0
@@ -4977,7 +4978,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 8
   m_Sprite: {fileID: 21300000, guid: cddcc492e2d493e41bc54dc3fd5c461b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8624264, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5017,7 +5018,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5657143, y: 1.3085715}
+    oldSize: {x: 0.5714286, y: 1.3142858}
     newSize: {x: 3.55, y: 6.05}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

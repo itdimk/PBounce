@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent Resumed;
     public UnityEvent LevelCompleted;
     public UnityEvent LoadingLevel;
-    
+
     private int LevelsCompleted
     {
         get => PlayerPrefs.GetInt(LevelsCompletedKey);
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown(PauseButton))
+        if (!string.IsNullOrWhiteSpace(PauseButton) && Input.GetButtonDown(PauseButton))
         {
             if (IsPaused)
                 Resume();

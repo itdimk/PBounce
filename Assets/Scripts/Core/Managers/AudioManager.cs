@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [HideInInspector] public Sound[] Sounds;
-    
+    private Sound[] _sounds;
+
+    [HideInInspector]
+    public Sound[] Sounds => _sounds ??= FindObjectsOfType<Sound>();
+
     private void Awake()
     {
-        Sounds = FindObjectsOfType<Sound>();
         if (FindObjectOfType<AudioManager>() != this)
             Debug.LogWarning($"Scene can contain only one {nameof(AudioManager)}");
     }

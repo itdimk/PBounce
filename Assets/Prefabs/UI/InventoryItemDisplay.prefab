@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8300161352409014393}
-  - component: {fileID: 8300161352409014391}
   - component: {fileID: 8300161352409014392}
   - component: {fileID: 501586356268130331}
   m_Layer: 5
@@ -40,14 +39,6 @@ RectTransform:
   m_AnchoredPosition: {x: -551, y: 25}
   m_SizeDelta: {x: 89.324585, y: 93.59479}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8300161352409014391
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8300161352409014394}
-  m_CullTransparentMesh: 0
 --- !u!114 &8300161352409014392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetInventory: {fileID: 0}
-  Icon: {fileID: 8300161352748866603}
+  Icon: {fileID: 8300161352748866602}
   ItemName: {fileID: 0}
   ItemDescription: {fileID: 0}
   ItemCount: {fileID: 8300161353749158883}
@@ -98,7 +89,6 @@ GameObject:
   - component: {fileID: 8300161352748866604}
   - component: {fileID: 8300161352748866601}
   - component: {fileID: 8300161352748866602}
-  - component: {fileID: 8300161352748866603}
   m_Layer: 5
   m_Name: Icon
   m_TagString: Untagged
@@ -163,20 +153,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8300161352748866603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8300161352748866605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27d01534c2ba10e45aee9857e17204d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Output: {fileID: 8300161352748866602}
-  OutputPropertyName: sprite
 --- !u!1 &8300161353749158885
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +189,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 23.49961, y: -0.9336}
-  m_SizeDelta: {x: 110.5579, y: 104.6788}
+  m_SizeDelta: {x: 110.55789, y: 104.6788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8300161353749158881
 CanvasRenderer:

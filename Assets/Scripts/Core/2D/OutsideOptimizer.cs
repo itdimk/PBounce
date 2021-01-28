@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class OutsideOptimizer : MonoBehaviour
@@ -5,25 +7,25 @@ public class OutsideOptimizer : MonoBehaviour
     private Rect _enableRect;
     private Rect _disableRect;
 
-    public GameObject[] Targets;
-    public Transform Viewer;
-    public float DistanceX;
-    public float DistanceY;
-    public float NeutralBorder = 2;
+    [SerializeField] List<GameObject> Targets = new List<GameObject>();
+    [SerializeField] Transform Viewer;
+    [SerializeField] float DistanceX;
+    [SerializeField] float DistanceY;
+    [SerializeField] float NeutralBorder = 2;
+    [SerializeField] float RefreshBordersInterval = 0.2f;
 
     private bool _isEnabled;
 
     private void Start()
     {
-        _enableRect = CalcEnableRect();
-        _disableRect = CalcDisableRect(_enableRect);
-
         foreach (var target in Targets)
             target.SetActive(false);
     }
 
     private Rect CalcEnableRect()
     {
+        Targets.RemoveAll(t => !t.gameObject);
+
         float minX = float.MaxValue;
         float maxX = float.MinValue;
         float minY = float.MaxValue;
@@ -58,9 +60,18 @@ public class OutsideOptimizer : MonoBehaviour
         );
     }
 
-
-    private void FixedUpdate()
+    private void RefreshBordersIfRequired()
     {
+        if (!ActionEx.CheckCooldown(RefreshBordersIfRequired, RefreshBordersInterval)) return;
+        
+        _enableRect = CalcEnableRect();
+        _disableRect = CalcDisableRect(_enableRect);
+    }
+
+    private void Update()
+    {
+        RefreshBordersIfRequired();
+
         var pos = Viewer.transform.position;
         bool enableAll = _enableRect.Contains(pos);
         bool disableAll = !_disableRect.Contains(pos);
@@ -76,13 +87,12 @@ public class OutsideOptimizer : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        var enableRect = CalcEnableRect();
-        var disableRect = CalcDisableRect(enableRect);
+        RefreshBordersIfRequired();
 
         Gizmos.color = Color.white;
-        GizmosEx.DrawRect(enableRect);
+        GizmosEx.DrawRect(_enableRect);
 
         Gizmos.color = Color.gray;
-        GizmosEx.DrawRect(disableRect);
+        GizmosEx.DrawRect(_disableRect);
     }
 }

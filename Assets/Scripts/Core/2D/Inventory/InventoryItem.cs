@@ -10,6 +10,7 @@ public class InventoryItem : MonoBehaviour
     public string Category;
 
     public Sprite Icon;
+    public Color IconColor = Color.white;
     public bool IsHidden = true;
     public int Count = 1;
     public bool QuickAccess;

@@ -5,13 +5,21 @@ using UnityEngine;
 
 public class WaypointMovement : MonoBehaviour
 {
+    public enum EndReachedActions
+    {
+        DoNothing,
+        GoToFirst,
+        GoReverse
+    }
+
     public List<Transform> waypoints = new List<Transform>();
 
     public float Speed = 5;
-    public float IsReachedDistance = 0.1F;
     public float Smoothness = 0.1f;
     public bool UseSmoothness = true;
-    public bool Cycled = true;
+
+    [Space] public float NextWaypointDistance = 1F;
+    public EndReachedActions EndReachedAction = EndReachedActions.GoReverse;
 
     private int _currWaypointIndex;
     private Vector3 _currVelocity;
@@ -58,20 +66,33 @@ public class WaypointMovement : MonoBehaviour
         var pos = transform.position;
         var nextWpPos = waypoints[_currWaypointIndex].position;
 
-        if (IsReached(pos, nextWpPos))
-        {
-            if (_currWaypointIndex >= waypoints.Count - 1)
+        bool isWpReached = IsReached(pos, nextWpPos);
+        bool isEndReached = isWpReached && IsLastWaypoint(_currWaypointIndex);
+
+        if (isEndReached)
+            switch (EndReachedAction)
             {
-                if (Cycled) waypoints.Reverse();
-                else return;
+                case EndReachedActions.DoNothing:
+                    return;
+                case EndReachedActions.GoToFirst:
+                    _currWaypointIndex = 0;
+                    return;
+                case EndReachedActions.GoReverse:
+                    waypoints.Reverse();
+                    _currWaypointIndex = 0;
+                    return;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
+        if (isWpReached)
             _currWaypointIndex = (_currWaypointIndex + 1) % waypoints.Count;
-        }
     }
+
+    private bool IsLastWaypoint(int index) => index >= waypoints.Count - 1;
 
     private bool IsReached(Vector2 pos, Vector2 waypoint)
     {
-        return Vector2.Distance(pos, waypoint) <= IsReachedDistance;
+        return Vector2.Distance(pos, waypoint) <= NextWaypointDistance;
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class InventoryItemDisplay : MonoBehaviour
 {
     public Inventory TargetInventory;
-    public SpriteDisplay Icon;
+    public Image Icon;
     public StringDisplay ItemName;
     public StringDisplay ItemDescription;
     public NumberDisplay ItemCount;
@@ -40,14 +40,14 @@ public class InventoryItemDisplay : MonoBehaviour
         
         if (item != null)
         {
-            SetItemIcon(item.Icon);
+            SetItemIcon(item.Icon, item.IconColor);
             SetItemName(item.DisplayName);
             SetItemDescription(item.Description);
             SetItemCount(item.Count);
         }
         else
         {
-            SetItemIcon(null);
+            SetItemIcon(null, Color.black);
             SetItemName(null);
             SetItemDescription(null);
             SetItemCount(0);
@@ -74,9 +74,13 @@ public class InventoryItemDisplay : MonoBehaviour
             ItemCount.SetNumber(count);
     }
 
-    private void SetItemIcon(Sprite icon)
+    private void SetItemIcon(Sprite icon, Color iconColor)
     {
         if (Icon != null)
-            Icon.SetSprite(icon);
+        {
+            Icon.sprite = icon;
+            Icon.color = iconColor;
+         
+        }
     }
 }

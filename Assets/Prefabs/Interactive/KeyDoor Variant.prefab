@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2061491356}
   - component: {fileID: 2061491358}
   - component: {fileID: 2061491357}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TriggerOpener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,18 +150,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: KeyDoor Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1820374988732659410, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601011709802804232, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3601011709802804234, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 79a70b7a52c9d3f42b8871a51bc30910, type: 3}
+    - target: {fileID: 3601011710030798805, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3601011710030798807, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 79a70b7a52c9d3f42b8871a51bc30910, type: 3}
+    - target: {fileID: 3601011710148862745, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3601011710148862747, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 79a70b7a52c9d3f42b8871a51bc30910, type: 3}
+    - target: {fileID: 3601011710612358811, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 268e239a23acdee46a78ffbabf112dd2, type: 3}
 --- !u!4 &1765611367795135798 stripped
