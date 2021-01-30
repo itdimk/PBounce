@@ -1,101 +1,95 @@
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 public class ItdimkParallax : MonoBehaviour
 {
-    private Camera _camera;
+    private Transform _camera;
     private Vector2 _startPos;
 
-    private float _nextBgOffsetH;
-    private float _nextBgOffsetV;
+    private float _nextBgOffsetX;
+    private float _nextBgOffsetY;
 
-    private Transform _nextBgTransformH;
-    private Transform _nextBgTransformV;
-    private Transform _nextBgTransformHV;
+    private Transform _nextBackroundX;
+    private Transform _nextBackgroundY;
+    private Transform _nextBackgroundXY;
 
-    public SpriteRenderer NextBackgroundH;
-    public SpriteRenderer NextBackgroundV;
-    public SpriteRenderer NextBackgroundHV;
+
+    public SpriteRenderer NextBackground;
 
     public float Amount = 0.7f;
+    public float ReplaceCheckInterval = 0.2f;
 
     void Start()
     {
-        _camera = Camera.main;
-        _startPos = _camera.transform.position;
+        _camera = Camera.main.transform;
+        _startPos = _camera.position;
 
         Initialize();
     }
 
     void Update()
     {
-        Vector2 cameraPos = _camera.transform.position;
+        Vector2 cameraPos = _camera.position;
         Vector2 delta = cameraPos - _startPos;
 
         transform.position = _startPos + delta * Amount;
-        RepositionIfRequiredH(cameraPos);
-        RepositionIfRequiredV(cameraPos);
-        RepositionIfRequiredHV(_nextBgOffsetH, _nextBgOffsetV);
+
+        if (ActionEx.CheckCooldown(Update, ReplaceCheckInterval))
+        {
+            ReplaceIfRequiredX(cameraPos);
+            ReplaceIfRequiredY(cameraPos);
+            ReplaceIfRequiredXY(_nextBgOffsetX, _nextBgOffsetY);
+        }
     }
 
-    void RepositionIfRequiredH(Vector2 cameraPos)
+    void ReplaceIfRequiredX(Vector2 cameraPos)
     {
-        if (!NextBackgroundH) return;
-        Vector2 cameraDelta = cameraPos - _startPos;
+        float cameraDeltaX = cameraPos.x - _startPos.x;
 
-        if (_nextBgOffsetH > 0 != cameraDelta.x > 0)
-            _nextBgTransformH.localPosition = new Vector2(_nextBgOffsetH *= -1, 0);
+        if (_nextBgOffsetX > 0 != cameraDeltaX > 0)
+            _nextBackroundX.localPosition = new Vector2(_nextBgOffsetX *= -1, 0);
 
-        if (_nextBgOffsetH > 0 == cameraPos.x > _nextBgTransformH.position.x)
+        if (_nextBgOffsetX > 0 == cameraPos.x > _nextBackroundX.position.x)
             _startPos = new Vector2(cameraPos.x, _startPos.y);
     }
 
-    void RepositionIfRequiredV(Vector2 cameraPos)
+    void ReplaceIfRequiredY(Vector2 cameraPos)
     {
-        if (!NextBackgroundV) return;
-        Vector2 cameraDelta = cameraPos - _startPos;
+        float cameraDeltaY = cameraPos.y - _startPos.y;
 
-        if (_nextBgOffsetV > 0 != cameraDelta.y > 0)
-            _nextBgTransformV.localPosition = new Vector2(0, _nextBgOffsetV *= -1);
+        if (_nextBgOffsetY > 0 != cameraDeltaY > 0)
+            _nextBackgroundY.localPosition = new Vector2(0, _nextBgOffsetY *= -1);
 
-        if (_nextBgOffsetV > 0 == cameraPos.y > _nextBgTransformV.position.y)
+        if (_nextBgOffsetY > 0 == cameraPos.y > _nextBackgroundY.position.y)
             _startPos = new Vector2(_startPos.x, cameraPos.y);
     }
 
-    void RepositionIfRequiredHV(float nextBgOffsetH, float nextBgOffsetV)
+    void ReplaceIfRequiredXY(float nextBgOffsetH, float nextBgOffsetV)
     {
-        if (!NextBackgroundHV) return;
-        _nextBgTransformHV.localPosition = new Vector2(nextBgOffsetH, nextBgOffsetV);
+        _nextBackgroundXY.localPosition = new Vector2(nextBgOffsetH, nextBgOffsetV);
     }
 
     void Initialize()
     {
         transform.position = _startPos;
 
-        var size = GetComponent<SpriteRenderer>().bounds.size;
+        var size = NextBackground.bounds.size;
 
-        _nextBgOffsetH = size.x + size.x / 2;
-        _nextBgOffsetV = size.y + size.y / 2;
+        _nextBgOffsetX = size.x;
+        _nextBgOffsetY = size.y;
 
-        if (NextBackgroundH)
-        {
-            _nextBgTransformH = NextBackgroundH.transform;
-            _nextBgTransformH.parent = transform;
-            _nextBgTransformH.localPosition = new Vector2(_nextBgOffsetH, 0);
-        }
+        _nextBackroundX = CloneNextBackground(_nextBgOffsetX, 0);
+        _nextBackgroundY = CloneNextBackground(0, _nextBgOffsetY);
+        _nextBackgroundXY = CloneNextBackground(_nextBgOffsetX, _nextBgOffsetY);
 
-        if (NextBackgroundV)
-        {
-            _nextBgTransformV = NextBackgroundV.transform;
-            _nextBgTransformV.parent = transform;
-            _nextBgTransformV.localPosition = new Vector2(0, _nextBgOffsetV);
-        }
+        var mainBackground = NextBackground.transform;
+        mainBackground.parent = transform;
+        mainBackground.localPosition = Vector3.zero;
+    }
 
-        if (NextBackgroundHV)
-        {
-            _nextBgTransformHV = NextBackgroundHV.transform;
-            _nextBgTransformHV.parent = transform;
-            _nextBgTransformHV.localPosition = new Vector2(_nextBgOffsetH, _nextBgOffsetV);
-        }
+    private Transform CloneNextBackground(float localX, float localY)
+    {
+        var result = Instantiate(NextBackground.gameObject, transform);
+        result.transform.localPosition = new Vector2(localX, localY);
+        return result.transform;
     }
 }
