@@ -107,7 +107,7 @@ MonoBehaviour:
   ApplyOnStay: 1
   ApplyOnExit: 0
   PushPower: 150
-  Cooldown: 0.2
+  Cooldown: 0.15
   TargetTags:
   - Player
 --- !u!60 &2896878809435273372
@@ -127,7 +127,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.48, y: 1.48}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1.91, y: 1.91}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -136,13 +136,13 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.23553085, y: -0.29256248}
-      - {x: 0.0035054982, y: -0.71250904}
+      - {x: 0.0075834095, y: -0.93683803}
       - {x: 0.277668, y: -0.25811768}
-      - {x: 0.71487236, y: -0.0026105642}
+      - {x: 0.9147301, y: 0.0014673471}
       - {x: 0.2724533, y: 0.25833893}
-      - {x: 0.0054811835, y: 0.7153974}
+      - {x: -0.0026765466, y: 0.9274927}
       - {x: -0.25691032, y: 0.29871845}
-      - {x: -0.72970456, y: -0.010927528}
+      - {x: -0.9214036, y: -0.002769798}
 --- !u!114 &2896878809435273362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,10 +159,10 @@ MonoBehaviour:
   - {fileID: 3099510055821333314}
   - {fileID: 3099510055325452731}
   Speed: 5
-  IsReachedDistance: 0.1
   Smoothness: 0.1
   UseSmoothness: 1
-  Cycled: 1
+  NextWaypointDistance: 1
+  EndReachedAction: 2
 --- !u!50 &2896878809435273363
 Rigidbody2D:
   serializedVersion: 4

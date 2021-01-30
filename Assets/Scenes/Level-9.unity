@@ -944,7 +944,7 @@ Transform:
   - {fileID: 1695053361}
   - {fileID: 1222745607}
   m_Father: {fileID: 420070910}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &240545877 stripped
 GameObject:
@@ -1119,7 +1119,7 @@ Transform:
   - {fileID: 1171289351}
   - {fileID: 862108943}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &346682260
 GameObject:
@@ -1683,7 +1683,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4447784325133237740, guid: 6cc024ff2de92554cae1a33e161b3262, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4447784325133237740, guid: 6cc024ff2de92554cae1a33e161b3262, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1764,11 +1764,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 263078181}
-  - {fileID: 428061509}
   - {fileID: 231943208}
   - {fileID: 1770272328}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &427293817 stripped
 Transform:
@@ -1837,8 +1836,8 @@ SpriteRenderer:
   m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
-  m_Size: {x: 80.44864, y: 35.869434}
+  m_DrawMode: 0
+  m_Size: {x: 35.807938, y: 15.97805}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1852,11 +1851,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428061507}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5532241, y: 2.8048801, z: 12.811326}
-  m_LocalScale: {x: 1.6666667, y: 1.6666667, z: 1}
+  m_LocalPosition: {x: -4.7468, y: 0.2087, z: 0}
+  m_LocalScale: {x: 1.346201, y: 1.2291682, z: 0.798504}
   m_Children: []
-  m_Father: {fileID: 420070910}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &428061510
 MonoBehaviour:
@@ -1871,7 +1870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1827993036}
-  parallaxEffect: 0.7
+  parallaxEffect: 0.8
 --- !u!1 &430379317
 GameObject:
   m_ObjectHideFlags: 0
@@ -12817,6 +12816,7 @@ MonoBehaviour:
   DistanceX: 25
   DistanceY: 22
   NeutralBorder: 2
+  RefreshBordersInterval: 0.2
 --- !u!1 &866165672 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 617309630608550158, guid: 44c1c6795cb577b4da229d9acefb4a5b, type: 3}
@@ -13326,7 +13326,7 @@ Transform:
   - {fileID: 427293817}
   - {fileID: 1150029920}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1022443639
 PrefabInstance:
@@ -13426,7 +13426,7 @@ Transform:
   - {fileID: 1499355602}
   - {fileID: 951385310}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1051523359
 GameObject:
@@ -13840,6 +13840,7 @@ MonoBehaviour:
   DistanceX: 25
   DistanceY: 14
   NeutralBorder: 4
+  RefreshBordersInterval: 0.2
 --- !u!1001 &1173758976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14258,6 +14259,7 @@ MonoBehaviour:
   DistanceX: 25
   DistanceY: 14
   NeutralBorder: 4
+  RefreshBordersInterval: 0.2
 --- !u!1001 &1310867164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14498,7 +14500,7 @@ Transform:
   - {fileID: 890619212}
   - {fileID: 886529936}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369360136
 GameObject:
@@ -14545,7 +14547,7 @@ Transform:
   - {fileID: 1508783881}
   - {fileID: 468926480}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1499355602 stripped
 Transform:
@@ -14596,7 +14598,7 @@ Transform:
   - {fileID: 896126775}
   - {fileID: 1731660220}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1507202861 stripped
 GameObject:
@@ -15043,7 +15045,7 @@ Transform:
   - {fileID: 1756389548}
   - {fileID: 1147142394}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1695053359
 GameObject:
@@ -21868,7 +21870,7 @@ Transform:
   - {fileID: 2069350200}
   - {fileID: 1868473396}
   m_Father: {fileID: 420070910}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1805895412
 PrefabInstance:
@@ -22057,7 +22059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1360038889603079431, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1360038889603079431, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22602,6 +22604,7 @@ MonoBehaviour:
   DistanceX: 25
   DistanceY: 14
   NeutralBorder: 4
+  RefreshBordersInterval: 0.2
 --- !u!4 &1961111266 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2576233790796217840, guid: 7e13af49ff6b4fb4181584542b735b9a, type: 3}

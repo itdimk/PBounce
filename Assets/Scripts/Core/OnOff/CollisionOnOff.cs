@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,35 +7,41 @@ public class CollisionOnOff : OnOff
     {
         None,
         ColliderEnter,
-        ColliderExit,
-        ColliderExitExact,
+        ColliderExitAll,
+        ColliderExitOne,
     }
-    
+
     public Hooks OnAt = Hooks.ColliderEnter;
     public Hooks OffAt;
     public string[] TargetColliderTags = {"Player"};
-    
+
     private int insideTriggerCount;
-    
-    private void OnCollisionEnter2D(Collision2D other)
+
+    private void OnCollisionEnter2D(Collision2D other) => HandleCollisionEnter(other.gameObject.tag);
+    private void OnCollisionEnter(Collision other) => HandleCollisionEnter(other.gameObject.tag);
+
+    private void HandleCollisionEnter(string targetTag)
     {
-        if (TargetColliderTags.Contains(other.gameObject.tag))
+        if (TargetColliderTags.Contains(targetTag))
         {
             insideTriggerCount++;
             SetAllByHook(Hooks.ColliderEnter);
         }
     }
 
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnCollisionExit2D(Collision2D other) => HandleCollisionExit(other.gameObject.tag);
+    private void OnCollisionExit(Collision other) => HandleCollisionExit(other.gameObject.tag);
+
+    private void HandleCollisionExit(string targetTag)
     {
-        if (TargetColliderTags.Contains(other.gameObject.tag))
+        if (TargetColliderTags.Contains(targetTag))
         {
             insideTriggerCount--;
-            SetAllByHook(Hooks.ColliderExitExact);
+            SetAllByHook(Hooks.ColliderExitOne);
         }
 
         if (insideTriggerCount == 0)
-            SetAllByHook(Hooks.ColliderExit);
+            SetAllByHook(Hooks.ColliderExitAll);
     }
 
 

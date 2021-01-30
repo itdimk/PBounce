@@ -240,9 +240,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Destination: {fileID: 6916543638949529129}
+  TeleportDelay: 1
+  HideWithinDelay: 1
   TriggerTags:
   - Player
-  Delay: 1
 --- !u!95 &6916543639327109483
 Animator:
   serializedVersion: 3
