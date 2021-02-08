@@ -29,14 +29,14 @@ public class ItdimkParallax : MonoBehaviour
         Initialize();
     }
 
-    void Update()
+    void LateUpdate()
     {
         Vector2 cameraPos = _camera.position;
         Vector2 delta =  _startPos - cameraPos;
 
         transform.localPosition = (Vector3)( delta * Amount) + new Vector3(0, 0, -_camera.position.z); // TODO
 
-        if (ActionEx.CheckCooldown(Update, ReplaceCheckInterval))
+        if (ActionEx.CheckCooldown(LateUpdate, ReplaceCheckInterval))
         {
             ReplaceIfRequiredX(cameraPos);
             ReplaceIfRequiredY(cameraPos);
