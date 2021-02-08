@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 6578485441987753151}
   - component: {fileID: 6578485441987753150}
   - component: {fileID: 6260105175420363849}
+  - component: {fileID: 485855280603168527}
+  - component: {fileID: 4581187813953122365}
+  - component: {fileID: 3733323149042556931}
   m_Layer: 0
   m_Name: Hint
   m_TagString: Untagged
@@ -68,11 +71,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 2b9467de4669b694da26ccf5bf05ca9c, type: 3}
-    m_FontSize: 28
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 30
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -90,7 +93,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6578485441987753136}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 06383b66bf9c21c49bf558f5fce54b40, type: 2}
   m_CullingMode: 0
@@ -101,3 +104,61 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &485855280603168527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6578485441987753136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindingID: hint4
+  Type: 1
+  TargetComponent: {fileID: 6578485441987753150}
+  TargetProperty: text
+  Pipe: {fileID: 0}
+  RefreshBindingRequired:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &4581187813953122365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6578485441987753136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindingID: hint4
+  Type: 0
+  TargetComponent: {fileID: 3733323149042556931}
+  TargetProperty: ResultString
+  Pipe: {fileID: 0}
+  RefreshBindingRequired:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3733323149042556931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6578485441987753136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c1b1d65452eae4b93c36d498c7e856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Translations:
+  - Language: 
+    String: Trampoline allows you to jump higher
+  - Language: ru
+    String: "\u0411\u0430\u0442\u0443\u0442 \u043F\u043E\u0437\u0432\u043E\u043B\u044F\u0435\u0442
+      \u0432\u0430\u043C \u043F\u0440\u044B\u0433\u0430\u0442\u044C \u0432\u044B\u0448\u0435"

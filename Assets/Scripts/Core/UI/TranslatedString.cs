@@ -14,25 +14,20 @@ public class TranslatedString : MonoBehaviour
     }
 
     private SettingsManager _manager;
+
+    private SettingsManager Manager => _manager ? _manager : (_manager = FindObjectOfType<SettingsManager>());
+
     [SerializeField] private List<StringEntry> Translations;
 
     public string ResultString => GetTranslatedString();
-
-    private void Start()
-    {
-        _manager = FindObjectOfType<SettingsManager>();
-        
-        if(_manager == null)
-            Debug.LogError($"Can't find {nameof(SettingsManager)} on the scene");
-    }
-
+    
     private string GetTranslatedString()
     {
-        string language = _manager.Language;
+        string language = Manager.Language;
         var entry = Translations.FirstOrDefault(s => s.Language == language);
 
         if (entry != null) return entry.String;
-        
+
         Debug.LogWarning($"String isn't specified for the language \"{language}\"");
         return string.Empty;
     }

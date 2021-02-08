@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
+    public enum TimeBonusMode
+    {
+        LessTimeMoreScores,
+        MoreTimeMoreScores
+    }
+
     [Serializable]
     public class ItemScore
     {
@@ -20,9 +26,11 @@ public class ScoreManager : MonoBehaviour
     public ItemScore[] ScoreByItem;
 
     [Tooltip("Maximum level completion time to get time bonus")]
-    public float TimeBonusThreshold;
+    public float TimeBonusThreshold = 180.0f;
 
     public int TimeBonusPerSecond;
+
+    public TimeBonusMode Mode;
 
     private int _inventoryScore;
     private int _timeBonusScore;
@@ -59,10 +67,10 @@ public class ScoreManager : MonoBehaviour
     {
         var delta = TimeBonusThreshold - Manager.TimeFromStart;
 
-        if (delta > 0)
-            _timeBonusScore = (int) (delta * TimeBonusPerSecond);
-        else
-            _timeBonusScore = 0;
+        if (Mode == TimeBonusMode.LessTimeMoreScores)
+            _timeBonusScore = delta > 0 ? (int) (delta * TimeBonusPerSecond) : 0;
+        else if (Mode == TimeBonusMode.MoreTimeMoreScores)
+            _timeBonusScore = (int) (Mathf.Min(Manager.TimeFromStart, TimeBonusThreshold) * TimeBonusPerSecond);
     }
 
     public void SaveHiScore()
@@ -78,6 +86,6 @@ public class ScoreManager : MonoBehaviour
 
     public static int LoadHighScoreOf(int sceneIndex)
     {
-        return  PlayerPrefs.GetInt($"score-{sceneIndex}");
+        return PlayerPrefs.GetInt($"score-{sceneIndex}");
     }
 }

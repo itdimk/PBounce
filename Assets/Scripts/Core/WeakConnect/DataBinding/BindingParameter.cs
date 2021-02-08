@@ -24,7 +24,7 @@ public class BindingParameter : MonoBehaviour
 
     private bool _initialized;
 
-    [HideInInspector] public UnityEvent RefreshBindingRequired;
+    [HideInInspector] public UnityEvent RefreshBindingRequired = new UnityEvent();
 
     private void Initialize()
     {
@@ -70,7 +70,7 @@ public class BindingParameter : MonoBehaviour
     {
         RefreshBindingRequired?.Invoke();
     }
-
+    
     public override string ToString()
     {
         return TargetProperty;

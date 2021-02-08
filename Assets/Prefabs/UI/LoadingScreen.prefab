@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2163273298664771151}
   - component: {fileID: 2163273298664771149}
   - component: {fileID: 2163273298664771150}
+  - component: {fileID: 4947782217145654521}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
@@ -76,6 +77,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4947782217145654521
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2163273298664771144}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e64a2c0d6f52c3f41866c81316af3660, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2163273298776137943
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,14 +107,17 @@ GameObject:
   - component: {fileID: 2163273298776137942}
   - component: {fileID: 2163273298776137940}
   - component: {fileID: 2163273298776137941}
-  - component: {fileID: 2163273298776137947}
+  - component: {fileID: 8827894407631353544}
+  - component: {fileID: 5890578728247486308}
+  - component: {fileID: 513088017756730776}
+  - component: {fileID: 6472747017842045918}
   m_Layer: 5
-  m_Name: Loading
+  m_Name: LoadingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2163273298776137942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -135,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.078431375}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -156,7 +179,64 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Loading...
---- !u!95 &2163273298776137947
+--- !u!114 &8827894407631353544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2163273298776137943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindingID: loading
+  Type: 1
+  TargetComponent: {fileID: 2163273298776137941}
+  TargetProperty: text
+  Pipe: {fileID: 0}
+  RefreshBindingRequired:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5890578728247486308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2163273298776137943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9649825073db71c4f806ed3a8ae9b6ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BindingID: loading
+  Type: 0
+  TargetComponent: {fileID: 513088017756730776}
+  TargetProperty: ResultString
+  Pipe: {fileID: 0}
+  RefreshBindingRequired:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &513088017756730776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2163273298776137943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c1b1d65452eae4b93c36d498c7e856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Translations:
+  - Language: 
+    String: Loading...
+  - Language: ru
+    String: "\u0417\u0430\u0433\u0440\u0443\u0437\u043A\u0430..."
+--- !u!95 &6472747017842045918
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -166,7 +246,7 @@ Animator:
   m_GameObject: {fileID: 2163273298776137943}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e64a2c0d6f52c3f41866c81316af3660, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2e5c4b2e5dfd50745beac9f0eb746610, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

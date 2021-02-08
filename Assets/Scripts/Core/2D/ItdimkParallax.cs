@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ItdimkParallax : MonoBehaviour
@@ -23,15 +24,17 @@ public class ItdimkParallax : MonoBehaviour
         _camera = Camera.main.transform;
         _startPos = _camera.position;
 
+        transform.parent = _camera;
+        transform.position = default;
         Initialize();
     }
 
     void Update()
     {
         Vector2 cameraPos = _camera.position;
-        Vector2 delta = cameraPos - _startPos;
+        Vector2 delta =  _startPos - cameraPos;
 
-        transform.position = _startPos + delta * Amount;
+        transform.localPosition = (Vector3)( delta * Amount) + new Vector3(0, 0, -_camera.position.z); // TODO
 
         if (ActionEx.CheckCooldown(Update, ReplaceCheckInterval))
         {
@@ -74,8 +77,8 @@ public class ItdimkParallax : MonoBehaviour
 
         var size = NextBackground.bounds.size;
 
-        _nextBgOffsetX = size.x;
-        _nextBgOffsetY = size.y;
+        _nextBgOffsetX = size.x / transform.localScale.x;
+        _nextBgOffsetY = size.y / transform.localScale.y;
 
         _nextBackroundX = CloneNextBackground(_nextBgOffsetX, 0);
         _nextBackgroundY = CloneNextBackground(0, _nextBgOffsetY);
@@ -91,5 +94,11 @@ public class ItdimkParallax : MonoBehaviour
         var result = Instantiate(NextBackground.gameObject, transform);
         result.transform.localPosition = new Vector2(localX, localY);
         return result.transform;
+    }
+
+    private void OnValidate()
+    {
+        if(NextBackground)
+            NextBackground.transform.localScale = Vector3.one;
     }
 }

@@ -44,6 +44,11 @@ public class WaypointMovement : MonoBehaviour
         MoveToCurrentWp();
     }
 
+    public void AddSpeed(float offset)
+    {
+        Speed += offset;
+    }
+
     private void MoveToCurrentWp()
     {
         var pos = transform.position;

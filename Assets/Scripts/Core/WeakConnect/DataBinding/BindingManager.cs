@@ -12,6 +12,17 @@ public class BindingManager : MonoBehaviour
         var parameters = GetBindingParameters();
         RaiseOneWayBindings(parameters);
         RaiseTwoWayBindings(parameters);
+        LogWarningIfRequired();
+    }
+
+    public void RefreshAll()
+    {
+        var targets = GetBindingParameters().Where(p
+            => p.Type == BindingParameter.ParameterType.OneWaySource ||
+               p.Type == BindingParameter.ParameterType.TwoWaySource);
+
+        foreach (var param in targets)
+            param.RefreshBinding();
     }
 
     private void RaiseOneWayBindings(BindingParameter[] bindings)
@@ -58,6 +69,16 @@ public class BindingManager : MonoBehaviour
                 binding.RefreshBinding();
             }
         }
+    }
+
+    private void LogWarningIfRequired()
+    {
+        var parameters = GetBindingParameters();
+        var problems = parameters.Where(p
+            => !parameters.Any(q => q != p && q.BindingID == p.BindingID));
+
+        foreach (var p in problems)
+            Debug.LogWarning($"Binding Id \"{p.BindingID}\" has no pair");
     }
 
     private BindingParameter[] GetBindingParameters()
