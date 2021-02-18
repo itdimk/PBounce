@@ -1,13 +1,16 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(MovementStats))]
 public class JumpEffectSpawner : MonoBehaviour
 {
     public GameObject TargetToSpawn;
-
+    public float Cooldown;
+    
     private Vector2 _spawnAt;
     private MovementStats _stats;
     private Vector2 _lastSpawnedPoint;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -18,7 +21,7 @@ public class JumpEffectSpawner : MonoBehaviour
     // Update is called once per frame
     void OnCollisionExit2D(Collision2D col)
     {
-        if (_lastSpawnedPoint != _spawnAt)
+        if (_lastSpawnedPoint != _spawnAt && ((Action<Collision2D>)OnCollisionExit2D).CheckCooldown(Cooldown))
         {
             var clone = ObjectPool.GetCloneFromPool(TargetToSpawn, null, _spawnAt, Quaternion.identity);
             var particleSys = clone.GetComponent<ParticleSystem>();

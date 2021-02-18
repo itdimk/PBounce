@@ -778,7 +778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1780485502, guid: 97d5d477c94d34a448e356a6724aede8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1780485504, guid: 97d5d477c94d34a448e356a6724aede8, type: 3}
       propertyPath: ShapeModule.angle
@@ -1850,7 +1850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428061507}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.91, y: 1.34, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1703545763}
@@ -12798,8 +12798,8 @@ MonoBehaviour:
   - {fileID: 290052548}
   - {fileID: 354706863}
   Viewer: {fileID: 886949831}
-  DistanceX: 25
-  DistanceY: 22
+  DistanceX: 27
+  DistanceY: 23
   NeutralBorder: 2
   RefreshBordersInterval: 0.2
 --- !u!1 &866165672 stripped
@@ -15154,8 +15154,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1703545761}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.77, y: -4.66, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -6.8, y: -4.1, z: 0}
+  m_LocalScale: {x: 1.2, y: 1.5, z: 1}
   m_Children:
   - {fileID: 428061509}
   m_Father: {fileID: 0}

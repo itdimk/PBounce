@@ -4,10 +4,10 @@ public class SmartMovementInput : MovementInput
 {
     private bool _useDefaultInput = true;
 
-    protected override void FixedUpdate()
+    protected override void Update()
     {
         if (_useDefaultInput)
-            base.FixedUpdate();
+            base.Update();
     }
 
     public void SetX(float value)

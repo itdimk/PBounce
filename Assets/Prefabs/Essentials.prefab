@@ -1134,6 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetToSpawn: {fileID: 5126515687319067078, guid: fb87745e7b531b340846772e9c077d1f, type: 3}
+  Cooldown: 0.3
 --- !u!1 &1678690492698558761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,10 +2650,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  Resumed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5508676118312038890}
+      - m_Target: {fileID: 3708669698334308603}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PauseShow
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2814753149218423586}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -2662,6 +2672,21 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Resumed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3708669698334308603}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: PauseHide
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 5508676117061348950}
@@ -2675,6 +2700,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2814753149218423586}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 7125241997333988504}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -7340,6 +7377,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5508676117061348951}
+  - component: {fileID: 6886977191512116804}
   m_Layer: 5
   m_Name: OptionsMenu
   m_TagString: Untagged
@@ -7369,6 +7407,25 @@ RectTransform:
   m_AnchoredPosition: {x: 55.207497, y: 0}
   m_SizeDelta: {x: 1180.4872, y: 719.8243}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &6886977191512116804
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5508676117061348950}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f5075f62adafa3541b48da4ec5257a4c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5508676117065022330
 GameObject:
   m_ObjectHideFlags: 0
@@ -7581,7 +7638,7 @@ GameObject:
   - component: {fileID: 5508676118312038891}
   - component: {fileID: 5508676118312038889}
   - component: {fileID: 5508676118312038888}
-  - component: {fileID: 7635355876203650406}
+  - component: {fileID: 3708669698334308603}
   m_Layer: 5
   m_Name: PauseScreen
   m_TagString: Untagged
@@ -7648,51 +7705,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7635355876203650406
-MonoBehaviour:
+--- !u!95 &3708669698334308603
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5508676118312038890}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fcbf9c244c0fdc48b718743b53cd91c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  On:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2814753149218423586}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  Off:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2814753149218423586}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-  IsEnabled: 0
-  DoNotEnableTwice: 1
-  Cooldown: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd91078309fe7204294f97d7fd9065db, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5508676119065631295
 GameObject:
   m_ObjectHideFlags: 0

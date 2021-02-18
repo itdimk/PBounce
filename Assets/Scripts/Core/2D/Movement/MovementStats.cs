@@ -1,11 +1,10 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovementStats : MonoBehaviour
 {
-    private int _groundContacts;
-
     public LayerMask WhatIsGround;
 
     [Space] public Rect GroundCheck = new Rect(-0.5f, -1f, 1, 1);
@@ -41,12 +40,7 @@ public class MovementStats : MonoBehaviour
         var groundCheck = GroundCheck;
         groundCheck.position += (Vector2) transform.position;
 
-        _groundContacts = 0;
-        foreach (var contact in collision.contacts)
-            if (groundCheck.Contains(contact.point))
-                _groundContacts++;
-        
-        IsGrounded = _groundContacts > 0;
+        IsGrounded = collision.contacts.Any(contact => groundCheck.Contains(contact.point));
     }
 
     private void OnCollisionStay2D(Collision2D col) => RefreshIsGrounded(col);
