@@ -143,17 +143,17 @@ MonoBehaviour:
   On:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3237155236472088226}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 3237155236211850686}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: CompleteLevel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
   Off:
     m_PersistentCalls:
@@ -1302,6 +1302,50 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!1 &1869292841071478288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7213690919878628646}
+  - component: {fileID: 6891712631030983745}
+  m_Layer: 0
+  m_Name: CashManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7213690919878628646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869292841071478288}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3237155236211850687}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6891712631030983745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869292841071478288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c36b8fbb91d2304e8306435baaa43f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CashByScoreRate: 0.01
 --- !u!1 &2591196810571102654
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,6 +2660,7 @@ Transform:
   - {fileID: 7590043200266450693}
   - {fileID: 7590043199603722652}
   - {fileID: 8504337021739492919}
+  - {fileID: 7213690919878628646}
   m_Father: {fileID: 1360038889603079431}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2732,6 +2777,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6891712631030983745}
+        m_TargetAssemblyTypeName: CashManager, Assembly-CSharp
+        m_MethodName: AddCashByScore
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10464,13 +10521,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c4238ef72cbb79458161fb790fb1a0b, type: 3}
---- !u!224 &1263350072584925978 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2163273298664771151, guid: 4c4238ef72cbb79458161fb790fb1a0b, type: 3}
-  m_PrefabInstance: {fileID: 1120604281026854229}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1263350072584925981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2163273298664771144, guid: 4c4238ef72cbb79458161fb790fb1a0b, type: 3}
+  m_PrefabInstance: {fileID: 1120604281026854229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1263350072584925978 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2163273298664771151, guid: 4c4238ef72cbb79458161fb790fb1a0b, type: 3}
   m_PrefabInstance: {fileID: 1120604281026854229}
   m_PrefabAsset: {fileID: 0}
