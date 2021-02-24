@@ -10,19 +10,15 @@ public class LevelButton : MonoBehaviour
     public NumberDisplay LevelNumberDisplay;
     public NumberDisplay HighScoreDisplay;
     public Button Button;
+    public int LevelIndex = 0;
     
     private void Start()
     {
-        int level = GetLevelIndex();
+        int level = LevelIndex;
         int scene = Manager.FirstLevelSceneIndex + level - 1;
         
         Button.onClick.AddListener(() => Manager.LoadLevel(level));
         LevelNumberDisplay.SetNumber(level);
         HighScoreDisplay.SetNumber(ScoreManager.LoadHighScoreOf( scene));
-    }
-
-    private int GetLevelIndex()
-    {
-        return transform.GetSiblingIndex() + 1;
     }
 }
