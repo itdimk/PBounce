@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Lamp
+    uniqueID: 2643109291
+    locked: 0

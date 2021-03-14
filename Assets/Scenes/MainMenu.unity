@@ -1777,7 +1777,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 918363698}
+  - {fileID: 1206937033}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2372,11 +2372,6 @@ MonoBehaviour:
 --- !u!1839735485 &918363693 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 6544021487235990902, guid: ecba495921b64bd47b331b3b1dab1da4, type: 3}
-  m_PrefabInstance: {fileID: 1815898252}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &918363698 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 689439713392431041, guid: ecba495921b64bd47b331b3b1dab1da4, type: 3}
   m_PrefabInstance: {fileID: 1815898252}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &953922866
@@ -3075,6 +3070,11 @@ Transform:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1758169413371588803, guid: 18733d4a3130ba44faeeee49cad1e651, type: 3}
   m_PrefabInstance: {fileID: 1758169414486537814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1206937033 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4041586969595369758, guid: ecba495921b64bd47b331b3b1dab1da4, type: 3}
+  m_PrefabInstance: {fileID: 1815898252}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1221431841
 GameObject:
@@ -5977,7 +5977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 8086412451252527332, guid: 0ea4fb75da098cd4fb7460409bc89e18, type: 3}
-  Levels: 0100000002000000
+  Levels: 01000000020000000300000004000000
 --- !u!114 &2038752401
 MonoBehaviour:
   m_ObjectHideFlags: 0
