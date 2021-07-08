@@ -295,7 +295,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 29d10b6e36fc5114b8130fef70376d7d, type: 3}
-  m_Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
+  m_Color: {r: 0.8207547, g: 0.8147157, b: 0.6929957, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -25248,11 +25248,11 @@ GameObject:
   m_Component:
   - component: {fileID: 828764983}
   - component: {fileID: 828764989}
-  - component: {fileID: 828764988}
   - component: {fileID: 828764987}
   - component: {fileID: 828764986}
   - component: {fileID: 828764985}
   - component: {fileID: 828764984}
+  - component: {fileID: 828764988}
   m_Layer: 8
   m_Name: RotatingGuy
   m_TagString: Untagged
@@ -25272,7 +25272,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1505266411}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!66 &828764984
 CompositeCollider2D:
@@ -25439,7 +25439,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25874,7 +25874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124b757ab48bcbc48af190837543acfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextBackground: {fileID: 400477595}
+  NextBackground: {fileID: 0}
   Amount: 0.2
   ReplaceCheckInterval: 0.2
 --- !u!4 &1203462349
@@ -25990,8 +25990,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 896126775}
-  - {fileID: 1731660220}
   - {fileID: 828764983}
+  - {fileID: 1731660220}
   - {fileID: 1804519646}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -33657,9 +33657,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecba495921b64bd47b331b3b1dab1da4, type: 3}
---- !u!4 &1731660220 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 689439713392431041, guid: ecba495921b64bd47b331b3b1dab1da4, type: 3}
+--- !u!224 &1731660220 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4041586969595369758, guid: ecba495921b64bd47b331b3b1dab1da4, type: 3}
   m_PrefabInstance: {fileID: 1731660219}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1804519645
@@ -33800,6 +33800,14 @@ PrefabInstance:
     - target: {fileID: 1360038889603079431, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523615196039684209, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
+      propertyPath: m_Intensity
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4816418221980860255, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
+      propertyPath: m_Intensity
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 5220942743698434077, guid: bf9c0d8f56f992a4897c64fb9b660f73, type: 3}
       propertyPath: m_LocalPosition.y

@@ -21,23 +21,26 @@ EditorBuildSettings:
     path: Assets/Scenes/Bricks-4.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Dungeon-2.unity
+    path: Assets/Scenes/Castle-1.unity
     guid: 1302b9fbc39eb904ea1f6937866e7321
-  - enabled: 1
-    path: Assets/Scenes/Sweet-1.unity
-    guid: 1dc9e1681f2b2144c8010a4bc9ad779c
   - enabled: 1
     path: Assets/Scenes/Castle-2.unity
     guid: a306ba50ed72af8438f96fed431d990f
   - enabled: 1
+    path: Assets/Scenes/Sweet-1.unity
+    guid: 1dc9e1681f2b2144c8010a4bc9ad779c
+  - enabled: 1
     path: Assets/Scenes/Sweet-2.unity
     guid: 202ab60a548829a49a1c21df62ad2676
   - enabled: 1
-    path: Assets/Scenes/Dungeon-3.unity
-    guid: 5f059e5b1840f7742a50521ed4303edd
-  - enabled: 1
     path: Assets/Scenes/Air-1.unity
     guid: 70d5a88a6a3d60546a7ec74d35d7cc89
+  - enabled: 1
+    path: Assets/Scenes/Air-2.unity
+    guid: 831b8fec4342b0f4584fa4d4e9d2497d
+  - enabled: 1
+    path: Assets/Scenes/Air-3.unity
+    guid: 5f059e5b1840f7742a50521ed4303edd
   - enabled: 1
     path: Assets/Scenes/level-X.unity
     guid: c293e6ee4f47dd74dbd965b92eaa2eed
