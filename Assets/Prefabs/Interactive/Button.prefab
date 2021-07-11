@@ -110,6 +110,7 @@ MonoBehaviour:
   OffAt: 0
   TargetTriggerTags:
   - Player
+  - Box
 --- !u!61 &7528813022982445636
 BoxCollider2D:
   m_ObjectHideFlags: 0

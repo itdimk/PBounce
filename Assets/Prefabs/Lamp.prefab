@@ -126,7 +126,7 @@ SpringJoint2D:
   m_Anchor: {x: -0.010018075, y: 0.4957261}
   m_ConnectedAnchor: {x: 0.016417027, y: 0.031841278}
   m_AutoConfigureDistance: 1
-  m_Distance: 1.4907385
+  m_Distance: 1.4907404
   m_DampingRatio: 0.5
   m_Frequency: 0.8
 --- !u!60 &1555283190378260727
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 4210997635264501996}
   m_Layer: 0
   m_Name: Lamp
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
