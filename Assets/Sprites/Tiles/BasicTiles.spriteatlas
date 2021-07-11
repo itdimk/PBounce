@@ -56,6 +56,7 @@ SpriteAtlas:
   - {fileID: 6049605792901559095, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
   - {fileID: 8088830456793213489, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
   - {fileID: 7591774343886807129, guid: fb781ba56ca1ebc4594d22569eff5432, type: 3}
+  - {fileID: 21300000, guid: 02b0b92b8f91f3a40bf3b7c9b9809223, type: 3}
   - {fileID: 1034225041661695762, guid: 3df925385c3888343873d1df74788e9f, type: 3}
   - {fileID: 3770776029316928645, guid: 3df925385c3888343873d1df74788e9f, type: 3}
   - {fileID: 7907800862712828875, guid: 3df925385c3888343873d1df74788e9f, type: 3}
@@ -72,12 +73,12 @@ SpriteAtlas:
   - {fileID: 4712400251587865284, guid: 3df925385c3888343873d1df74788e9f, type: 3}
   - {fileID: 7649766913700795000, guid: 3df925385c3888343873d1df74788e9f, type: 3}
   - {fileID: 4241627091826654364, guid: 3df925385c3888343873d1df74788e9f, type: 3}
-  - {fileID: 21300000, guid: 02b0b92b8f91f3a40bf3b7c9b9809223, type: 3}
   m_PackedSpriteNamesToIndex:
   - Water_1
   - Water_0
   - Water_3
   - Water_2
+  - WallSpike
   - SomeTiles_9
   - SomeTiles_8
   - SomeTiles_7
@@ -94,7 +95,6 @@ SpriteAtlas:
   - SomeTiles_11
   - SomeTiles_14
   - SomeTiles_15
-  - WallSpike
   m_RenderDataMap: {}
   m_Tag: BasicTiles
   m_IsVariant: 0

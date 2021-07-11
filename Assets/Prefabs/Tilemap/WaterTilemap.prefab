@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c79fd00d9dc4d145bbedbfb0cd134aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Force: {x: 0, y: 1400}
+  Force: {x: 0, y: 1350}
   ScaleByMass: 1
   IgnoredTags: []
 --- !u!50 &7926944710483571592
