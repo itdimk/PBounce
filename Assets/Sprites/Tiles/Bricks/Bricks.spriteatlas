@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Brick
+  m_Name: Bricks
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -43,11 +43,15 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
+    - {fileID: 2800000, guid: c5c516766838dbb47b73ccc021356e4a, type: 3}
+    - {fileID: 2800000, guid: fb3bd29d849ea684eaf8cbd2c4b57c28, type: 3}
     - {fileID: 2800000, guid: cebef4dbc9e5c3747953baddb1c491b3, type: 3}
     - {fileID: 2800000, guid: 604990d6df2985946a72d8a9df5ab0b1, type: 3}
     - {fileID: 2800000, guid: 9acc583807d6a1a4f84293b34e16495b, type: 3}
+    - {fileID: 2800000, guid: e83c598826432854b8fdb22d452b2e8f, type: 3}
     - {fileID: 2800000, guid: e03788d935dbf254789c656de697094a, type: 3}
-    totalSpriteSurfaceArea: 160000
+    - {fileID: 102900000, guid: 00dd92be2193e854cb2d8419cb1cb70b, type: 3}
+    totalSpriteSurfaceArea: 400000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -55,13 +59,25 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 604990d6df2985946a72d8a9df5ab0b1, type: 3}
   - {fileID: 21300000, guid: 9acc583807d6a1a4f84293b34e16495b, type: 3}
+  - {fileID: 21300000, guid: e83c598826432854b8fdb22d452b2e8f, type: 3}
   - {fileID: 21300000, guid: e03788d935dbf254789c656de697094a, type: 3}
+  - {fileID: 21300000, guid: 4f01f25ab0ccefe4395a9df8d9813392, type: 3}
+  - {fileID: 21300000, guid: 1f499afc60e20a84da042db8563b9df1, type: 3}
+  - {fileID: 21300000, guid: b3a9651e208b75542ba906059f43d563, type: 3}
   - {fileID: 21300000, guid: cebef4dbc9e5c3747953baddb1c491b3, type: 3}
+  - {fileID: 21300000, guid: fb3bd29d849ea684eaf8cbd2c4b57c28, type: 3}
+  - {fileID: 21300000, guid: c5c516766838dbb47b73ccc021356e4a, type: 3}
   m_PackedSpriteNamesToIndex:
   - Bricks
   - broken-brick-1
+  - broken-brick-2
   - broken-brick-3
+  - Bricks-angle-Map
+  - Bricks-big-Map
+  - Bricks-angle-2-Map
   - Bricks-big
+  - Bricks-angle
+  - Bricks-angle-2
   m_RenderDataMap: {}
-  m_Tag: Brick
+  m_Tag: Bricks
   m_IsVariant: 0

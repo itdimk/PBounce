@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1119776479310290496, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
       propertyPath: m_Name
-      value: MovingPlatform
+      value: AutoMovingPlatform
       objectReference: {fileID: 0}
     - target: {fileID: 1119776479310290503, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
       propertyPath: m_RootOrder
@@ -58,6 +58,18 @@ PrefabInstance:
     - target: {fileID: 2823799555697209685, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823799556217956380, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823799556303443152, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823799556532061121, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2934685020829790821, guid: 1e29602bdad1fd34aa31a1ae422c2582, type: 3}
       propertyPath: m_Enabled
