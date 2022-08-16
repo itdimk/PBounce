@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _startTick = Time.time;
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 1000;
+        QualitySettings.vSyncCount = 1;
+        Application.targetFrameRate = Screen.currentResolution.refreshRate;
     }
 
     public void Pause()
