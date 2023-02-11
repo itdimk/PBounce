@@ -51,7 +51,7 @@ TextureImporter:
       213: 4241627091826654364
     second: SomeTiles_15
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -80,9 +81,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
-    aniso: -1
-    mipBias: -100
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -110,6 +111,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -149,6 +151,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -510,6 +536,23 @@ TextureImporter:
     secondaryTextures:
     - texture: {fileID: 2800000, guid: 32ac23d29ff3b77419351753e71c179e, type: 3}
       name: _NormalMap
+    nameFileIdTable:
+      SomeTiles_5: -4510661499138350185
+      SomeTiles_14: 7649766913700795000
+      SomeTiles_10: 7661255319993046518
+      SomeTiles_1: -957309036389568984
+      SomeTiles_13: -2874148304625091853
+      SomeTiles_4: -476865222380908010
+      SomeTiles_2: -1863633914396366647
+      SomeTiles_15: 4241627091826654364
+      SomeTiles_11: 4712400251587865284
+      SomeTiles_9: 1034225041661695762
+      SomeTiles_12: -7507266962685422454
+      SomeTiles_6: -2881458842085050175
+      SomeTiles_3: 3112205268077948696
+      SomeTiles_7: 7907800862712828875
+      SomeTiles_8: 3770776029316928645
+      SomeTiles_0: 4468687901720154226
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
