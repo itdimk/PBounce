@@ -1,15 +1,15 @@
 # PBounce
 
-Game made wholly by ITDimk:)
-Play with your ball! (**[DEMO](https://p-bounce.web.app/)**)
-
+The game made wholly by ITDimk :) \
+Play **[in your browser](https://p-bounce.web.app/)** or check the *Releases*.
 
 Features:
-- 12 levels
+- 12 levels (the last one is infinite!)
 - 4 different locations
-- ITDimk's graphics :D
+- ITDimk's vector graphics
 - Fun thingies: Portals, Trampolines, Lasers, Fans, Turrets & more
-
+- Beat your records by playing faster or collecting a rubies
+- Languages: **EN** / RU
 
 
 ![image](https://user-images.githubusercontent.com/24206455/184821289-36e2679f-b983-43bc-86fa-0136c13bf8b3.png)
