@@ -1,5 +1,6 @@
 # PBounce
 
+Game made wholly by ITDimk:)
 Play with your ball! (**[DEMO](https://p-bounce.web.app/)**)
 
 
